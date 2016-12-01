@@ -38,8 +38,6 @@ public class LoginBean {
     public String getToken() {
         return token;
     }
-     public String getT() {
-        return "11111111111111111111111";
-    }
+     
     
 }
