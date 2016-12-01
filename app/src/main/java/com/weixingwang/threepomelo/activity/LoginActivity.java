@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
         }else {
             String code = tvCode.getText().toString().trim();
             if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
-                ToastUtils.toast(this,"!");
+                ToastUtils.toast(this,"账号或验证码不能为空!");
                 return;
             }
             ShearPreferenceUtils.putName(this,name);
