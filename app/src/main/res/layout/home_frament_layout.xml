@@ -8,12 +8,14 @@
     <include layout="@layout/public_tatle_layout" />
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:clickable="false"
-        android:saveEnabled="false"
+        android:id="@+id/home_fragment_swf"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.weixingwang.threepomelo.view.MyScrollView
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:id="@+id/home_fragment_msw"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,14 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.view.MyScrollView;
 
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener , SwipeRefreshLayout.OnRefreshListener{
+public abstract class BaseFragment extends Fragment implements View.OnClickListener , SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener {
 
     private View view;
     private SwipeRefreshLayout sw;
+    private MyScrollView scrollView;
 
     @Nullable
     @Override
@@ -83,5 +86,33 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 getResources().getColor(R.color.blueTab),
                 getResources().getColor(R.color.red),
                 getResources().getColor(R.color.black));
+    }
+
+    public void isReflash(MyScrollView scrollView){
+
+        this.scrollView = scrollView;
+        scrollView.setOnTouchListener(this);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                isEnlable();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                isEnlable();
+                break;
+        }
+        return false;
+    }
+
+    private void isEnlable() {
+        int scrollY = scrollView.getScrollY();
+        if(scrollY>0){
+            sw.setEnabled(false);
+        }else {
+            sw.setEnabled(true);
+        }
     }
 }

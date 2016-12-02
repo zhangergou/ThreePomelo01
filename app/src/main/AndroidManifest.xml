@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.weixingwang.threepomelo.activity.ShplashActivity"
+        <activity android:name="com.weixingwang.threepomelo.activity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +26,8 @@
         <activity android:name=".activity.CreatIDActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--主界面-->
-        <activity android:name=".activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--<activity android:name=".activity.MainActivity"-->
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
     </application>
 
 </manifest>

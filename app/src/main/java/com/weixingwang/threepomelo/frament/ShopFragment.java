@@ -7,15 +7,15 @@ import com.weixingwang.threepomelo.R;
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
-public class SunFlowerFragment extends BaseFragment {
+public class ShopFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.sun_flower_frament_layout;
+        return R.layout.every_day_frament_layout;
     }
 
     @Override
     protected void initView(View view) {
-        setTitle("向日葵");
+        setTitle("商城");
     }
 
     @Override

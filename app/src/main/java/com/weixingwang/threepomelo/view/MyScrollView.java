@@ -6,6 +6,8 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.widget.ScrollView;
 
+import com.weixingwang.threepomelo.frament.BaseFragment;
+
 /**
  * Created by Administrator on 2016/10/6 0006.
  */
@@ -46,4 +48,6 @@ public class MyScrollView extends ScrollView {
         }
         return super.onInterceptTouchEvent(e);
     }
+
+
 }

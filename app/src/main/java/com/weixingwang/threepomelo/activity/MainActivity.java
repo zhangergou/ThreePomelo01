@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.MyFragmentPagerAdapter;
-import com.weixingwang.threepomelo.frament.EveryDayDataFragment;
+import com.weixingwang.threepomelo.frament.ShopFragment;
 import com.weixingwang.threepomelo.frament.HomeFragment;
 import com.weixingwang.threepomelo.frament.MeFragment;
 import com.weixingwang.threepomelo.frament.MyOrderFragment;
-import com.weixingwang.threepomelo.frament.SunFlowerFragment;
+import com.weixingwang.threepomelo.frament.EveryDayDataFragment;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
 import com.weixingwang.threepomelo.view.MyViewPager;
 
@@ -40,8 +40,8 @@ public class MainActivity extends BaseActivity {
     protected void initData() {
         list.add(new HomeFragment());
         list.add(new MyOrderFragment());
+        list.add(new ShopFragment());
         list.add(new EveryDayDataFragment());
-        list.add(new SunFlowerFragment());
         list.add(new MeFragment());
         mainViewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),mainViewPager,
                 mainTab,list, ArrayUtils.mainTab));

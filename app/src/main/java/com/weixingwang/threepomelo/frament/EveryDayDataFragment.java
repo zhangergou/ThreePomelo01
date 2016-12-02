@@ -10,7 +10,7 @@ import com.weixingwang.threepomelo.R;
 public class EveryDayDataFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.every_day_frament_layout;
+        return R.layout.sun_flower_frament_layout;
     }
 
     @Override
