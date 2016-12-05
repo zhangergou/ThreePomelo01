@@ -23,10 +23,6 @@ public class LoginActivity extends BaseActivity {
 
     private TextView tvNmae;
     private TextView tvPassword;
-    private LinearLayout linCode;
-    private int pos=1;
-    private String url =null;
-    private TextView tvCode;
 
     @Override
     protected int getLayoutId() {
@@ -37,8 +33,6 @@ public class LoginActivity extends BaseActivity {
     protected void initView() {
         tvNmae = (TextView) findViewById(R.id.tv_login_name);
         tvPassword = (TextView) findViewById(R.id.tv_login_password);
-        tvCode = (TextView) findViewById(R.id.tv_login_code);
-        linCode = (LinearLayout) findViewById(R.id.lin_login_code);
         setTitle("登录");
     }
 
@@ -52,7 +46,7 @@ public class LoginActivity extends BaseActivity {
     //密码登录
     public void login(View view){
         String name = tvNmae.getText().toString().trim();
-        if(pos==1){
+
             String password = tvPassword.getText().toString().trim();
             if(TextUtils.isEmpty(name)||TextUtils.isEmpty(password)){
                 ToastUtils.toast(this,"账号或密码不能为空!");
@@ -60,31 +54,21 @@ public class LoginActivity extends BaseActivity {
             }
             ShearPreferenceUtils.putName(this,name);
             comeIn(name,password);
-        }else {
-            String code = tvCode.getText().toString().trim();
-            if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
-                ToastUtils.toast(this,"账号或验证码不能为空!");
-                return;
-            }
-            ShearPreferenceUtils.putName(this,name);
-            comeIn(name,code);
-        }
+//            String code = tvCode.getText().toString().trim();
+//            if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
+//                ToastUtils.toast(this,"账号或验证码不能为空!");
+//                return;
+//            }
+//            ShearPreferenceUtils.putName(this,name);
+//            comeIn(name,code);
+
     }
 
     private void comeIn(String name, String password) {
         HashMap<String,String> hashMap=new HashMap<>();
-        if(pos==1){
-            hashMap.clear();
             hashMap.put("mobile",name);
             hashMap.put("password",password);
-            url=UrlUtils.PASWORD_LOGIN_Url;
-        }else {
-            hashMap.clear();
-            hashMap.put("mobile",name);
-            hashMap.put("password",password);
-            url=UrlUtils.PASWORD_LOGIN_Url;
-        }
-        OkHttpUtils.get(url, null, LoginBean.class, new OkHttpUtils.CallBackUtils() {
+        OkHttpUtils.get(UrlUtils.PASWORD_LOGIN_Url, null, LoginBean.class, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
                 if(obj!=null){
@@ -112,21 +96,27 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initLisener() {
+        findViewById(R.id.go_regest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,CreatIDActivity.class));
 
+            }
+        });
     }
-    //手机验证码登录
-    public void codeLogin(View view){
-        tvPassword.setVisibility(View.GONE);
-        linCode.setVisibility(View.VISIBLE);
-        pos=2;
-
-    }
-    //密码登录
-    public void passwordLogin(View view){
-        linCode.setVisibility(View.GONE);
-        tvPassword.setVisibility(View.VISIBLE);
-        pos=1;
-    }
+//    //手机验证码登录
+//    public void codeLogin(View view){
+//        tvPassword.setVisibility(View.GONE);
+//        linCode.setVisibility(View.VISIBLE);
+//        pos=2;
+//
+//    }
+//    //密码登录
+//    public void passwordLogin(View view){
+//        linCode.setVisibility(View.GONE);
+//        tvPassword.setVisibility(View.VISIBLE);
+//        pos=1;
+//    }
     //获取验证码
     public void getCode(View view){
         String name = tvNmae.getText().toString().trim();
@@ -134,30 +124,6 @@ public class LoginActivity extends BaseActivity {
             ToastUtils.toast(this,"账号不能为空!");
             return;
         }
-        HashMap<String,String> hashMap=new HashMap<>();
-        hashMap.put("mobile",name);
-        OkHttpUtils.get(UrlUtils.getCodeUrl, null, GetCodeBean.class, new OkHttpUtils.CallBackUtils() {
-            @Override
-            public void sucess(Object obj) {
-                if(obj!=null){
-                    GetCodeBean bean= (GetCodeBean) obj;
-                    if(bean.isSuccess()){
-                        ToastUtils.toast(LoginActivity.this,"获取成功");
-                        ToastUtils.toast(LoginActivity.this,bean.getYzm()+"");
-                      tvCode.setText(bean.getYzm()+"");
-                    }else {
-                        ToastUtils.toast(LoginActivity.this,bean.getError_msg());
-                    }
-                }else {
-                    ToastUtils.toast(LoginActivity.this,"请重新获取");
-                }
-            }
 
-            @Override
-            public void error(Exception e) {
-                ToastUtils.toast(LoginActivity.this,"网络错误,请重新获取");
-            }
-        },hashMap
-        );
     }
 }

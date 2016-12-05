@@ -5,76 +5,97 @@
     android:layout_height="match_parent">
     <include layout="@layout/public_tatle_layout"/>
 
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/orderdetails_logo_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <LinearLayout
-        android:padding="10dp"
         android:gravity="center"
-        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/login_inputbox"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/landing_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@null"
             android:id="@+id/tv_login_name"
-            android:hint="账号:"
+            android:hint="请输入手机号"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <RelativeLayout
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/login_inputbox"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/login_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:password="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:id="@+id/tv_login_password"
+            android:hint="请输入密码"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/tv_login_password"
-                android:layout_marginTop="10dp"
-                android:hint="密码:"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <LinearLayout
-                android:id="@+id/lin_login_code"
-                android:visibility="gone"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:layout_weight="1"
-                    android:id="@+id/tv_login_code"
-                    android:layout_marginTop="10dp"
-                    android:hint="验证码:"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:text="获取验证码"
-                   android:onClick="getCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </RelativeLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_weight="1"
-                android:text="验证码登录"
-                android:textSize="@dimen/text_size_two"
-                android:onClick="codeLogin"
-                android:layout_marginTop="20dp"
-                android:background="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:background="@color/white"
-                android:layout_weight="1"
-                android:text="密码登录"
-                android:textSize="@dimen/text_size_two"
-                android:onClick="passwordLogin"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <Button
             android:text="登录"
+            android:textColor="@color/white"
+            android:background="@drawable/login_button"
             android:textSize="@dimen/text_size_two"
             android:onClick="login"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
+    <RelativeLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:clickable="true"
+            android:text="忘记密码?"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/text_size_two"
+            android:textColor="@color/blueTabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/go_regest"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:text="新用户登录"
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/text_size_two"
+            android:textColor="@color/blueTabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 </LinearLayout>

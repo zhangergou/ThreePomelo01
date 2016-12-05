@@ -22,8 +22,11 @@
         <!--登录-->
         <activity android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <!--注册-->
+        <!--注册01-->
         <activity android:name=".activity.CreatIDActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--注册02-->
+        <activity android:name=".activity.RegestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--主界面-->
         <!--<activity android:name=".activity.MainActivity"-->
