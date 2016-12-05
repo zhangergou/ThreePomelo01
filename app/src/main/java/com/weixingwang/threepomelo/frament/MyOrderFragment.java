@@ -28,6 +28,7 @@ public class MyOrderFragment extends BaseFragment {
        rcv = (RecyclerView)view.findViewById(R.id.recyclerview);
         //Recyclerview线性排列
         rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));//从零开始往下
+        setTitle("我的订单");
         adapter=new MyOrderAdapter(getActivity(),list);
         rcv.setAdapter(adapter);
     }

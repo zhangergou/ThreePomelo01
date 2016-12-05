@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+   <include layout="@layout/public_tatle_layout"/>
+   <android.support.v4.widget.SwipeRefreshLayout
+       android:id="@+id/shop_fragment_swf"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+      <com.weixingwang.threepomelo.view.MyScrollView
+          android:overScrollMode="never"
+          android:scrollbars="none"
+          android:id="@+id/shop_fragment_msw"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+         <LinearLayout
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+               <ImageView
+                   android:layout_weight="1"
+                   android:src="@mipmap/img"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <View
+                   android:background="@color/graySeven"
+                   android:layout_width="1dp"
+                   android:layout_height="match_parent"/>
+               <ImageView
+                   android:layout_weight="1"
+                   android:src="@mipmap/img"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/graySeven"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+               <ImageView
+                   android:layout_weight="1"
+                   android:src="@mipmap/img"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <View
+                   android:background="@color/graySeven"
+                   android:layout_width="1dp"
+                   android:layout_height="match_parent"/>
+               <ImageView
+                   android:layout_weight="1"
+                   android:src="@mipmap/img"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <View
+                   android:background="@color/graySeven"
+                   android:layout_width="1dp"
+                   android:layout_height="match_parent"/>
+               <ImageView
+                   android:layout_weight="1"
+                   android:src="@mipmap/img"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/graySeven"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+               <View
+                   android:layout_width="20dp"
+                   android:layout_height="1dp"
+                   android:layout_marginRight="10dp"
+                   android:background="@color/grayThree" />
+
+               <TextView
+                   android:textSize="@dimen/text_size_four"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="附近的店铺" />
+
+               <View
+                   android:layout_marginLeft="10dp"
+                   android:layout_width="20dp"
+                   android:layout_height="1dp"
+                   android:background="@color/grayThree" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shop_fragment_recl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+         </LinearLayout>
+      </com.weixingwang.threepomelo.view.MyScrollView>
+   </android.support.v4.widget.SwipeRefreshLayout>
+   </LinearLayout>
+   <include layout="@layout/shopping_bus_layout"/>
+</RelativeLayout>
