@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
- <!--   <include layout="@layout/public_tatle_layout"/>-->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -68,7 +68,7 @@
                 android:text="10073434"
                 android:layout_marginTop="3dp"
                 android:textSize="14sp"
-                android:textColor="@color/grayTwo"
+                android:textColor="@color/tabTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -79,13 +79,13 @@
             <TextView
                 android:text="时间:"
                 android:textSize="14sp"
-                android:textColor="@color/grayTwo"
+                android:textColor="@color/tabTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2016-10-21 14:35"
                 android:textSize="14sp"
-                android:textColor="@color/grayTwo"
+                android:textColor="@color/tabTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -169,7 +169,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearlayout"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -181,7 +181,7 @@
                     android:text="实付:"
                     android:layout_marginLeft="1dp"
                     android:textSize="14sp"
-                    android:textColor="@color/grayTwo"
+                    android:textColor="@color/tabTextColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -207,14 +207,14 @@
                 <TextView
                     android:text="付款时间："
                     android:textSize="14sp"
-                    android:textColor="@color/grayTwo"
+                    android:textColor="@color/tabTextColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_marginLeft="5dp"
                     android:text="2016-10-21 14:35"
+                    android:textColor="@color/tabTextColor"
                     android:textSize="14sp"
-                    android:textColor="@color/grayTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -227,7 +227,7 @@
             android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/linearLayout"
+            android:layout_alignBottom="@+id/linearlayout"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
@@ -252,13 +252,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <RatingBar
-                android:numStars="4"
-                android:rating="1.2"
+                android:layout_marginTop="3dp"
+                style="@style/roomRatingBar"
+                android:numStars="5"
                 android:stepSize="0.5"
+                android:progressDrawable="@drawable/room_rating_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/linearLayout"
+            android:clickable="true"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:orientation="horizontal"
@@ -267,19 +271,19 @@
             <TextView
                 android:text="144"
                 android:textSize="14sp"
-                android:textColor="@color/grayTwo"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
 
                 android:text="人评价"
                 android:textSize="14sp"
-                android:textColor="@color/grayTwo"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
                 android:layout_marginLeft="5dp"
-                android:src="@drawable/myorders_icons_arrows"
+                android:src="@drawable/evaluate_my_order_selector"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -289,4 +293,74 @@
         android:layout_width="match_parent"
         android:background="@color/grayFour"
         android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/load_more"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="ID:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="10073434"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RatingBar
+                android:layout_marginTop="3dp"
+                style="@style/roomRatingBar"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:progressDrawable="@drawable/room_rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_gravity="center"
+                android:text="2016-08-10"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/grayTwo"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:padding="10dp"
+            android:textColor="@color/blueTab"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/myorder_button_value"
+            android:text="我要评价"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>
