@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/cread_log_icon_dia"
+        android:layout_marginTop="10dp"
+        android:text="拍照"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/grayThree"
+        android:padding="10dp"
+        android:background="@drawable/textview_dialog_btn_selector"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+
+
+    <Button
+        android:clickable="true"
+        android:id="@+id/loca_icon_log_dia"
+        android:layout_marginTop="1dp"
+        android:text="相册"
+        android:textColor="@color/grayThree"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/textview_dialog_btn_selector"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+
+    <Button
+        android:clickable="true"
+        android:id="@+id/dialog_cancle_log"
+        android:layout_marginTop="10dp"
+        android:text="取消"
+        android:textColor="@color/blueTab"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/textview_dialog_btn_selector"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+</LinearLayout>

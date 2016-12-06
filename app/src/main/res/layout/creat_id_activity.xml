@@ -87,15 +87,28 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
     </LinearLayout>
-    <Button
-        android:onClick="next"
-        android:background="@drawable/registration_button"
-        android:text="下一步"
-        android:textColor="@color/white"
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <Button
+           android:onClick="next"
+           android:background="@drawable/registration_button"
+           android:text="下一步"
+           android:textColor="@color/white"
+           android:layout_margin="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+       <Button
+           android:id="@+id/btn_codeLogin"
+           android:background="@drawable/registration_button"
+           android:text="登录"
+           android:textColor="@color/white"
+           android:layout_margin="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+   </RelativeLayout>
     <LinearLayout
+        android:id="@+id/lin_xie_yi"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

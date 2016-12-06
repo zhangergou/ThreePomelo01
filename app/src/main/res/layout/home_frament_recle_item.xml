@@ -20,11 +20,21 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@mipmap/img"
-                    android:id="@+id/shop_home_iv"
+                <RelativeLayout
                     android:layout_width="85dp"
-                    android:layout_height="85dp" />
+                    android:layout_height="85dp">
+                    <ImageView
+                        android:src="@mipmap/img"
+                        android:id="@+id/shop_home_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_marginRight="15dp"
+                       android:layout_alignParentRight="true"
+                        android:src="@drawable/home_icon_6series"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
                 <LinearLayout
 
                     android:orientation="vertical"

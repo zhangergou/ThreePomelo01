@@ -55,15 +55,17 @@ public class DialogUtils {
 
     public static Dialog diaBottm(Context context, View view, boolean touch) {
 
-        Dialog dialog = new Dialog(context, R.style.dialog_style);
+        Dialog dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
         WindowManager.LayoutParams attributes = dialog.getWindow().getAttributes();
 //        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
 //        attributes.width = (int) (metrics.widthPixels * 1);
 //        attributes.height = (int) (metrics.heightPixels * 0.8);
         attributes.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         attributes.dimAmount = 0.5f;
-        attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
         attributes.gravity = Gravity.BOTTOM;
+        attributes.y=20;
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(touch);
         return dialog;

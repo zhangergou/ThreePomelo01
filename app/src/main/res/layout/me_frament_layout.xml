@@ -241,7 +241,7 @@
                 <Button
                     android:background="@drawable/productreviews_submit_button"
                     android:textColor="@color/white"
-                    android:text="提交评论"
+                    android:text="退出登录"
                     android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

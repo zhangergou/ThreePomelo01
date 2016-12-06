@@ -23,7 +23,7 @@ public class LoginActivity extends BaseActivity {
 
     private TextView tvNmae;
     private TextView tvPassword;
-
+    public static LoginActivity login;
     @Override
     protected int getLayoutId() {
         return R.layout.login_activity_layout;
@@ -31,9 +31,11 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        login=this;
         tvNmae = (TextView) findViewById(R.id.tv_login_name);
         tvPassword = (TextView) findViewById(R.id.tv_login_password);
         setTitle("登录");
+
     }
 
     @Override
@@ -99,10 +101,23 @@ public class LoginActivity extends BaseActivity {
         findViewById(R.id.go_regest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,CreatIDActivity.class));
+                Intent intent = new Intent(LoginActivity.this, CreatIDActivity.class);
+                intent.putExtra("type",1);
+                startActivity(intent);
 
             }
         });
+
+        findViewById(R.id.tv_forget_password).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, CreatIDActivity.class);
+                intent.putExtra("type",2);
+                startActivity(intent);
+
+            }
+        });
+
     }
 //    //手机验证码登录
 //    public void codeLogin(View view){

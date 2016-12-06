@@ -14,11 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.weixingwang.threepomelo.view.CircleImageView
+                android:id="@+id/iv_regest_icon"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/registered_avatar"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
             <Button
+                android:id="@+id/btn_regest_up_icon"
                 android:textSize="@dimen/text_size_four"
                 android:textColor="@color/white"
                 android:text="上传头像"

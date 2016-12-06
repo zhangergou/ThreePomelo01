@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
@@ -44,6 +45,9 @@ public class CreatIDActivity extends BaseActivity {
 
         }
     };
+    private LinearLayout linAgreement;
+    private Button btnLogin;
+
     @Override
     protected int getLayoutId() {
         return R.layout.creat_id_activity;
@@ -53,11 +57,21 @@ public class CreatIDActivity extends BaseActivity {
     protected void initView() {
         etName = (EditText) findViewById(R.id.tv_login__code_name);
         etCode = (EditText) findViewById(R.id.tv_login__code);
-
+        linAgreement = (LinearLayout) findViewById(R.id.lin_xie_yi);
         ivGreen = (ImageView) findViewById(R.id.iv_regest_green);
         time = (Button) findViewById(R.id.btn_time);
-        setTitle("会员注册");
+        btnLogin = (Button) findViewById(R.id.btn_codeLogin);
+
         isShowBack(true);
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type", 1);
+        if(type==1){
+            setTitle("会员注册");
+            btnLogin.setVisibility(View.GONE);
+        }else{
+            setTitle("验证码登录");
+            linAgreement.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -69,6 +83,7 @@ public class CreatIDActivity extends BaseActivity {
     @Override
     protected void initLisener() {
         ivGreen.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
         findViewById(R.id.tv_login).setOnClickListener(this);
     }
 
@@ -76,6 +91,10 @@ public class CreatIDActivity extends BaseActivity {
         String name = etName.getText().toString().trim();
         String code = etCode.getText().toString().trim();
 
+        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
+            ToastUtils.toast(this,"手机号码或验证码不能为空");
+            return;
+        }
         if(!name.matches(telRegex)){
             ToastUtils.toast(this, "输入正确的手机号");
             return;
@@ -84,10 +103,7 @@ public class CreatIDActivity extends BaseActivity {
             ToastUtils.toast(this, "未选择同意用户协议");
             return;
         }
-        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
-            ToastUtils.toast(this,"手机号码或验证码不能为空");
-            return;
-        }
+
         if(!TextUtils.equals(testCode,code)){
             ToastUtils.toast(this,"验证码输入不正确");
             return;
@@ -150,6 +166,9 @@ public class CreatIDActivity extends BaseActivity {
             case R.id.tv_login:
                 finish();
                 break;
+            case R.id.btn_codeLogin:
+                codeLogin();
+                break;
             default:
                 super.onClick(v);
                 break;
@@ -160,5 +179,28 @@ public class CreatIDActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+    }
+    //验证码登录
+    public void codeLogin(){
+        String name = etName.getText().toString().trim();
+        String code = etCode.getText().toString().trim();
+
+        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(code)){
+            ToastUtils.toast(this,"手机号码或验证码不能为空");
+            return;
+        }
+        if(!name.matches(telRegex)){
+            ToastUtils.toast(this, "输入正确的手机号");
+            return;
+        }
+
+//        if(!TextUtils.equals(testCode,code)){
+//            ToastUtils.toast(this,"验证码输入不正确");
+//            return;
+//        }
+        startActivity(new Intent(CreatIDActivity.this,MainActivity.class));
+        finish();
+        LoginActivity.login.finish();
+
     }
 }
