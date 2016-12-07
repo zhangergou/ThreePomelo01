@@ -1,118 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
         android:padding="10dp"
+        android:background="@color/blueTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/details_like_click_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="商品点评"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ScrollView
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="店铺评价"
                 android:textSize="16sp"
+                android:padding="10dp"
+                android:textColor="@color/grayTwo"
+                android:text="商城“爆米花（虹口店）的点评”"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySex"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_launcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:text="爆米花(虹口店)"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="实付金额:"
+                            android:textSize="14sp"
+                            android:textColor="@color/grayTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="￥"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="300"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="元"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="使用几分数:"
+                            android:textSize="14sp"
+                            android:textColor="@color/grayTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:text="30000"
+                            android:textColor="@color/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySex"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="评价："
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RatingBar
+                    style="@style/roomRatingBar"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:progressDrawable="@drawable/room_rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySex"
+                android:layout_height="10dp"/>
+            <EditText
+                android:layout_margin="10dp"
+                android:gravity="top"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_shape"
+                android:hint="还记得这家店吗?写点评记录生活、分享体验"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySex"
+                android:layout_height="10dp"/>
+            <TextView
+              android:paddingLeft="10dp"
+                android:text="上传图片:"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <RatingBar
-                android:layout_marginLeft="10dp"
-                style="@style/roomRatingBar"
-                android:numStars="5"
-                android:stepSize="0.5"
-                android:progressDrawable="@drawable/room_rating_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <TextView
-                android:text="我的评价"
-                android:textSize="12sp"
-                android:textColor="@color/grayTwo"
+                android:text="上传图片"
+               android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:background="@drawable/productreviews_uploadpictures_button"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/myorders_iconsdropdownarrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:background="@color/grayFour"
-        android:layout_height="1dp"/>
-    <LinearLayout
-        android:padding="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="我的用户名"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RatingBar
-                android:layout_marginTop="3dp"
-                style="@style/roomRatingBar"
-                android:numStars="5"
-                android:stepSize="0.5"
-                android:progressDrawable="@drawable/room_rating_bar"
+                android:padding="10dp"
+                android:src="@drawable/ic_launcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:layout_gravity="center"
-                android:text="2016-08-10 14:35"
+                android:id="@+id/tv_finish"
+                android:text="提交评论"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/grayTwo"
-                android:textSize="14sp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/productreviews_submit_button"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
-    <TextView
-        android:padding="10dp"
-        android:textSize="12sp"
-        android:textColor="@color/black"
-        android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:padding="10dp"
-        android:src="@drawable/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/tv_finish"
-        android:padding="10dp"
-        android:textColor="@color/blueTab"
-        android:textSize="16sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@drawable/myorder_button_value"
-        android:text="完成"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <View
-        android:layout_width="match_parent"
-        android:background="@color/grayFour"
-        android:layout_height="1dp"/>
+    </ScrollView>
 </LinearLayout>
