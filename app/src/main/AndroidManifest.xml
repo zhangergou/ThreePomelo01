@@ -26,7 +26,16 @@
         <activity android:name=".activity.CreatIDActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--注册02-->
+<<<<<<< Updated upstream
         <!--<activity android:name=".activity.RegestActivity"-->
+=======
+        <activity android:name=".activity.RegestActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activity.MyOrderEvaluateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--主界面-->
+        <!--<activity android:name=".activity.MainActivity"-->
+>>>>>>> Stashed changes
             <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
         <!--主界面-->
         <activity android:name=".activity.MainActivity"

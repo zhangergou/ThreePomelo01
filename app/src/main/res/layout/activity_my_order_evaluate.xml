@@ -20,6 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <RatingBar
+                android:layout_marginTop="3dp"
                 style="@style/roomRatingBar"
                 android:numStars="5"
                 android:stepSize="0.5"
