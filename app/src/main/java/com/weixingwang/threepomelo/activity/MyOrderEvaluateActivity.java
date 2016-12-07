@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 public class MyOrderEvaluateActivity extends BaseActivity {
 
-
+   private TextView tv_finish;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_my_order_evaluate;
@@ -28,6 +28,7 @@ public class MyOrderEvaluateActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        tv_finish= (TextView) findViewById(R.id.tv_finish);
 
     }
 
@@ -38,6 +39,12 @@ public class MyOrderEvaluateActivity extends BaseActivity {
 
     @Override
     protected void initLisener() {
+        tv_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 

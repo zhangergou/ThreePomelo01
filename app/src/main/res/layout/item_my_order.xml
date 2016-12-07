@@ -55,7 +55,7 @@
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySex"
                 android:layout_height="10dp"/>
             <RelativeLayout
                 android:padding="10dp"
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="爆米花咖啡店（虹桥）"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -78,13 +78,13 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="时间:"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/tabTextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="2016-10-21 14:35"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/tabTextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -99,19 +99,44 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:text="地址：虹桥路1744号二楼"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="电话:1238274463"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="地址:"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:text="虹桥路1744号二楼"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                    android:text="电话:"
                     android:textSize="14sp"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:text="1238274463"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
                 <TextView
                     android:text="备注："
                     android:textSize="14sp"
@@ -120,10 +145,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/grayFour"
-                android:layout_height="1dp"/>
             <View
                 android:layout_width="match_parent"
                 android:background="@color/grayFour"
@@ -143,20 +164,20 @@
                         <TextView
                             android:text="实付:"
                             android:layout_marginLeft="1dp"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/tabTextColor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:text="￥"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             android:layout_marginLeft="5dp"
                             android:textColor="@color/colorAccent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:text="1280"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             android:layout_marginLeft="5dp"
                             android:textColor="@color/colorAccent"
                             android:layout_width="wrap_content"
@@ -169,7 +190,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:text="付款时间："
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/tabTextColor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -177,7 +198,7 @@
                             android:layout_marginLeft="5dp"
                             android:text="2016-10-21 14:35"
                             android:textColor="@color/tabTextColor"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -185,9 +206,10 @@
                 <TextView
                     android:textColor="@color/colorAccent"
                     android:text="审核中"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -214,6 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RatingBar
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="3dp"
                         style="@style/roomRatingBar"
                         android:numStars="5"
@@ -255,7 +278,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="商家：爆米花"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -267,7 +290,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="消费金额:"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -275,7 +298,7 @@
                         android:id="@+id/tv"
                         android:text="1233.00"
                         android:layout_marginLeft="5dp"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -287,13 +310,13 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="优惠券抵扣："
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="-102"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
@@ -302,14 +325,14 @@
                 <TextView
                     android:layout_marginTop="2dp"
                     android:text="备注："
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_marginTop="2dp"
                     android:text="赠品消费："
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -334,20 +357,20 @@
                         <TextView
                             android:text="实付:"
                             android:layout_marginLeft="1dp"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/tabTextColor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:text="￥"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             android:layout_marginLeft="5dp"
                             android:textColor="@color/colorAccent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
                             android:text="1280"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             android:layout_marginLeft="5dp"
                             android:textColor="@color/colorAccent"
                             android:layout_width="wrap_content"
@@ -360,7 +383,7 @@
                         android:layout_height="wrap_content">
                         <TextView
                             android:text="付款时间："
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/tabTextColor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -368,7 +391,7 @@
                             android:layout_marginLeft="5dp"
                             android:text="2016-10-21 14:35"
                             android:textColor="@color/tabTextColor"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -377,7 +400,7 @@
                     android:textColor="@color/blueTabText"
                     android:text=" 已完成（线下）"
                     android:gravity="center"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/linearlayout"
@@ -405,6 +428,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RatingBar
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="3dp"
                         style="@style/roomRatingBar"
                         android:numStars="5"
@@ -449,10 +473,11 @@
                 <TextView
                     android:text="我的用户名"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -474,7 +499,8 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <TextView
-                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
                     android:layout_width="wrap_content"
@@ -484,6 +510,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/grayFour"
+                android:layout_height="1dp"/>
         </LinearLayout>
     </ScrollView>
 
