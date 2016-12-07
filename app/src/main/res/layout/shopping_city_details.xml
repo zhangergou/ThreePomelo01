@@ -116,7 +116,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/grayFour"
                 android:layout_height="1dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/graySex"
                 android:layout_height="10dp"/>
             <RatingBar
                 android:padding="10dp"
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/graySex"
                 android:layout_height="10dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/grayFour"
                 android:layout_height="1dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/graySex"
                 android:layout_height="10dp"/>
             <TextView
                 android:padding="10dp"
@@ -182,7 +182,7 @@
                 android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
-                android:background="#CCC"
+                android:background="@color/grayFour"
                 android:layout_height="1dp"/>
             <TextView
                 android:layout_width="match_parent"
