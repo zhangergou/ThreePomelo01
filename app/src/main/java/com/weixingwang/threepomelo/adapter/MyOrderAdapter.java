@@ -40,6 +40,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
         final MyHolder myHolder= (MyHolder) holder;
+        holder.tv_money.setText(list.get(position));
         if(map.get(position)){
             myHolder.load_more.setVisibility(View.VISIBLE);
         }else{
@@ -70,12 +71,13 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
         public LinearLayout load_more;
         public LinearLayout lll;
         public LinearLayout ll;
-
+        public TextView tv_money;
         public MyHolder(View itemView) {
             super(itemView);
             load_more = (LinearLayout) itemView.findViewById(R.id.load_more);
             lll = (LinearLayout) itemView.findViewById(R.id.lll);
              ll= (LinearLayout) itemView.findViewById(R.id.ll);
+            tv_money= (TextView) itemView.findViewById(R.id.tv_money);
         }
     }
     public void setClickListener(One one){
