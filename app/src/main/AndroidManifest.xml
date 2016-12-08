@@ -26,17 +26,27 @@
         <activity android:name=".activity.CreatIDActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--注册02-->
-
         <activity android:name=".activity.RegestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity android:name=".activity.MyOrderEvaluateActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-
         <!--主界面-->
         <!--<activity android:name=".activity.MainActivity"-->
             <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+
+        <!--商家入驻->-->
+        <activity android:name=".activity.CreateShopActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--购物车->-->
+        <activity android:name=".activity.ShoppingBusActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--店铺详情->-->
+        <activity android:name=".activity.SellerMessageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--商城详情->-->
+        <activity android:name=".activity.ShopMessageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--订单详情->-->
+        <activity android:name=".activity.MyOrderEvaluateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.weixingwang.threepomelo.view.CircleImageView
+                android:id="@+id/create_iv_log_icon"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/registered_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <Button
+                android:id="@+id/creat_btn_up_log"
+                android:textSize="@dimen/text_size_four"
+                android:textColor="@color/white"
+                android:text="上传Log"
+                android:paddingLeft="25dp"
+                android:background="@drawable/registration_upload"
+                android:layout_marginTop="5dp"
+                android:layout_width="80dp"
+                android:layout_height="30dp" />
+            <include layout="@layout/creat_shop_area_btn_include"/>
+            <include layout="@layout/creat_shop_layout_center_include"/>
+
+            <include layout="@layout/creat_shop_layout_butoom_include"/>
+
+        </LinearLayout>
+        </LinearLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
+
+
+</LinearLayout>

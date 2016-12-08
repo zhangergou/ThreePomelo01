@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/businesssettledin_icon_map" />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_inputbox"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="12456.3"
+                android:textSize="@dimen/text_size_three" />
+            <View
+                android:background="@color/grayFour"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="1254.36"
+                android:textSize="@dimen/text_size_three" />
+        </LinearLayout>
+        <ImageView
+
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/businesssettledin_button_map" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/create_iv_licence_icon"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/businessessettled_icon_picture" />
+    <Button
+        android:id="@+id/creat_btn_up_licence"
+        android:textSize="@dimen/text_size_four"
+        android:textColor="@color/white"
+        android:text="上传营业执照"
+        android:paddingLeft="25dp"
+        android:background="@drawable/registration_upload"
+        android:layout_marginTop="5dp"
+        android:layout_width="140dp"
+        android:layout_height="30dp" />
+    <ImageView
+        android:id="@+id/create_iv_answer_icon"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/businessessettled_icon_picture" />
+    <Button
+        android:id="@+id/creat_btn_up_answer"
+        android:textSize="@dimen/text_size_four"
+        android:textColor="@color/white"
+        android:text="上传承诺书"
+        android:paddingLeft="25dp"
+        android:background="@drawable/registration_upload"
+        android:layout_marginTop="5dp"
+        android:layout_width="140dp"
+        android:layout_height="30dp" />
+    <ImageView
+        android:id="@+id/create_iv_id_icon"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/businessessettled_icon_picture" />
+    <Button
+        android:id="@+id/creat_btn_up_id"
+        android:textSize="@dimen/text_size_four"
+        android:textColor="@color/white"
+        android:text="手持身份证"
+        android:paddingLeft="25dp"
+        android:background="@drawable/registration_upload"
+        android:layout_marginTop="5dp"
+        android:layout_width="140dp"
+        android:layout_height="30dp" />
+</LinearLayout>

@@ -9,4 +9,6 @@ public class ArrayUtils {
     public static String[] mainTab={"主页","我的订单","商城","每日数据","个人中心"};
     public static int[] mainCion={R.drawable.tab_home_selector,R.drawable.tab_my_order_selector,
             R.drawable.tab_shop_selector,R.drawable.tab_everyday_selector,R.drawable.tab_me_selector};
+    public static String[] createShop={"- 请选择类别 -","- 请选择省份 -","- 请选择城市 -",
+            "- 请选择区域 -","- 请选择分销类型 -"};
 }

@@ -116,6 +116,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"/>
         <LinearLayout
+            android:id="@+id/lin_creat_shop"
             android:clickable="true"
             android:background="@drawable/textview_dialog_btn_selector"
             android:gravity="center"

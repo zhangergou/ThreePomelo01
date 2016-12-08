@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/shop_infor_vp"
+                android:background="#ff0000"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+            </android.support.v4.view.ViewPager>
+            <LinearLayout
+                android:id="@+id/shop_infor_indcitor_lin"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:background="@color/graySeven"
+                android:layout_height="20dp">
+            </LinearLayout>
+            <TextView
+                android:id="@+id/shop_infor_tv_name"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:text="商品名称"
+                android:textSize="@dimen/text_size_one"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/shop_infor_tv_goods_price"
+                    android:textColor="@color/redOne"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:text="￥600"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:background="@drawable/productdetails_discount_icon"
+                    android:id="@+id/shop_infor_tv_goods_zhekou"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:text="10折"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="原价:"
+
+                    android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/shop_infor_tv_goods_old_price"
+                        android:textSize="14sp"
+                        android:textColor="@color/grayThree"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:text="600"
+                        android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:text="月售:"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/shop_infor_tv_goods_sells"
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="627"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="笔"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="库存："
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/shop_infor_tv_goods_have"
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="0"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_width="wrap_content"
+                    android:text="张"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_height="20dp">
+                <LinearLayout
+
+                    android:id="@+id/shop_infor_lin_goods_renzheng"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:text="认证商家"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+
+                    android:id="@+id/shop_infor_lin_goods_zhenpin"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:text="正品保证"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/shop_infor_lin_goods_jiapei"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:text="假一赔十"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/shop_infor_lin_goods_dangri"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:text="当日送达"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/shop_infor_lin_goods_mianyun"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:text="免运费"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/shop_infor_lin_goods_daofu"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/product_details_certification_icon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:text="货到付款"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--<RatingBar-->
+                    <!--style="@style/roomRatingBar"-->
+
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <ImageView
+                    android:id="@+id/iv_shop_goods_infor_star_one"
+                    android:layout_gravity="center"
+                    android:src="@drawable/productdetails_star_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/iv_shop_goods_infor_star_two"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/productdetails_star_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/iv_shop_goods_infor_star_three"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/productdetails_halfstar_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/iv_shop_goods_infor_star_four"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/productdetails_graystar_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/iv_shop_goods_infor_star_five"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/productdetails_graystar_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/grayThree"
+                    android:id="@+id/shop_infor_tv_goods_assess_count"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_width="wrap_content"
+                    android:text="0"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/grayThree"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:text="人评价了该商品"
+                    android:layout_height="wrap_content" />
+              
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="10dp"/>
+            <TextView
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:text="购买须知"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/shop_goods_infor_tv_must_know"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:text="本商品为商家会员卡"
+                android:padding="10dp"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="10dp"/>
+            <TextView
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:text="商品介绍"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/shop_goods_infor_tv_goods_say"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:text="购买本店会员卡，在本店消费可打折"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/graySeven"
+                android:layout_height="50dp"/>
+
+
+        </LinearLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
+        <include layout="@layout/shop_massage_botem_layout"/>
+    </RelativeLayout>
+</LinearLayout>

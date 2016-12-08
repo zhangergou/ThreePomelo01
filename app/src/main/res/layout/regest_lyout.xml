@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
                 <ImageView
-                    android:src="@drawable/landing_phone"
+                    android:src="@drawable/registration_icons_invitee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
                 <ImageView
-                    android:src="@drawable/landing_phone"
+                    android:src="@drawable/registration_icons_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
@@ -133,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
                 <ImageView
-                    android:src="@drawable/landing_phone"
+                    android:src="@drawable/registration_icons_idcard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText

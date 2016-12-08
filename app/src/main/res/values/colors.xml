@@ -19,6 +19,10 @@
     <color name="graySeven">#eff2f6</color>
     <color name="grayEight">#F3EDED</color>
 
+    <color name="transtion">#00000000</color>
+
+
+
 
     <color name="red">#ff0000</color>
     <color name="redOne">#FE363D</color>

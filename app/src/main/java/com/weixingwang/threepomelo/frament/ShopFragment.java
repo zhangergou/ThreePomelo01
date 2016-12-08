@@ -1,10 +1,13 @@
 package com.weixingwang.threepomelo.frament;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.activity.ShoppingBusActivity;
 import com.weixingwang.threepomelo.adapter.ShopFragmentRecyclAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
 
@@ -19,6 +22,8 @@ public class ShopFragment extends BaseFragment {
     private MyScrollView sw;
     private RecyclerView recl;
     private ArrayList<String> list=new ArrayList<>();
+    private View view;
+
     @Override
     protected int getLayoutId() {
         return R.layout.shop_frament_layout;
@@ -26,6 +31,7 @@ public class ShopFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+        this.view = view;
         SwipeRefreshLayout swrf= (SwipeRefreshLayout) view.findViewById(R.id.shop_fragment_swf);
         sw = (MyScrollView) view.findViewById(R.id.shop_fragment_msw);
         recl = (RecyclerView) view.findViewById(R.id.shop_fragment_recl);
@@ -45,6 +51,15 @@ public class ShopFragment extends BaseFragment {
 
     @Override
     protected void initLisener() {
+        view.findViewById(R.id.rla_come_in_shopping_bus).setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rla_come_in_shopping_bus:
+                startActivity(new Intent(getActivity(), ShoppingBusActivity.class));
+            break;
+        }
     }
 }
