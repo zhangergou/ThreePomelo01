@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="我的会员"
+            android:gravity="center"
+            android:textColor="@color/blueTabText"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="直属商家"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/grayFour"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="姓名"
+            android:gravity="c"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="手机号码"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="消费总额"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/grayFour"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="吴芳芳"
+            android:layout_weight="1"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="187326437262"
+                android:gravity="left"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:textColor="@color/grayTwo"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="￥"
+                android:layout_width="wrap_content"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="230"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="吴芳芳"
+            android:layout_weight="1"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="187326437262"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="￥"
+                android:layout_width="wrap_content"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="230"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="吴芳芳"
+            android:layout_weight="1"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="187326437262"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="￥"
+                android:layout_width="wrap_content"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="230"
+                android:textColor="@color/blueTabText"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

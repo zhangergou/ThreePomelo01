@@ -21,8 +21,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
     private final Context context;
     private final List<String> list;
     private HashMap<Integer, Boolean> map;
-    private  One o;
+    private  One one;
     private LayoutInflater inflater;
+    public static final int REQUEST_SECOND=1;
 
     public MyOrderAdapter(Context context, List<String> list, HashMap<Integer, Boolean> map) {
 
@@ -51,13 +52,14 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,MyOrderEvaluateActivity.class);
-                context.startActivity(intent);
+               context.startActivity(intent);
+
             }
         });
         myHolder.lll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                o.setOne(position);
+                one.setOne(position);
             }
         });
     }
@@ -81,9 +83,8 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
         }
     }
     public void setClickListener(One one){
-        this.o=one;
+        this.one=one;
     }
-
     public interface  One{
         void setOne(int postion);
     }

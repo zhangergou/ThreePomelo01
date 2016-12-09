@@ -40,7 +40,7 @@ public class MyOrderFragment extends BaseFragment {
        rcv.setLayoutManager(gridLayoutManager);
         final MyOrderAdapter adapter = new MyOrderAdapter(getContext(), list,map);
        rcv.setAdapter(adapter);
-        adapter.setClickListener(new MyOrderAdapter.One() {
+       adapter.setClickListener(new MyOrderAdapter.One() {
             private int postion;
             @Override
             public void setOne( int postion) {
