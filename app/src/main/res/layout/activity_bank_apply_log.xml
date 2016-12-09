@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+<include layout="@layout/public_tatle_layout"/>
+<LinearLayout
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="资金日志"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="提现日志"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:textSize="16sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="申请体现"
+        android:textColor="@color/blueTabText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:background="@color/grayFour"
+    android:layout_height="1dp"/>
+<LinearLayout
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="支付宝提现"
+        android:gravity="center"
+        android:textColor="@color/grayTwo"
+        android:textSize="16sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="银行卡提现"
+        android:gravity="center"
+        android:textColor="@color/blueTabText"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:textSize="16sp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:background="@color/grayFour"
+    android:layout_height="1dp"/>
+<RelativeLayout
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="您好："
+            android:gravity="center"
+            android:layout_marginLeft="14dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="李宁"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="可提现余额："
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="0"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="元"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
+<View
+    android:layout_width="match_parent"
+    android:background="@color/grayFour"
+    android:layout_height="1dp"/>
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入提现金额 单笔最少 100 元"
+    android:textSize="12sp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_alipaycashfunds_icon_money"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入开户银行"
+    android:textSize="12sp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_fundsbankcardwithdrawals_icon_bankname"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入银行卡号"
+    android:textSize="12sp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_fundsbankcardwithdrawals_icon_cardicon"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入具体支行名称"
+    android:textSize="12sp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_fundsbankcardwithdrawals_icon_specifiaddress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入开户名"
+    android:textSize="12sp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_alipaycashfunds_icon_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<RelativeLayout
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="wrap_content"
+        android:hint="  请输入手机号                 "
+        android:drawableLeft="@drawable/log_alipaycashfunds_icon_phone"
+        android:background="@drawable/edittext_shape"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="     获取验证码     "
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:background="@drawable/edittext_blue_shape"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+<EditText
+    android:padding="10dp"
+    android:background="@drawable/edittext_shape"
+    android:hint="  请输入验证码"
+    android:textSize="12sp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableLeft="@drawable/log_fundsbankcardwithdrawals_icon_verificationcode"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="小提示："
+        android:textSize="12sp"
+        android:textColor="@color/blueTabText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="12sp"
+        android:text="请您认真填写！"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+<TextView
+    android:padding="5dp"
+    android:textSize="12sp"
+    android:layout_width="match_parent"
+    android:text="（您的提现金额会在两个工作日之内到账，每笔提现银行回收取5元手续费，建议您用支付宝提现）"
+    android:layout_height="wrap_content" />
+<TextView
+    android:textSize="12sp"
+    android:text="您的余额不足"
+    android:layout_marginTop="10dp"
+    android:textColor="@color/blueTabTextb"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+</LinearLayout>

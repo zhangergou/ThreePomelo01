@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.weixingwang.threepomelo.view.CircleImageView
+            android:layout_width="70dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher"
+            app:civ_border_color="#ff0"
+            app:civ_border_width="2dp"
+            app:civ_border_overlay="false"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/personalcenter_accountmanagement_uploadavatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+    <TextView
+        android:text="你的姓名："
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="@color/black"
+        android:text="李敏"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="您的号码:"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/black"
+            android:text="189132873333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+            <EditText
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawableRight="@drawable/myorders_iconsdropdownarrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_shape"
+                android:hint="-省份-"
+                />
+    <EditText
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:drawableRight="@drawable/myorders_iconsdropdownarrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_shape"
+        android:hint="-城市-"
+        />
+    <EditText
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:drawableRight="@drawable/myorders_iconsdropdownarrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_shape"
+        android:hint="-区域-"
+        />
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:text="修改密码"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/productreviews_changepassword_button"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:background="@drawable/productreviews_confirm_button"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:text="确认"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_margin="10dp"
+        android:background="@drawable/productreviews_return_button"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:text="返回"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    </LinearLayout>

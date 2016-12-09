@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="我的会员"
+            android:gravity="center"
+            android:textColor="@color/blueTabText"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="直属商家"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/grayFour"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="商家名称"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="营业额"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="类别"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="推荐人"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/grayFour"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="川香酒家"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="￥230"
+            android:gravity="center"
+            android:textColor="@color/blueTabText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="餐饮"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="廖佳佳"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="川香酒家"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="￥230"
+            android:gravity="center"
+            android:textColor="@color/blueTabText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="餐饮"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="廖佳佳"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="川香酒家"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="￥230"
+            android:gravity="center"
+            android:textColor="@color/blueTabText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="餐饮"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="廖佳佳"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

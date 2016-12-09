@@ -73,10 +73,10 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -98,7 +98,12 @@
                 android:textSize="16sp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:background="@color/grayFour"
+            android:layout_height="match_parent"/>
         <LinearLayout
+            android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -120,7 +125,12 @@
                 android:textSize="16sp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:background="@color/grayFour"
+            android:layout_height="match_parent"/>
         <LinearLayout
+            android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -253,14 +263,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
-              <TextView
-                  android:textColor="@color/white"
-                  android:text="提交评论"
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:layout_width="wrap_content"
-                  android:background="@drawable/productreviews_submit_button"
-                  android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="提交评论"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/productreviews_submit_button"
+                    android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
