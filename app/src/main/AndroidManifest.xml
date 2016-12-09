@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.weixingwang.threepomelo.activity.MainActivity"
+        <activity android:name="com.weixingwang.threepomelo.activity.ShplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +28,12 @@
         <!--注册02-->
         <activity android:name=".activity.RegestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--密码重置-->
+        <activity android:name=".activity.SetPasswordActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--主界面-->
-        <!--<activity android:name=".activity.MainActivity"-->
-            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <activity android:name=".activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <!--商家入驻->-->
         <activity android:name=".activity.CreateShopActivity"

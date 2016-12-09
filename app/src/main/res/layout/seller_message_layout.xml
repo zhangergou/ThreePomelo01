@@ -4,4 +4,220 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/public_tatle_layout"/>
+
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:layout_width="match_parent"
+        android:overScrollMode="never"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v4.view.ViewPager
+                    android:background="#ff0000"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp">
+                </android.support.v4.view.ViewPager>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:text="虹时尚中餐馆（虹口店）"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content" />
+                        <RatingBar
+                            android:layout_marginTop="5dp"
+                            style="@style/roomRatingBar"
+                            android:numStars="5"
+                            android:stepSize="0.5"
+                            android:progressDrawable="@drawable/room_rating_bar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/order_storedetails_idicon_tohere"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/grayFour"
+                    android:layout_height="1dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="江苏省苏州市昆山市湖滨路288号"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="18168982720"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_marginRight="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/order_storedetails_idicon_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/graySex"
+                    android:layout_height="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="购买须知"
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/grayFour"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="有效期2016.6.24-2017.7.34(周末通用)"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/graySex"
+                    android:layout_height="10dp"/>
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:text="商家介绍"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/grayFour"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="虹时尚中餐馆位于哪里"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/grayFour"
+                android:layout_height="1dp"/>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="用户评价"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="144"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="人评价"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/grayFour"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="ID:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="10073434"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_height="wrap_content">
+                <RatingBar
+                    style="@style/roomRatingBar"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:progressDrawable="@drawable/room_rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="2016-08-10"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
 </LinearLayout>

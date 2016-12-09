@@ -281,45 +281,46 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <!--<RatingBar-->
-                    <!--style="@style/roomRatingBar"-->
-
+                <RatingBar
+                    style="@style/roomRatingBar"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_shop_goods_infor_star_one"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/productdetails_star_icon"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content" />-->
-                <ImageView
-                    android:id="@+id/iv_shop_goods_infor_star_one"
-                    android:layout_gravity="center"
-                    android:src="@drawable/productdetails_star_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:id="@+id/iv_shop_goods_infor_star_two"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/productdetails_star_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:id="@+id/iv_shop_goods_infor_star_three"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/productdetails_halfstar_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:id="@+id/iv_shop_goods_infor_star_four"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/productdetails_graystar_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:id="@+id/iv_shop_goods_infor_star_five"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/productdetails_graystar_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_shop_goods_infor_star_two"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:src="@drawable/productdetails_star_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_shop_goods_infor_star_three"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:src="@drawable/productdetails_halfstar_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_shop_goods_infor_star_four"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:src="@drawable/productdetails_graystar_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_shop_goods_infor_star_five"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:src="@drawable/productdetails_graystar_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
                 <TextView
                     android:textSize="12sp"

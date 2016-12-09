@@ -1,5 +1,6 @@
 package com.weixingwang.threepomelo.frament;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.utils.DialogUtils;
+import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.view.MyScrollView;
 
 /**
@@ -24,6 +27,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private View view;
     private SwipeRefreshLayout sw;
     private MyScrollView scrollView;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -114,5 +118,25 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }else {
             sw.setEnabled(true);
         }
+    }
+
+    public void noData() {
+        ToastUtils.toast(getActivity(), "暂无数据");
+    }
+
+    public void netError() {
+        ToastUtils.toast(getActivity(), "网络错误");
+    }
+
+    public void showLoading() {
+        dialog.show();
+    }
+
+    public void initDialog(){
+        dialog = DialogUtils.showLoading(getActivity(), "加载中...");
+    }
+
+    public void closeLoading() {
+        dialog.dismiss();
     }
 }

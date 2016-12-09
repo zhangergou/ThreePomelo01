@@ -239,6 +239,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/logout"
                     android:background="@drawable/productreviews_submit_button"
                     android:textColor="@color/white"
                     android:text="退出登录"

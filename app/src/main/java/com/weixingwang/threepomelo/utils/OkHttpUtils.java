@@ -52,15 +52,15 @@ public class OkHttpUtils {
     }
 
     //异步get无参
-    private void getP_A(String url,String token, Class<?> clazz, final CallBackUtils callBack) throws IOException {
-        if(!TextUtils.isEmpty(token)){
+    private void getP_A(String url, String token, Class<?> clazz, final CallBackUtils callBack) throws IOException {
+        if (!TextUtils.isEmpty(token)) {
             Request request = new Request.Builder()
                     .url(url)
-                    .addHeader("Token",token)
+                    .addHeader("Token", token)
                     .build();
             Call call = okHttpClient.newCall(request);
             requestCall(callBack, call, clazz);
-        }else{
+        } else {
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -72,7 +72,7 @@ public class OkHttpUtils {
     }
 
     //异步post有参
-    private void postP_A_D(String url,String token, Class<?> clazz, final CallBackUtils callback, HashMap<String, String> prams) throws IOException {
+    private void postP_A_D(String url, String token, Class<?> clazz, final CallBackUtils callback, HashMap<String, String> prams) throws IOException {
         FormBody.Builder builder = new FormBody.Builder();
         if (prams != null) {
             Set<Map.Entry<String, String>> entries = prams.entrySet();
@@ -84,17 +84,17 @@ public class OkHttpUtils {
                 builder.add(key, value);
             }
         }
-        if(TextUtils.isEmpty(token)){
+        if (TextUtils.isEmpty(token)) {
             Request request = new Request.Builder()
                     .url(url)
                     .post(builder.build())
                     .build();
             Call call = okHttpClient.newCall(request);
             requestCall(callback, call, clazz);
-        }else{
+        } else {
             Request request = new Request.Builder()
                     .url(url)
-                    .addHeader("Token",token)
+                    .addHeader("Token", token)
                     .post(builder.build())
                     .build();
             Call call = okHttpClient.newCall(request);
@@ -104,7 +104,7 @@ public class OkHttpUtils {
     }
 
     //图片上传
-    private void putImage(String url,String token,Class<?> clazz, List<File> list, final CallBackUtils callBack, HashMap<String, String> prams) {
+    private void putImage(String url, String token, Class<?> clazz, List<File> list, final CallBackUtils callBack, HashMap<String, String> prams) {
         MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         if (prams != null) {
@@ -121,21 +121,21 @@ public class OkHttpUtils {
                 String name = "file" + i + ".png";
                 builder.addFormDataPart("image", name, fileBody);
             }
-            if(TextUtils.isEmpty(token)){
+            if (TextUtils.isEmpty(token)) {
                 Request request = new Request.Builder()
                         .url(url)
                         .post(builder.build())
                         .build();
                 Call call = okHttpClient.newCall(request);
-                requestCall(callBack, call,clazz);
-            }else{
+                requestCall(callBack, call, clazz);
+            } else {
                 Request request = new Request.Builder()
                         .url(url)
-                        .addHeader("Token",token)
+                        .addHeader("Token", token)
                         .post(builder.build())
                         .build();
                 Call call = okHttpClient.newCall(request);
-                requestCall(callBack, call,clazz);
+                requestCall(callBack, call, clazz);
             }
 
         }
@@ -163,7 +163,7 @@ public class OkHttpUtils {
 //        }
 //    }
     //文件上传加参数
-    private void putFile(String url,String token,Class<?> clazz, List<File> list, CallBackUtils callBack, HashMap<String, String> prams) {
+    private void putFile(String url, String token, Class<?> clazz, List<File> list, CallBackUtils callBack, HashMap<String, String> prams) {
         MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         if (prams != null) {
@@ -181,21 +181,21 @@ public class OkHttpUtils {
                 builder.addFormDataPart("file", name, fileBody);
 
             }
-            if(TextUtils.isEmpty(token)){
+            if (TextUtils.isEmpty(token)) {
                 Request request = new Request.Builder()
                         .url(url)
                         .post(builder.build())
                         .build();
                 Call call = okHttpClient.newCall(request);
-                requestCall(callBack, call,clazz);
-            }else{
+                requestCall(callBack, call, clazz);
+            } else {
                 Request request = new Request.Builder()
                         .url(url)
-                        .addHeader("Token",token)
+                        .addHeader("Token", token)
                         .post(builder.build())
                         .build();
                 Call call = okHttpClient.newCall(request);
-                requestCall(callBack, call,clazz);
+                requestCall(callBack, call, clazz);
             }
         }
     }
@@ -244,15 +244,15 @@ public class OkHttpUtils {
 
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
-                String  string = response.body().string();
-                Log.e("1", "stringJson="+string );
+                String string = response.body().string();
+                Log.e("1", "stringJson=" + string);
                 Gson gson = new Gson();
                 final Object fromJson = gson.fromJson(string, clazz);
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                            callback.sucess(fromJson);
 
+                        callback.sucess(fromJson);
                     }
                 });
 
@@ -261,41 +261,41 @@ public class OkHttpUtils {
     }
 
     //无参请求
-    public static void get(String url,String token, Class<?> clazz, CallBackUtils call) {
+    public static void get(String url, String token, Class<?> clazz, CallBackUtils call) {
         try {
-            getInstence().getP_A(url,token, clazz, call);
+            getInstence().getP_A(url, token, clazz, call);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     //有参请求
-    public static void get(String url,String token, Class<?> clazz, CallBackUtils call, HashMap<String, String> prams) {
+    public static void get(String url, String token, Class<?> clazz, CallBackUtils call, HashMap<String, String> prams) {
         try {
-            getInstence().postP_A_D(url,token, clazz, call, prams);
+            getInstence().postP_A_D(url, token, clazz, call, prams);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     //图片无参上传
-    public static void putImages(String url,String token,Class<?> clazz, List<File> list, CallBackUtils call) {
-        getInstence().putImage(url,token,clazz, list, call, null);
+    public static void putImages(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call) {
+        getInstence().putImage(url, token, clazz, list, call, null);
     }
 
     //图片有参上传
-    public static void putImages(String url,String token,Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
-        getInstence().putImage(url,token,clazz, list, call, prams);
+    public static void putImages(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
+        getInstence().putImage(url, token, clazz, list, call, prams);
     }
 
     //文件无参上传
-    public static void putFiles(String url,String token,Class<?> clazz, List<File> list, CallBackUtils call) {
-        getInstence().putFile(url,token,clazz, list, call, null);
+    public static void putFiles(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call) {
+        getInstence().putFile(url, token, clazz, list, call, null);
     }
 
     //文件有参上传
-    public static void putFiles(String url,String token,Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
-        getInstence().putFile(url,token,clazz, list, call, prams);
+    public static void putFiles(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
+        getInstence().putFile(url, token, clazz, list, call, prams);
     }
 
 

@@ -2,35 +2,39 @@ package com.weixingwang.threepomelo.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.text.format.DateFormat;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weixingwang.threepomelo.R;
-import com.weixingwang.threepomelo.utils.BitmapUtils;
+import com.weixingwang.threepomelo.bean.RegestGetQuBean;
+import com.weixingwang.threepomelo.bean.RegestGetShengBean;
+import com.weixingwang.threepomelo.bean.RegestGetShiBean;
+import com.weixingwang.threepomelo.bean.RegestRecommendBean;
 import com.weixingwang.threepomelo.utils.CreamerAndAlbumUtils;
 import com.weixingwang.threepomelo.utils.DialogUtils;
+import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
+import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.CircleImageView;
 
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/12/5 0005.
  */
-public class RegestActivity extends BaseActivity {
+public class RegestActivity extends BaseActivity implements View.OnFocusChangeListener {
 
     private CircleImageView circleIv;
     private Dialog dialog;
@@ -48,6 +52,28 @@ public class RegestActivity extends BaseActivity {
      */
     public static final String KEY_PHOTO_PATH = "photo_path";
     private Uri photoUri;
+    private ListView lvSheng;
+    private List<String> listsh = new ArrayList<>();
+    private List<String> listsi = new ArrayList<>();
+    private List<String> listq = new ArrayList<>();
+    private List<RegestGetShengBean.ProvinceListEntity> listSheng = new ArrayList<>();
+    private List<RegestGetShiBean.CityListEntity> listShi = new ArrayList<>();
+    private List<RegestGetQuBean.AreaListEntity> listQu = new ArrayList<>();
+    private int pos = 0;
+    private LinearLayout linSheng;
+    private LinearLayout linShi;
+    private LinearLayout linQu;
+    private ListView lvShi;
+    private ListView lvQu;
+    private TextView tvSheng;
+    private TextView tvShi;
+    private TextView tvQu;
+    private PopupWindow popupWindowSheng;
+    private PopupWindow popupWindowShi;
+    private PopupWindow popupWindowQu;
+    private EditText etRecommend;
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.regest_lyout;
@@ -56,18 +82,43 @@ public class RegestActivity extends BaseActivity {
     @Override
     protected void initView() {
         circleIv = (CircleImageView) findViewById(R.id.iv_regest_icon);
+        linSheng = (LinearLayout) findViewById(R.id.regest_lin_sheng);
+        linShi = (LinearLayout) findViewById(R.id.regest_lin_shi);
+        linQu = (LinearLayout) findViewById(R.id.regest_lin_qu);
+        tvSheng = (TextView) findViewById(R.id.tv_regest_sheng);
+        tvShi = (TextView) findViewById(R.id.tv_regest_shi);
+        tvQu = (TextView) findViewById(R.id.tv_regest_qu);
+        etRecommend = (EditText) findViewById(R.id.regest_et_recommend);
         setTitle("会员注册");
         isShowBack(true);
     }
 
     @Override
     protected void initData() {
+        getShengList();
 
+        //省
+        View inflateSheng = View.inflate(this, R.layout.pop_sheng_item, null);
+        lvSheng = (ListView) inflateSheng.findViewById(R.id.regest_lv_sheng);
+        popupWindowSheng = DialogUtils.showPopupWindow(this, inflateSheng);
+
+        //市
+        View inflateShi = View.inflate(this, R.layout.pop_shi_item, null);
+        lvShi = (ListView) inflateShi.findViewById(R.id.regest_lv_shi);
+        popupWindowShi = DialogUtils.showPopupWindow(this, inflateShi);
+        //区
+        View inflateQu = View.inflate(this, R.layout.pop_qu_item, null);
+        lvQu = (ListView) inflateQu.findViewById(R.id.regest_lv_qu);
+        popupWindowQu = DialogUtils.showPopupWindow(this, inflateQu);
     }
 
     @Override
     protected void initLisener() {
         findViewById(R.id.btn_regest_up_icon).setOnClickListener(this);
+        linSheng.setOnClickListener(this);
+        linShi.setOnClickListener(this);
+        linQu.setOnClickListener(this);
+        etRecommend.setOnFocusChangeListener(this);
     }
 
     @Override
@@ -90,6 +141,15 @@ public class RegestActivity extends BaseActivity {
             case R.id.dialog_cancle_log:
                 dialog.dismiss();
                 break;
+            case R.id.regest_lin_sheng:
+                popupWindowSheng.showAsDropDown(linSheng);
+                break;
+            case R.id.regest_lin_shi:
+                popupWindowShi.showAsDropDown(linShi);
+                break;
+            case R.id.regest_lin_qu:
+                popupWindowQu.showAsDropDown(linQu);
+                break;
             default:
                 super.onClick(v);
                 break;
@@ -97,7 +157,7 @@ public class RegestActivity extends BaseActivity {
     }
 
     private void openCramererFile() {
-        CreamerAndAlbumUtils.openCramererFile(this,1);
+        CreamerAndAlbumUtils.openCramererFile(this, 1);
     }
 
     private void openCramerer() {
@@ -118,53 +178,171 @@ public class RegestActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK) {
-            CreamerAndAlbumUtils.doPhoto(this,requestCode,data,circleIv,photoUri,1);
+            CreamerAndAlbumUtils.doPhoto(this, requestCode, data, circleIv, photoUri, 1);
+        }
+    }
+    //获取省列表
+    public void getShengList() {
+        OkHttpUtils.get(UrlUtils.SHENG_Url, null, RegestGetShengBean.class, new OkHttpUtils.CallBackUtils() {
+            @Override
+            public void sucess(Object obj) {
+                if(obj!=null){
+                    RegestGetShengBean bean= (RegestGetShengBean) obj;
+                    if(bean.isSuccess()){
+                      listSheng.addAll(bean.getProvince_list());
+                        setShengAdapter();
+                    }else{
+                        ToastUtils.toast(RegestActivity.this,bean.getError_msg());
+                    }
+                }else {
+                    noData();
+                }
+
+            }
+
+            @Override
+            public void error(Exception e) {
+                netError();
+            }
+        });
+    }
+
+    private void setShengAdapter() {
+        for (int i = 0; i < listSheng.size(); i++) {
+            listsh.add(listSheng.get(i).getName());
+        }
+        lvSheng.setAdapter(new ArrayAdapter<String>(RegestActivity.this, android.R.layout.simple_list_item_1, listsh));
+        lvSheng.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                popupWindowSheng.dismiss();
+                tvSheng.setText(listsh.get(position));
+                getShiList(listSheng.get(position).getCode());
+
+            }
+        });
+
+    }
+
+
+    //获取市列表
+    public void getShiList(String code) {
+        HashMap<String,String> map=new HashMap<>();
+        map.put("province_code",code);
+        OkHttpUtils.get(UrlUtils.SHI_Url, null, RegestGetShiBean.class, new OkHttpUtils.CallBackUtils() {
+            @Override
+            public void sucess(Object obj) {
+                if(obj!=null){
+                    RegestGetShiBean bean= (RegestGetShiBean) obj;
+                    if(bean.isSuccess()){
+                        listShi.addAll(bean.getCity_list());
+                        setShiAdapter();
+                    }else{
+                        ToastUtils.toast(RegestActivity.this,bean.getError_msg());
+                    }
+                }else {
+                    noData();
+                }
+
+            }
+
+            @Override
+            public void error(Exception e) {
+                netError();
+            }
+        },map);
+    }
+
+    private void setShiAdapter() {
+        for (int i = 0; i < listShi.size(); i++) {
+            listsi.add(listShi.get(i).getName());
+        }
+        lvShi.setAdapter(new ArrayAdapter<String>(RegestActivity.this, android.R.layout.simple_list_item_1, listsi));
+        lvShi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                popupWindowShi.dismiss();
+                tvShi.setText(listsi.get(position));
+                getQuList(listShi.get(position).getCode());
+
+            }
+        });
+    }
+
+    //获取区域列表
+    public void getQuList(String code) {
+        HashMap<String,String> map=new HashMap<>();
+        map.put("city_code",code);
+        OkHttpUtils.get(UrlUtils.QU_Url, null, RegestGetQuBean.class, new OkHttpUtils.CallBackUtils() {
+            @Override
+            public void sucess(Object obj) {
+                if(obj!=null){
+                    RegestGetQuBean bean= (RegestGetQuBean) obj;
+                    if(bean.isSuccess()){
+                        listQu.addAll(bean.getArea_list());
+                            setQuAdapter();
+                    }else{
+                        ToastUtils.toast(RegestActivity.this,bean.getError_msg());
+                    }
+                }else {
+                    noData();
+                }
+
+            }
+
+            @Override
+            public void error(Exception e) {
+                netError();
+            }
+        },map);
+    }
+
+    private void setQuAdapter() {
+        for (int i = 0; i < listQu.size(); i++) {
+            listq.add(listQu.get(i).getName());
+        }
+        lvQu.setAdapter(new ArrayAdapter<String>(RegestActivity.this, android.R.layout.simple_list_item_1, listq));
+        lvQu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                popupWindowQu.dismiss();
+                tvQu.setText(listq.get(position));
+            }
+        });
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        String recommendCode = etRecommend.getText().toString().trim();
+        if(!hasFocus|| !TextUtils.isEmpty(recommendCode)){
+            editTextIsTrue(recommendCode);
         }
     }
 
-//    private void doPhoto(int requestCode, Intent data) {
-//        String url=null;
-//        if (requestCode == SELECT_PIC_BY_PICK_PHOTO){ //从相册取图片，有些手机有异常情况，请注意
-//
-//            if (data == null) {
-//                Toast.makeText(this, "选择图片文件出错", Toast.LENGTH_LONG).show();
-//                return;
-//            }
-//            photoUri = data.getData();
-//
-//            if (photoUri == null) {
-//                Toast.makeText(this, "选择图片文件出错", Toast.LENGTH_LONG).show();
-//                return;
-//            }
-//        }
-//        String[] proj = { MediaStore.Images.Media.DATA };
-//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1){
-//            url= BitmapUtils.getImageUrl(this, photoUri);
-//        }else {
-//            Cursor actualimagecursor = managedQuery(photoUri, proj, null, null, null);
-//            if(actualimagecursor.moveToFirst()){;
-//                int column_index = actualimagecursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//                url = actualimagecursor.getString(column_index);
-//            }
-//            actualimagecursor.close();
-//        }
-//        final String finalUrl = url;
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Bitmap bitmap = BitmapUtils.getBitmapForPath(finalUrl);
-//                Bitmap comp = BitmapUtils.comp(bitmap);
-//                final Bitmap image = BitmapUtils.compressImage(comp);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        circleIv.setImageBitmap(image);
-//                        ToastUtils.toast(RegestActivity.this,"以选中");
-//                    }
-//                });
-//            }
-//        }).start();
-//
-//
-//    }
+    private void editTextIsTrue(final String recommendCode) {
+        HashMap<String,String> map=new HashMap<>();
+        map.put("keywords",recommendCode);
+        OkHttpUtils.get(UrlUtils.RECOMMEND_Url, null, RegestRecommendBean.class, new OkHttpUtils.CallBackUtils() {
+            @Override
+            public void sucess(Object obj) {
+                if(obj!=null){
+                    RegestRecommendBean bean= (RegestRecommendBean) obj;
+                    if(bean.isSuccess()){
+                        ToastUtils.toast(RegestActivity.this,"你的推荐人是"+bean.getName());
+                    }else{
+                        ToastUtils.toast(RegestActivity.this,bean.getError_msg());
+                        etRecommend.setText("");
+                    }
+                }else {
+                    noData();
+                }
+
+            }
+
+            @Override
+            public void error(Exception e) {
+                netError();
+            }
+        },map);
+    }
 }

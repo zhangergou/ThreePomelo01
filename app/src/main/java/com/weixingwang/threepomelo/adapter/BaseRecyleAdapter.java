@@ -20,6 +20,7 @@ public abstract class BaseRecyleAdapter extends RecyclerView.Adapter {
     private Context context;
     private List<?> reList;
     private int layoutId;
+    public OnClickItemView onClickItemView;
 
 
     public BaseRecyleAdapter(Context context, RecyclerView recl, List<?> reList, int layoutId, int clum) {
@@ -52,4 +53,10 @@ public abstract class BaseRecyleAdapter extends RecyclerView.Adapter {
     }
     protected abstract RecyclerView.ViewHolder getHolder(View inflate);
     protected abstract void initData(RecyclerView.ViewHolder mholder, int position);
+    public void setOnClickItemView(OnClickItemView onClickItemView){
+        this.onClickItemView = onClickItemView;
+    }
+    public interface OnClickItemView{
+        void onItem(int postion);
+    }
 }

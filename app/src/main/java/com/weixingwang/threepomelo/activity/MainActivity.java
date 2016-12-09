@@ -21,19 +21,21 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
-
+    public static MainActivity main;
     private MyViewPager mainViewPager;
     private TabLayout mainTab;
     private ArrayList<Fragment> list=new ArrayList<>();
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+
     }
 
     @Override
     protected void initView() {
         mainViewPager = (MyViewPager) findViewById(R.id.main_vp);
         mainTab = (TabLayout) findViewById(R.id.main_tab);
+        main=this;
     }
 
     @Override

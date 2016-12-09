@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <include layout="@layout/public_tatle_layout"/>
@@ -26,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <EditText
+            android:singleLine="true"
             android:textSize="@dimen/text_size_three"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
@@ -57,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/tv_login__code"
                 android:textSize="@dimen/text_size_three"
                 android:layout_marginLeft="5dp"
@@ -107,7 +111,7 @@
        <Button
            android:id="@+id/btn_codeLogin"
            android:background="@drawable/registration_button"
-           android:text="登录"
+           android:text="下一步"
            android:textColor="@color/white"
            android:layout_margin="20dp"
            android:layout_width="match_parent"
@@ -116,42 +120,60 @@
     <LinearLayout
         android:id="@+id/lin_xie_yi"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:clickable="true"
-            android:id="@+id/iv_regest_green"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/regest_from_choese_selector"
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="@color/black"
-            android:text="同意"
-            android:layout_marginLeft="2dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:clickable="true"
+                android:scaleType="centerCrop"
+                android:padding="5dp"
+                android:id="@+id/iv_regest_green"
+                android:src="@drawable/regest_from_choese_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="@dimen/text_size_four"
+                android:textColor="@color/black"
+                android:text="同意"
+                android:layout_marginLeft="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="@dimen/text_size_three"
+                android:textColor="@color/yellowOne"
+                android:text="《三客柚用户注册协议》"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="@color/yellowOne"
-            android:text="《三客柚用户注册协议》"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:text="已有账号?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:clickable="true"
-            android:id="@+id/tv_login"
-            android:padding="5dp"
-            android:textColor="@color/blueTabText"
-            android:text="登录"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="@dimen/text_size_four"
+                android:textColor="@color/black"
+                android:text="已有账号?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="@dimen/text_size_four"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:id="@+id/tv_login"
+                android:padding="5dp"
+                android:textColor="@color/blueTabText"
+                android:text="登录"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

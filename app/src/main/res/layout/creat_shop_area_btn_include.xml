@@ -21,6 +21,7 @@
             android:src="@drawable/login_password" />
 
         <EditText
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -44,132 +45,47 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/login_password" />
+            android:src="@drawable/businesssettled_icon_invitepeople" />
 
         <EditText
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@null"
-            android:hint="请输入电话/id(必填)"
+            android:hint="请输入邀请人电话/id(必填)"
             android:textSize="@dimen/text_size_three" />
     </LinearLayout>
-    <!--<LinearLayout-->
-    <!--android:gravity="center"-->
-    <!--android:padding="10dp"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:background="@drawable/login_inputbox"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp">-->
-    <!--<TextView-->
-    <!--android:textSize="@dimen/text_size_three"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:hint="- 请选择类别 -"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--<ImageView-->
-    <!--android:src="@drawable/registration_arrow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-    <!--android:gravity="center"-->
-    <!--android:padding="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:background="@drawable/login_inputbox"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp">-->
-    <!--<TextView-->
-    <!--android:textSize="@dimen/text_size_three"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:hint="- 请选择类别 -"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--<ImageView-->
-    <!--android:src="@drawable/registration_arrow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-    <!--android:gravity="center"-->
-    <!--android:padding="10dp"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:background="@drawable/login_inputbox"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp">-->
-    <!--<TextView-->
-    <!--android:textSize="@dimen/text_size_three"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:hint="- 请选择类别 -"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--<ImageView-->
-    <!--android:src="@drawable/registration_arrow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-    <!--android:gravity="center"-->
-    <!--android:padding="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:background="@drawable/login_inputbox"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp">-->
-    <!--<TextView-->
-    <!--android:textSize="@dimen/text_size_three"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:hint="- 请选择类别 -"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--<ImageView-->
-    <!--android:src="@drawable/registration_arrow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-    <!--<LinearLayout-->
-    <!--android:gravity="center"-->
-    <!--android:padding="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:background="@drawable/login_inputbox"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp">-->
-    <!--<TextView-->
-    <!--android:textSize="@dimen/text_size_three"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:hint="- 请选择分销类型 -"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--<ImageView-->
-    <!--android:src="@drawable/registration_arrow"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-    <com.weixingwang.threepomelo.view.MyExpanableListView
-        android:id="@+id/cread_shop_expndble"
-        android:divider="@color/transtion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:groupIndicator="@null" />
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:id="@+id/creat_lin_choese_type"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:hint="- 请选择类别 -"
+            android:textSize="@dimen/text_size_three" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registration_arrow" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/creat_lin_choese_sheng"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
@@ -179,12 +95,97 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:hint="- 请选择省份 -"
+            android:textSize="@dimen/text_size_three" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/landing_phone" />
+            android:src="@drawable/registration_arrow" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/creat_lin_choese_cyte"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:hint="- 请选择城市 -"
+            android:textSize="@dimen/text_size_three" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registration_arrow" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/creat_lin_choese_qu"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:hint="- 请选择区域 -"
+            android:textSize="@dimen/text_size_three" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registration_arrow" />
+    </LinearLayout>
+
+
+    <!--<com.weixingwang.threepomelo.view.MyExpanableListView-->
+    <!--android:id="@+id/cread_shop_expndble"-->
+    <!--android:divider="@color/transtion"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:groupIndicator="@null" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/businesssettled_icon_address" />
 
         <EditText
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -208,9 +209,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/landing_phone" />
+            android:src="@drawable/businessessettled_icon_phone" />
 
         <EditText
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -234,9 +236,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/landing_phone" />
+            android:src="@drawable/businessessettled_icon_time" />
 
         <EditText
+            android:singleLine="true"
             android:id="@+id/tv_login_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

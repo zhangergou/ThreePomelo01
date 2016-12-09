@@ -1,100 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
     <LinearLayout
+        android:id="@+id/regest_lin_sheng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="10dp"
         android:layout_weight="1"
         android:background="@drawable/login_inputbox"
+        android:clickable="true"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_regest_sheng"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:text="- 省份 -"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three" />
 
-                <TextView
-                    android:textSize="@dimen/text_size_three"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:textColor="@color/black"
-                    android:text="- 省份 -"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/registration_arrow" />
 
-            <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/registration_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/regest_lin_shi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="10dp"
         android:layout_weight="1"
         android:background="@drawable/login_inputbox"
+        android:clickable="true"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/tv_regest_shi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:text="- 城市 -"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three" />
 
-
-                <TextView
-                    android:textSize="@dimen/text_size_three"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:textColor="@color/black"
-                    android:text="- 城市 -"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/registration_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/registration_arrow" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/regest_lin_qu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="10dp"
         android:layout_weight="1"
         android:background="@drawable/login_inputbox"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        android:padding="10dp">
 
-                <TextView
-                    android:textSize="@dimen/text_size_three"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:textColor="@color/black"
-                    android:text="- 区域 -"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/registration_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_regest_qu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:text="- 区域 -"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/registration_arrow" />
     </LinearLayout>
 </LinearLayout>
+

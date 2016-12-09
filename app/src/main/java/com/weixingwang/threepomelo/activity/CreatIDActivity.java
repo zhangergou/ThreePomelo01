@@ -69,7 +69,7 @@ public class CreatIDActivity extends BaseActivity {
             setTitle("会员注册");
             btnLogin.setVisibility(View.GONE);
         }else{
-            setTitle("验证码登录");
+            setTitle("重置密码");
             linAgreement.setVisibility(View.GONE);
         }
     }
@@ -198,7 +198,7 @@ public class CreatIDActivity extends BaseActivity {
 //            ToastUtils.toast(this,"验证码输入不正确");
 //            return;
 //        }
-        startActivity(new Intent(CreatIDActivity.this,MainActivity.class));
+        startActivity(new Intent(CreatIDActivity.this,SetPasswordActivity.class));
         finish();
         LoginActivity.login.finish();
 

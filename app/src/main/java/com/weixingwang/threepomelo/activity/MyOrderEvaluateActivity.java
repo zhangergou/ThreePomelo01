@@ -28,8 +28,10 @@ public class MyOrderEvaluateActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        tv_finish= (TextView) findViewById(R.id.tv_finish);
 
+        tv_finish= (TextView) findViewById(R.id.tv_finish);
+        setTitle("商品点评");
+        isShowBack(true);
     }
 
     @Override

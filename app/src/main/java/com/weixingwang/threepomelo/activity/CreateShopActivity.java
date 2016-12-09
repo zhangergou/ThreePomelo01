@@ -2,24 +2,21 @@ package com.weixingwang.threepomelo.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.weixingwang.threepomelo.R;
-import com.weixingwang.threepomelo.adapter.BaseMyExpandableListAdapter;
-import com.weixingwang.threepomelo.utils.ArrayUtils;
+import com.weixingwang.threepomelo.adapter.BaseRecyleAdapter;
+import com.weixingwang.threepomelo.adapter.CreatShopRecyleAdapter;
 import com.weixingwang.threepomelo.utils.CreamerAndAlbumUtils;
 import com.weixingwang.threepomelo.utils.DialogUtils;
-import com.weixingwang.threepomelo.utils.ExpanableChildUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +33,18 @@ public class CreateShopActivity extends BaseActivity {
     private ImageView ivLicence;
     private ImageView ivAnswer;
     private ImageView ivId;
-    private ExpandableListView exbv;
-    private List<List<String>> listChild=new ArrayList<>();
-    private List<String> listGroup=new ArrayList<>();
-    private BaseMyExpandableListAdapter adapterEx;
-
+    private List<String> listGroup = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
+    private LinearLayout linType;
+    private LinearLayout linSheng;
+    private LinearLayout linCyte;
+    private LinearLayout linQu;
+    private LinearLayout linSellType;
+    private ListView lvSheng;
+    private PopupWindow popupWindow;
+    private RecyclerView rvUpImage;
+    private CreatShopRecyleAdapter recyleAdapter;
+    private int image=0;
     @Override
     protected int getLayoutId() {
         return R.layout.create_shop_layout;
@@ -52,27 +56,31 @@ public class CreateShopActivity extends BaseActivity {
         ivLicence = (ImageView) findViewById(R.id.create_iv_licence_icon);
         ivAnswer = (ImageView) findViewById(R.id.create_iv_answer_icon);
         ivId = (ImageView) findViewById(R.id.create_iv_id_icon);
-        exbv = (ExpandableListView) findViewById(R.id.cread_shop_expndble);
+
+        rvUpImage = (RecyclerView) findViewById(R.id.rv_cread_shop_up_image);
+
+        linType = (LinearLayout) findViewById(R.id.creat_lin_choese_type);
+        linSheng = (LinearLayout) findViewById(R.id.creat_lin_choese_sheng);
+        linCyte = (LinearLayout) findViewById(R.id.creat_lin_choese_cyte);
+        linQu = (LinearLayout) findViewById(R.id.creat_lin_choese_qu);
+        linSellType = (LinearLayout) findViewById(R.id.creat_lin_choese_sell_type);
+
+
+//        exbv = (ExpandableListView) findViewById(R.id.cread_shop_expndble);
         setTitle("商家入驻");
         isShowBack(true);
+
     }
 
     @Override
     protected void initData() {
-        for (int i = 0; i < ArrayUtils.createShop.length; i++) {
-            listGroup.add( ArrayUtils.createShop[i]);
+        for (int i = 0; i < 20; i++) {
+            listGroup.add("数据" + i);
         }
-        for (int i = 0; i < listGroup.size(); i++) {
-            List<String> li=new ArrayList<>();
-            for (int j = 0; j < 20; j++) {
-                li.add("数据"+j);
-            }
-            listChild.add(li);
-        }
+        recyleAdapter = new CreatShopRecyleAdapter(this, rvUpImage, list,
+                R.layout.create_shop_re_up_image_item, 1);
+        rvUpImage.setAdapter(recyleAdapter);
         showCreateDialog();
-        adapterEx = new BaseMyExpandableListAdapter(CreateShopActivity.this, listGroup, listChild);
-        exbv.setAdapter(adapterEx);
-
     }
 
     private void showCreateDialog() {
@@ -81,6 +89,14 @@ public class CreateShopActivity extends BaseActivity {
         inflate.findViewById(R.id.loca_icon_log_dia).setOnClickListener(this);
         inflate.findViewById(R.id.dialog_cancle_log).setOnClickListener(this);
         dialog = DialogUtils.diaBottm(this, inflate, true);
+
+
+        View viewPop = View.inflate(this, R.layout.pop_sheng_item, null);
+        lvSheng = (ListView) viewPop.findViewById(R.id.regest_lv_sheng);
+        popupWindow = DialogUtils.showPopupWindow(this, viewPop);
+        lvSheng.setAdapter(new ArrayAdapter<String>(CreateShopActivity.this,
+                android.R.layout.simple_list_item_1, listGroup));
+
     }
 
     @Override
@@ -89,43 +105,57 @@ public class CreateShopActivity extends BaseActivity {
         findViewById(R.id.creat_btn_up_licence).setOnClickListener(this);
         findViewById(R.id.creat_btn_up_answer).setOnClickListener(this);
         findViewById(R.id.creat_btn_up_id).setOnClickListener(this);
-        exbv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        findViewById(R.id.lin_cread_shop_up_image).setOnClickListener(this);
+        linType.setOnClickListener(this);
+        linSheng.setOnClickListener(this);
+        linCyte.setOnClickListener(this);
+        linQu.setOnClickListener(this);
+        linSellType.setOnClickListener(this);
+        recyleAdapter.setOnClickItemView(new BaseRecyleAdapter.OnClickItemView() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                ExpandableListAdapter adapter = parent.getExpandableListAdapter();
-                String child = (String) adapter.getChild(groupPosition, childPosition);
-
-                listGroup.remove(groupPosition);
-                listGroup.add(groupPosition,child);
-                if(parent.isGroupExpanded(groupPosition)){
-                    parent.collapseGroup(groupPosition);
-                }
-
-                Toast.makeText(CreateShopActivity.this, "child="+child, Toast.LENGTH_SHORT).show();
-                adapterEx.notifyDataSetChanged();
-                return false;
+            public void onItem(int postion) {
+                list.remove(postion);
+                recyleAdapter.notifyDataSetChanged();
             }
         });
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.creat_lin_choese_type:
+                popupWindow.showAsDropDown(linType);
+                break;
+            case R.id.creat_lin_choese_sheng:
+                popupWindow.showAsDropDown(linSheng);
+                break;
+            case R.id.creat_lin_choese_cyte:
+                popupWindow.showAsDropDown(linCyte);
+                break;
+            case R.id.creat_lin_choese_qu:
+                popupWindow.showAsDropDown(linQu);
+                break;
+            case R.id.creat_lin_choese_sell_type:
+                popupWindow.showAsDropDown(linSellType);
+                break;
             case R.id.creat_btn_up_log:
-                imageView=ivLog;
+                imageView = ivLog;
                 dialog.show();
                 break;
             case R.id.creat_btn_up_licence:
-                imageView=ivLicence;
+                imageView = ivLicence;
                 dialog.show();
                 break;
             case R.id.creat_btn_up_answer:
-                imageView=ivAnswer;
+                imageView = ivAnswer;
+                dialog.show();
+                break;
+            case R.id.lin_cread_shop_up_image:
+                image=1;
                 dialog.show();
                 break;
             case R.id.creat_btn_up_id:
-                imageView=ivId;
+                imageView = ivId;
                 dialog.show();
                 break;
             case R.id.cread_log_icon_dia:
@@ -148,19 +178,30 @@ public class CreateShopActivity extends BaseActivity {
         }
 
     }
+
     private void openCramererFile() {
-        CreamerAndAlbumUtils.openCramererFile(this,2);
+        CreamerAndAlbumUtils.openCramererFile(this, 2);
     }
 
     private void openCramerer() {
         photoUri = CreamerAndAlbumUtils.openCramerer(this, 2);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK) {
-            CreamerAndAlbumUtils.doPhoto(this,requestCode,data,imageView,photoUri,1);
+            if(image==1){
+
+                String uri = CreamerAndAlbumUtils.getPhoto(this, requestCode, data, photoUri, 1);
+                list.add(list.size(),uri);
+                recyleAdapter.notifyDataSetChanged();
+                image=0;
+            }else{
+                CreamerAndAlbumUtils.doPhoto(this, requestCode, data, imageView, photoUri, 1);
+            }
+
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -104,7 +105,7 @@ public class CreamerAndAlbumUtils {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Bitmap bitmap = BitmapUtils.getBitmapForPath(finalUrl);
+                Bitmap bitmap = BitmapUtils.getimage(finalUrl);
                 Bitmap comp = BitmapUtils.comp(bitmap);
                 final Bitmap image = BitmapUtils.compressImage(comp);
                 handler.post(new Runnable() {
@@ -119,6 +120,42 @@ public class CreamerAndAlbumUtils {
         }).start();
 
     }
+
+    public static String getPhoto(final Context context, int requestCode, Intent data,
+                               Uri photoUri, int avtivityType) {
+        String url = null;
+        if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
+
+            if (data == null) {
+                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+                return null;
+            }
+            photoUri = data.getData();
+
+            if (photoUri == null) {
+                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+                return null;
+            }
+        }
+        String[] proj = {MediaStore.Images.Media.DATA};
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            photoUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            url = BitmapUtils.getImageUrl(context, photoUri);
+        } else {
+            Cursor actualimagecursor = getCursor(context, photoUri,proj, avtivityType);
+
+            if (actualimagecursor.moveToFirst()) {
+                ;
+                int column_index = actualimagecursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                url = actualimagecursor.getString(column_index);
+            }
+            actualimagecursor.close();
+        }
+
+        return url;
+    }
+
+
 
     private static void startActiCreamer(Context context, Intent intent, int activityType) {
         switch (activityType) {

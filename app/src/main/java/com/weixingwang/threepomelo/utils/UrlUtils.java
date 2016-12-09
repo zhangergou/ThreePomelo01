@@ -7,17 +7,21 @@ public class UrlUtils {
     //获取图片的公共地址http://139.224.222.18:8080/attachs/
 //    public static String getImgUrl = "http://139.224.222.18:8080/attachs/";
 
-
+    public static String MAIN_Url = "http://106.14.57.99:7070";
     //获取验证码
-    public static String getCodeUrl = "http://106.14.60.240:8080/Apiftontend/get_yzm";
+    public static String getCodeUrl = MAIN_Url+"/Apiftontend/get_yzm";
     //注册
    // public static String PUTLOGIN_MAS_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/save_user";
     //密码登录
-    public static String PASWORD_LOGIN_Url = "http://106.14.60.240:8080/Apiftontend/check_login";
-    //验证码登录
-   // public static String TEST_CODE_LOGIN_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/login_only_name";
-    //验证码(密码重置)
-//    public static String TEST_CODE_CONFIM_PASSWORD_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/resetpw_yzm";
+    public static String PASWORD_LOGIN_Url = MAIN_Url+"/Apiftontend/check_login";
+    //省列表url
+    public static String SHENG_Url = MAIN_Url+"/Apiftontend/get_province";
+    //城市列表url
+    public static String SHI_Url = MAIN_Url+"/Apiftontend/get_city";
+    //区域列表url
+    public static String QU_Url = MAIN_Url+"/Apiftontend/get_area";
+    //推荐人ID url
+    public static String RECOMMEND_Url = MAIN_Url+"/Apiftontend/get_naid_by_keywords";
 //    //密码重置(提交数据)
 //    public static String TEST_CODE_NEW_PASSWORD_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/resetpw";
 //    //包含token直接跳转到主页面

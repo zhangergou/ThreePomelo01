@@ -4,11 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/creat_lin_choese_sell_type"
+        android:clickable="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:hint="- 请选择分销类型 -"
+            android:textSize="@dimen/text_size_three" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registration_arrow" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_inputbox"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -24,6 +50,9 @@
     </LinearLayout>
 
     <LinearLayout
+
+        android:id="@+id/lin_cread_shop_up_image"
+        android:clickable="true"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -33,7 +62,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
         <ImageView
-            android:src="@drawable/businesssettledin_icon_map"
+            android:src="@drawable/businesssettled_button_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -46,11 +75,12 @@
             android:text="上传店铺图片"
             android:textSize="@dimen/text_size_three" />
     </LinearLayout>
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
         android:layout_margin="10dp"
-        android:id="@+id/lv"
+        android:id="@+id/rv_cread_shop_up_image"
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="wrap_content"/>
     <Button
         android:background="@drawable/registration_button"
         android:text="提交"

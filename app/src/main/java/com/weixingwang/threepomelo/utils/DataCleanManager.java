@@ -5,7 +5,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 /**
  * Created by Administrator on 2016/10/3 0003.
@@ -71,11 +73,12 @@ public class DataCleanManager {
             deleteFilesByDirectory(context.getExternalCacheDir());
         }
     }
+
     /**
      * * 清除自定义路径下的文件，使用需小心，请不要误删。而且只支持目录下的文件删除 * *
      *
      * @param filePath
-     * */
+     */
     public static void cleanCustomCache(String filePath) {
         deleteFilesByDirectory(new File(filePath));
     }
@@ -138,7 +141,7 @@ public class DataCleanManager {
      * 删除指定目录下文件及目录
      *
      * @param deleteThisPath
-     * @param filepath
+     * @param
      * @return
      */
     public static void deleteFolderFile(String filePath, boolean deleteThisPath) {
@@ -209,5 +212,76 @@ public class DataCleanManager {
         return getFormatSize(getFolderSize(file));
     }
 
+    public static String getFileName(String pathandname) {
 
+        int start = pathandname.lastIndexOf("/");
+        int end = pathandname.lastIndexOf(".");
+        if (start != -1 && end != -1) {
+            return pathandname.substring(start + 1, end);
+        } else {
+            return null;
+        }
+
+    }
+
+    //sizeType 获取大小的类型1为B、2为KB、3为MB、4为GB
+    public static String getAutoFileOrFilesSize(String filePath) {
+        File file = new File(filePath);
+        long blockSize = 0;
+        try {
+            if (file.isDirectory()) {
+                blockSize = getFileSizes(file);
+            } else {
+                blockSize = getFileSize(file);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return FormetFileSize(blockSize);
+    }
+
+    private static long getFileSize(File file) throws Exception {
+        long size = 0;
+        if (file.exists()) {
+            FileInputStream fis = null;
+            fis = new FileInputStream(file);
+            size = fis.available();
+        } else {
+            file.createNewFile();
+        }
+        return size;
+    }
+
+    private static long getFileSizes(File f) throws Exception {
+        long size = 0;
+        File flist[] = f.listFiles();
+        for (int i = 0; i < flist.length; i++) {
+            if (flist[i].isDirectory()) {
+                size = size + getFileSizes(flist[i]);
+            } else {
+                size = size + getFileSize(flist[i]);
+            }
+        }
+        return size;
+    }
+
+    private static String FormetFileSize(long fileS) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        String fileSizeString = "";
+        String wrongSize = "0B";
+        if (fileS == 0) {
+            return wrongSize;
+        }
+        if (fileS < 1024) {
+            fileSizeString = df.format((double) fileS) + "B";
+        } else if (fileS < 1048576) {
+            fileSizeString = df.format((double) fileS / 1024) + "KB";
+        } else if (fileS < 1073741824) {
+            fileSizeString = df.format((double) fileS / 1048576) + "MB";
+        } else {
+            fileSizeString = df.format((double) fileS / 1073741824) + "GB";
+        }
+        return fileSizeString;
+    }
 }
