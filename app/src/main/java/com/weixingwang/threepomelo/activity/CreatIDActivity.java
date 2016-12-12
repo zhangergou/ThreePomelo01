@@ -108,7 +108,9 @@ public class CreatIDActivity extends BaseActivity {
             ToastUtils.toast(this,"验证码输入不正确");
             return;
         }
-        startActivity(new Intent(CreatIDActivity.this,RegestActivity.class));
+        Intent intent = new Intent(CreatIDActivity.this, RegestActivity.class);
+        intent.putExtra("mobile",name);
+        startActivity(intent);
     }
     public void getCode(View v){
         String name = etName.getText().toString().trim();

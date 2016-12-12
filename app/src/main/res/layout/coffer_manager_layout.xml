@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/coffer_manager_tab"
+        app:tabTextColor="@color/grayThree"
+        app:tabSelectedTextColor="@color/blueTabText"
+        android:layout_width="match_parent"
+        app:tabIndicatorHeight="0dp"
+        android:layout_height="40dp"/>
+    <com.weixingwang.threepomelo.view.MyViewPager
+        android:overScrollMode="never"
+        android:id="@+id/coffer_manager_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

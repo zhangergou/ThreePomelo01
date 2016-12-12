@@ -47,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/et_regest_password_one"
                     android:singleLine="true"
                     android:password="true"
                     android:textSize="@dimen/text_size_three"
@@ -72,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/et_regest_password_two"
                     android:singleLine="true"
                     android:password="true"
                     android:textSize="@dimen/text_size_three"
@@ -121,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/tv_regesty_name"
                     android:singleLine="true"
                     android:textSize="@dimen/text_size_three"
                     android:layout_marginLeft="5dp"
@@ -145,17 +148,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+
                     android:singleLine="true"
                     android:textSize="@dimen/text_size_three"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:id="@+id/tv_login_name"
+                    android:id="@+id/et_regest_id_num"
                     android:hint="请输入您的身份证号(18位)"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <Button
+                android:onClick="regest"
                 android:background="@drawable/registration_button"
                 android:text="注册"
                 android:textColor="@color/white"

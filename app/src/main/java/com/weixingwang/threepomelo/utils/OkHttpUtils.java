@@ -104,8 +104,8 @@ public class OkHttpUtils {
     }
 
     //图片上传
-    private void putImage(String url, String token, Class<?> clazz, List<File> list, final CallBackUtils callBack, HashMap<String, String> prams) {
-        MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+    private void putImage(String url, String token, Class<?> clazz, HashMap<String,File> map, final CallBackUtils callBack, HashMap<String, String> prams) {
+        MediaType MEDIA_TYPE_PNG = MediaType.parse("image/jpeg");
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         if (prams != null) {
             Set<Map.Entry<String, String>> entrySet = prams.entrySet();
@@ -115,12 +115,16 @@ public class OkHttpUtils {
                 builder.addFormDataPart(entry.getKey(), entry.getValue());
             }
         }
-        if (list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), list.get(i));
-                String name = "file" + i + ".png";
-                builder.addFormDataPart("image", name, fileBody);
+        if(map !=null){
+            Set<Map.Entry<String, File>> entries = map.entrySet();
+            Iterator<Map.Entry<String, File>> iterator = entries.iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, File> next = iterator.next();
+                RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"),  next.getValue());
+                String name = next.getKey();
+                builder.addFormDataPart("image",name, fileBody);
             }
+        }
             if (TextUtils.isEmpty(token)) {
                 Request request = new Request.Builder()
                         .url(url)
@@ -138,7 +142,6 @@ public class OkHttpUtils {
                 requestCall(callBack, call, clazz);
             }
 
-        }
 
     }
 
@@ -279,13 +282,22 @@ public class OkHttpUtils {
     }
 
     //图片无参上传
-    public static void putImages(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call) {
-        getInstence().putImage(url, token, clazz, list, call, null);
+    public static void putImages(String url, String token, Class<?> clazz, HashMap<String,File> map, CallBackUtils call) {
+        getInstence().putImage(url, token, clazz, map, call, null);
     }
 
     //图片有参上传
-    public static void putImages(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
-        getInstence().putImage(url, token, clazz, list, call, prams);
+    public static void putImages(String url, String token, Class<?> clazz, HashMap<String,File> map, CallBackUtils call, HashMap<String, String> prams) {
+//        if(map==null){
+//            try {
+//                getInstence().postP_A_D(url, token, clazz, call, prams);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }else{
+//            getInstence().putImage(url, token, clazz, map, call, prams);
+//        }
+        getInstence().putImage(url, token, clazz, map, call, prams);
     }
 
     //文件无参上传

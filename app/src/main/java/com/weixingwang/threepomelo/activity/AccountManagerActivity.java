@@ -8,7 +8,7 @@ import com.weixingwang.threepomelo.R;
 public class AccountManagerActivity extends BaseActivity{
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_account_management;
     }
 
     @Override

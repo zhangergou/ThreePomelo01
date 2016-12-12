@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:background="@color/graySeven"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_take_out_money_num"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="-400"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="2016.12.4"
+            android:gravity="center"
+            android:textColor="@color/grayTwo"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="查看详情"
+                android:gravity="center"
+                android:textColor="@color/blueTabText"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="18dp"
+                android:background="@color/blueTabText"
+                android:layout_width="65dp"
+                android:layout_height="1dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

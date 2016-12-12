@@ -19,6 +19,8 @@ import com.weixingwang.threepomelo.utils.DialogUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.view.MyScrollView;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
@@ -138,5 +140,21 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public void closeLoading() {
         dialog.dismiss();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        try {
+            Field childFragmentManager = Fragment.class
+                    .getDeclaredField("mChildFragmentManager");
+            childFragmentManager.setAccessible(true);
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

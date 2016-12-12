@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
 import com.weixingwang.threepomelo.activity.RegestActivity;
 
+import java.io.File;
+import java.util.HashMap;
+
 /**
  * Created by Administrator on 2016/12/7 0007.
  */
@@ -73,6 +76,7 @@ public class CreamerAndAlbumUtils {
 
     public static void doPhoto(final Context context, int requestCode, Intent data,
                                final ImageView circleIv, Uri photoUri, int avtivityType) {
+
         String url = null;
         if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
 
@@ -157,6 +161,7 @@ public class CreamerAndAlbumUtils {
 
 
 
+
     private static void startActiCreamer(Context context, Intent intent, int activityType) {
         switch (activityType) {
             case 1:
@@ -198,5 +203,57 @@ public class CreamerAndAlbumUtils {
                 break;
         }
         return object;
+    }
+
+    public static HashMap<String,File> putMap(final Context context, int requestCode, Intent data,
+                               final String iconName,final ImageView iv, Uri photoUri, int avtivityType) {
+       final HashMap<String,File> hashMap=new HashMap<>();
+        String url = null;
+        if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
+
+            if (data == null) {
+                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+                return null;
+            }
+            photoUri = data.getData();
+
+            if (photoUri == null) {
+                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+                return null;
+            }
+        }
+        String[] proj = {MediaStore.Images.Media.DATA};
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            photoUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            url = BitmapUtils.getImageUrl(context, photoUri);
+        } else {
+            Cursor actualimagecursor = getCursor(context, photoUri,proj, avtivityType);
+
+            if (actualimagecursor.moveToFirst()) {
+                ;
+                int column_index = actualimagecursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                url = actualimagecursor.getString(column_index);
+            }
+            actualimagecursor.close();
+        }
+        final String finalUrl = url;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
+                Bitmap comp = BitmapUtils.comp(bitmap);
+                final Bitmap image = BitmapUtils.compressImage(comp);
+                final byte[] bytes = BitmapUtils.getBitmapbyte(image);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        File file = BytesToFileUtils.getFile(bytes, context.getFilesDir().getAbsolutePath(), iconName);
+                        hashMap.put(iconName,file);
+                        iv.setImageBitmap(image);
+                    }
+                });
+            }
+        }).start();
+        return hashMap;
     }
 }

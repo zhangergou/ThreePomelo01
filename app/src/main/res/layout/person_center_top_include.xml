@@ -128,13 +128,6 @@
                 android:src="@drawable/personalcenter_icons_merchant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-
-                android:textColor="@color/blueTabText"
-                android:textSize="16sp"
-                android:text="成为商家"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

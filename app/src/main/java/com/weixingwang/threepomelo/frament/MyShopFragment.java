@@ -1,38 +1,36 @@
-package com.weixingwang.threepomelo.activity;
+package com.weixingwang.threepomelo.frament;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.weixingwang.threepomelo.R;
-import com.weixingwang.threepomelo.adapter.AllInRecyAdapter;
 import com.weixingwang.threepomelo.adapter.MyShopFragmentRecyAdapter;
+import com.weixingwang.threepomelo.adapter.MyVIPFragmentRecyAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
 
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2016/12/9 0009.
+ * Created by Administrator on 2016/12/12 0012.
  */
-public class AllInActivity extends BaseActivity{
-
+public class MyShopFragment extends BaseFragment {
     private SwipeRefreshLayout swrf;
     private MyScrollView scrollView;
     private RecyclerView recycl;
     private ArrayList<String> list=new ArrayList<>();
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my_earnings;
+        return R.layout.my_shop_fragment;
     }
 
     @Override
-    protected void initView() {
-        swrf = (SwipeRefreshLayout) findViewById(R.id.my_all_in_swrf);
-        scrollView = (MyScrollView) findViewById(R.id.my_all_in_scro);
-        recycl = (RecyclerView) findViewById(R.id.my_all_in_recyle);
+    protected void initView(View v) {
+        swrf = (SwipeRefreshLayout) v.findViewById(R.id.my_shop_fragment_swrf);
+        scrollView = (MyScrollView) v.findViewById(R.id.my_shop_fragment_scro);
+        recycl = (RecyclerView) v.findViewById(R.id.my_shop_fragment_recyle);
         setSwColor(swrf);
         isReflash(scrollView);
-        setTitle("我的收益");
-        isShowBack(true);
     }
 
     @Override
@@ -40,8 +38,9 @@ public class AllInActivity extends BaseActivity{
         for (int i = 0; i < 20; i++) {
             list.add("数据"+i);
         }
-        recycl.setAdapter(new AllInRecyAdapter(AllInActivity.this,recycl,list,
-                R.layout.all_in_recycle_item,1));
+        recycl.setAdapter(new MyShopFragmentRecyAdapter(getActivity(),recycl,list,
+                R.layout.fragment_my_shop_recycl_item,1));
+
     }
 
     @Override
@@ -49,3 +48,4 @@ public class AllInActivity extends BaseActivity{
 
     }
 }
+

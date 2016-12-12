@@ -22,8 +22,8 @@ public class UrlUtils {
     public static String QU_Url = MAIN_Url+"/Apiftontend/get_area";
     //推荐人ID url
     public static String RECOMMEND_Url = MAIN_Url+"/Apiftontend/get_naid_by_keywords";
-//    //密码重置(提交数据)
-//    public static String TEST_CODE_NEW_PASSWORD_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/resetpw";
+    //密码重置(提交数据)
+    public static String REGEST_Url = MAIN_Url+"/Apiftontend/save_register";
 //    //包含token直接跳转到主页面
 //    public static String HAVE_TOKEN_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/test_token";
 //    //VIP会员中心
