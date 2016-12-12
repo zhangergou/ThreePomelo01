@@ -72,6 +72,8 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
     private PopupWindow popupWindowShi;
     private PopupWindow popupWindowQu;
     private EditText etRecommend;
+    private ArrayAdapter<String> adapterShi;
+    private ArrayAdapter<String> adapterQu;
 
 
     @Override
@@ -189,6 +191,7 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
                 if(obj!=null){
                     RegestGetShengBean bean= (RegestGetShengBean) obj;
                     if(bean.isSuccess()){
+                        listSheng.clear();
                       listSheng.addAll(bean.getProvince_list());
                         setShengAdapter();
                     }else{
@@ -208,6 +211,7 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
     }
 
     private void setShengAdapter() {
+        listsh.clear();
         for (int i = 0; i < listSheng.size(); i++) {
             listsh.add(listSheng.get(i).getName());
         }
@@ -217,6 +221,8 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 popupWindowSheng.dismiss();
                 tvSheng.setText(listsh.get(position));
+                tvShi.setText("- 城市 -");
+                tvQu.setText("- 区域 -");
                 getShiList(listSheng.get(position).getCode());
 
             }
@@ -235,11 +241,13 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
                 if(obj!=null){
                     RegestGetShiBean bean= (RegestGetShiBean) obj;
                     if(bean.isSuccess()){
+                        listShi.clear();
                         listShi.addAll(bean.getCity_list());
                         setShiAdapter();
                     }else{
                         ToastUtils.toast(RegestActivity.this,bean.getError_msg());
                     }
+
                 }else {
                     noData();
                 }
@@ -254,10 +262,12 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
     }
 
     private void setShiAdapter() {
+        listsi.clear();
         for (int i = 0; i < listShi.size(); i++) {
             listsi.add(listShi.get(i).getName());
         }
-        lvShi.setAdapter(new ArrayAdapter<String>(RegestActivity.this, android.R.layout.simple_list_item_1, listsi));
+        adapterShi = new ArrayAdapter<>(RegestActivity.this, android.R.layout.simple_list_item_1, listsi);
+        lvShi.setAdapter(adapterShi);
         lvShi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -279,6 +289,7 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
                 if(obj!=null){
                     RegestGetQuBean bean= (RegestGetQuBean) obj;
                     if(bean.isSuccess()){
+                        listQu.clear();
                         listQu.addAll(bean.getArea_list());
                             setQuAdapter();
                     }else{
@@ -298,10 +309,12 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
     }
 
     private void setQuAdapter() {
+        listq.clear();
         for (int i = 0; i < listQu.size(); i++) {
             listq.add(listQu.get(i).getName());
         }
-        lvQu.setAdapter(new ArrayAdapter<String>(RegestActivity.this, android.R.layout.simple_list_item_1, listq));
+        adapterQu = new ArrayAdapter<>(RegestActivity.this, android.R.layout.simple_list_item_1, listq);
+        lvQu.setAdapter(adapterQu);
         lvQu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

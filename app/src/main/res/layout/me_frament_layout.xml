@@ -150,7 +150,7 @@
                     android:layout_height="1dp"
                     android:background="@color/graySeven" />
                 <LinearLayout
-                    android:id="@+id/vip_lin_my_team_mannger"
+                    android:id="@+id/vip_lin_my_sunflwoer"
                     android:clickable="true"
                     android:background="@drawable/textview_dialog_btn_selector"
                     android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                     android:layout_height="1dp"
                     android:background="@color/graySeven" />
                 <LinearLayout
-                    android:id="@+id/vip_lin_my_yh_card"
+                    android:id="@+id/vip_lin_my_allin"
                     android:clickable="true"
                     android:background="@drawable/textview_dialog_btn_selector"
                     android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                     android:layout_height="1dp"
                     android:background="@color/graySeven" />
                 <LinearLayout
-                    android:id="@+id/vip_lin_my_get_money"
+                    android:id="@+id/vip_lin_my_team"
                     android:clickable="true"
                     android:background="@drawable/textview_dialog_btn_selector"
                     android:layout_width="match_parent"

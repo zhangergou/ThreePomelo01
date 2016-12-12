@@ -62,4 +62,8 @@ public class MainActivity extends BaseActivity {
     protected void initLisener() {
 
     }
+    public void setSelectCount(int count){
+        mainViewPager.setCurrentItem(count,false);
+        mainTab.getTabAt(count).getCustomView().setSelected(true);
+    }
 }

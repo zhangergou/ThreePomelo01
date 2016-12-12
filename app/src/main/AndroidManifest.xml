@@ -50,6 +50,21 @@
         <!--订单详情->-->
         <activity android:name=".activity.MyOrderEvaluateActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--我的账户->-->
+        <activity android:name=".activity.AccountManagerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--资金管理->-->
+        <activity android:name=".activity.CofferManagerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--我的向日葵->-->
+        <activity android:name=".activity.MySunFlwoerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--我的收益->-->
+        <activity android:name=".activity.AllInActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--我的团队->-->
+        <activity android:name=".activity.MyTeamActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
