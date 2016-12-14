@@ -1,8 +1,10 @@
 package com.weixingwang.threepomelo.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
@@ -20,6 +22,7 @@ import java.util.HashMap;
 public class MyOrderEvaluateActivity extends BaseActivity {
 
    private TextView tv_finish;
+    private EditText edittext;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_my_order_evaluate;
@@ -30,6 +33,7 @@ public class MyOrderEvaluateActivity extends BaseActivity {
     protected void initView() {
 
         tv_finish= (TextView) findViewById(R.id.tv_finish);
+        edittext= (EditText) findViewById(R.id.edittext);
         setTitle("商品点评");
         isShowBack(true);
     }
@@ -44,6 +48,10 @@ public class MyOrderEvaluateActivity extends BaseActivity {
         tv_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               String text=edittext.getText().toString();
+                Intent intent=new Intent();
+                intent.putExtra("text",text);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });

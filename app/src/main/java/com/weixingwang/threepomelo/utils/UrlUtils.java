@@ -8,7 +8,7 @@ public class UrlUtils {
 //    public static String getImgUrl = "http://139.224.222.18:8080/attachs/";
 
     public static String MAIN_Url = "http://106.14.57.99:7070";
-    //获取验证码
+    /* 获取验证码 */
     public static String getCodeUrl = MAIN_Url+"/Apiftontend/get_yzm";
     //注册
    // public static String PUTLOGIN_MAS_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/save_user";
@@ -24,6 +24,10 @@ public class UrlUtils {
     public static String RECOMMEND_Url = MAIN_Url+"/Apiftontend/get_naid_by_keywords";
     //密码重置(提交数据)
     public static String REGEST_Url = MAIN_Url+"/Apiftontend/save_register";
+    //订单列表
+    public static String MyOrder_Url = MAIN_Url+"/Apiuser/list_orders_loaddata";
+    //订单列表->所有消费
+    public static String MyOrderAllTotal_Url = MAIN_Url+"/Apiuser/list_orders";
 //    //包含token直接跳转到主页面
 //    public static String HAVE_TOKEN_Url = "http://139.224.222.18:8080/Apipublic/Apilogin/test_token";
 //    //VIP会员中心

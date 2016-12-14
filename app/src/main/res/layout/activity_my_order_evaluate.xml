@@ -127,6 +127,7 @@
                 android:background="@color/graySex"
                 android:layout_height="10dp"/>
             <EditText
+                android:id="@+id/edittext"
                 android:layout_margin="10dp"
                 android:gravity="top"
                 android:textSize="14sp"
