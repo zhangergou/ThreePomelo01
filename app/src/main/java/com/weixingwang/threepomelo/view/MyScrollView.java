@@ -7,11 +7,12 @@ import android.view.ViewConfiguration;
 import android.widget.ScrollView;
 
 import com.weixingwang.threepomelo.frament.BaseFragment;
+import com.weixingwang.threepomelo.interfac.Pullable;
 
 /**
  * Created by Administrator on 2016/10/6 0006.
  */
-public class MyScrollView extends ScrollView {
+public class MyScrollView extends ScrollView implements Pullable{
 
     private int downX;
     private int downY;
@@ -48,6 +49,21 @@ public class MyScrollView extends ScrollView {
         }
         return super.onInterceptTouchEvent(e);
     }
+    @Override
+    public boolean canPullDown() {
+        if (getScrollY() == 0)
+            return true;
+        else
+            return false;
+    }
 
+    @Override
+    public boolean canPullUp() {
+
+        if (getScrollY() >= (getChildAt(0).getHeight() - getMeasuredHeight()))
+            return true;
+        else
+            return false;
+    }
 
 }

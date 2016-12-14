@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,9 @@ import com.weixingwang.threepomelo.view.MyScrollView;
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
- public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener {
+ public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener,
+        SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener,
+        ViewPager.OnPageChangeListener{
     private SwipeRefreshLayout sw;
     private MyScrollView scrollView;
     private ProgressDialog dialog;
@@ -126,5 +129,18 @@ import com.weixingwang.threepomelo.view.MyScrollView;
 
     public void closeLoading() {
         dialog.dismiss();
+    }
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

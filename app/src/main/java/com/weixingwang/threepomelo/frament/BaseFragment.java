@@ -4,13 +4,19 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,13 +24,16 @@ import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.utils.DialogUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.lang.reflect.Field;
 
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener , SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener,
+        SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener,
+        ViewPager.OnPageChangeListener, PullToRefreshLayout.OnRefreshListener {
 
     private View view;
     private SwipeRefreshLayout sw;
@@ -34,7 +43,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view==null){
+        if (view == null) {
             view = inflater.inflate(getLayoutId(), null);
             initView(view);
             initData();
@@ -42,16 +51,21 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
         return view;
     }
-    protected abstract int getLayoutId() ;
+
+    protected abstract int getLayoutId();
+
     protected abstract void initView(View v);
+
     protected abstract void initData();
+
     protected abstract void initLisener();
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         TextView titleName = (TextView) view.findViewById(R.id.tv_title_name);
         titleName.setText(title);
     }
-////显示返回
+
+    ////显示返回
 //    public void isShowBack(boolean show){
 //        ImageView ivBack = (ImageView) view.findViewById(R.id.iv_title_back);
 //        if(show){
@@ -60,19 +74,22 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 //        }
 //    }
 //显示区域
-    public void isShowArea(boolean show){
+    public LinearLayout isShowArea(boolean show) {
         LinearLayout linArea = (LinearLayout) view.findViewById(R.id.lin_home_area);
-        if(show){
+        if (show) {
             linArea.setVisibility(View.VISIBLE);
         }
+        return linArea;
     }
+
     //显示搜索
-    public void isShowSearch(boolean show){
+    public void isShowSearch(boolean show) {
         LinearLayout linSearch = (LinearLayout) view.findViewById(R.id.lin_home_search);
-        if(show){
+        if (show) {
             linSearch.setVisibility(View.VISIBLE);
         }
     }
+
     @Override
     public void onClick(View v) {
 
@@ -94,7 +111,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 getResources().getColor(R.color.black));
     }
 
-    public void isReflash(MyScrollView scrollView){
+    public void isReflash(MyScrollView scrollView) {
 
         this.scrollView = scrollView;
         scrollView.setOnTouchListener(this);
@@ -102,7 +119,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 isEnlable();
                 break;
@@ -115,11 +132,21 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     private void isEnlable() {
         int scrollY = scrollView.getScrollY();
-        if(scrollY>0){
+        if (scrollY > 0) {
             sw.setEnabled(false);
-        }else {
+        } else {
             sw.setEnabled(true);
         }
+
+        int height =sw.getChildAt(0).getMeasuredHeight();
+        int height1 = sw.getHeight();
+        Log.e("1", "scrollY=" + scrollY);
+        Log.e("1", "height=" + height);
+        Log.e("1", "height1111=" + height1);
+        if(scrollY==height){
+            ToastUtils.toast(getActivity(),"到底了");
+        }
+
     }
 
     public void noData() {
@@ -134,7 +161,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         dialog.show();
     }
 
-    public void initDialog(){
+    public void initDialog() {
         dialog = DialogUtils.showLoading(getActivity(), "加载中...");
     }
 
@@ -156,5 +183,33 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    public void refrush(PullToRefreshLayout ref){
+        ref.setOnRefreshListener(this);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+    }
+
+    @Override
+    public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+        pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
     }
 }

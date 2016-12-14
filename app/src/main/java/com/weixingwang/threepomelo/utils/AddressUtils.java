@@ -1,10 +1,13 @@
 package com.weixingwang.threepomelo.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class AddressUtils {
             //如果是Network
             locationProvider = LocationManager.NETWORK_PROVIDER;
         }
+
         Location location = locationManager.getLastKnownLocation(locationProvider);
         if (location != null) {
             lon = location.getLongitude() + "";

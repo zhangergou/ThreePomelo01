@@ -8,7 +8,12 @@
     <color name="titlieColor">#01A2F2</color>
     <color name="blueOne">#81cef4</color>
     <color name="blueTwo">#b9cef4</color>
+    <color name="light_blue">#6593cb</color>
 
+
+
+
+    <color name="gray">#aaaaaa</color>
     <color name="grayOne">#444444</color>
     <color name="grayTwo">#666666</color>
     <color name="grayThree">#999999</color>
@@ -19,7 +24,8 @@
     <color name="graySeven">#eff2f6</color>
     <color name="grayEight">#F3EDED</color>
 
-    <color name="transtion">#00000000</color>
+
+
 
 
 
@@ -36,4 +42,7 @@
 
 
     <color name="yellowOne">#CF8C00</color>
+
+
+    <color name="transtion">#00000000</color>
 </resources>

@@ -30,16 +30,16 @@ public class CreatIDActivity extends BaseActivity {
     private  String telRegex = "[1][3587]\\d{9}";
     private String testCode=null;
     private Button time;
-    private int timeConut=0;
+    private int timeConut=60;
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(timeConut==60){
+            if(timeConut==0){
                 time.setVisibility(View.GONE);
-                timeConut=0;
+                timeConut=60;
             }else{
-                time.setText(""+timeConut++);
+                time.setText(""+timeConut--);
                 handler.sendEmptyMessageDelayed(1,1000);
             }
 
@@ -47,6 +47,7 @@ public class CreatIDActivity extends BaseActivity {
     };
     private LinearLayout linAgreement;
     private Button btnLogin;
+    private int typeActivity;
 
     @Override
     protected int getLayoutId() {
@@ -64,8 +65,8 @@ public class CreatIDActivity extends BaseActivity {
 
         isShowBack(true);
         Intent intent = getIntent();
-        int type = intent.getIntExtra("type", 1);
-        if(type==1){
+        typeActivity = intent.getIntExtra("type", 1);
+        if(typeActivity ==1){
             setTitle("会员注册");
             btnLogin.setVisibility(View.GONE);
         }else{
@@ -126,7 +127,11 @@ public class CreatIDActivity extends BaseActivity {
 
         HashMap<String,String> hashMap=new HashMap<>();
         hashMap.put("mobile",name);
-        OkHttpUtils.get(UrlUtils.getCodeUrl, null, GetCodeBean.class, new OkHttpUtils.CallBackUtils() {
+        String url=UrlUtils.getCodeUrl;
+        if(typeActivity==2){
+            url=UrlUtils.getFORGETCodeUrl;
+        }
+        OkHttpUtils.get(url, null, GetCodeBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
                         if(obj!=null){
@@ -149,8 +154,7 @@ public class CreatIDActivity extends BaseActivity {
                     public void error(Exception e) {
                         ToastUtils.toast(CreatIDActivity.this,"网络错误,请重新获取");
                     }
-                },hashMap
-        );
+                },hashMap);
     }
     private int type=1;
     @Override
@@ -182,7 +186,7 @@ public class CreatIDActivity extends BaseActivity {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
     }
-    //验证码登录
+    //验证码修改密码
     public void codeLogin(){
         String name = etName.getText().toString().trim();
         String code = etCode.getText().toString().trim();
@@ -196,13 +200,13 @@ public class CreatIDActivity extends BaseActivity {
             return;
         }
 
-//        if(!TextUtils.equals(testCode,code)){
-//            ToastUtils.toast(this,"验证码输入不正确");
-//            return;
-//        }
-        startActivity(new Intent(CreatIDActivity.this,SetPasswordActivity.class));
-        finish();
-        LoginActivity.login.finish();
+        if(!TextUtils.equals(testCode,code)){
+            ToastUtils.toast(this,"验证码输入不正确");
+            return;
+        }
+        Intent intent = new Intent(CreatIDActivity.this, SetPasswordActivity.class);
+        intent.putExtra("mobile",name);
+        startActivity(intent);
 
     }
 }

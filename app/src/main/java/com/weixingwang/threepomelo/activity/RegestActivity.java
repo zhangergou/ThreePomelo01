@@ -426,17 +426,17 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
             ToastUtils.toast(this,"真实姓名不能为空!");
             return;
         }
-//        String regxt="(\\d{14}[0-9a-zA-Z])|(\\d{17}[0-9a-zA-Z])";
+        String regxt="(\\d{14}[0-9a-zA-Z])|(\\d{17}[0-9a-zA-Z])";
         String idCode = etIDCode.getText().toString().trim();
         if(TextUtils.isEmpty(idCode)){
             ToastUtils.toast(this,"身份证号不能为空!");
             return;
         }
-//        if(!idCode.matches(regxt)){
-//            ToastUtils.toast(this,"身份证号输入不正确,请重新输入...");
-//            etIDCode.setText("");
-//            return;
-//        }
+        if(!idCode.matches(regxt)){
+            ToastUtils.toast(this,"身份证号输入不正确,请重新输入...");
+            etIDCode.setText("");
+            return;
+        }
         HashMap<String,String> map=new HashMap<>();
         map.put("mobile",mobile);
         map.put("parent_id",codeRecomm);

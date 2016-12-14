@@ -2,6 +2,7 @@ package com.weixingwang.threepomelo.adapter;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;

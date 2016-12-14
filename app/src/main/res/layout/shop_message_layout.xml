@@ -20,24 +20,24 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <android.support.v4.view.ViewPager
-                android:id="@+id/shop_infor_vp"
-                android:background="#ff0000"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp">
-            </android.support.v4.view.ViewPager>
-            <LinearLayout
-                android:id="@+id/shop_infor_indcitor_lin"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:background="@color/graySeven"
-                android:layout_height="20dp">
-            </LinearLayout>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/shop_message_vp"
+                    android:background="#ff0000"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:id="@+id/shop_message_indcitor_lin"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="20dp"/>
+            </RelativeLayout>
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/shop_infor_tv_name"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"

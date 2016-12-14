@@ -34,16 +34,15 @@ public class CreamerAndAlbumUtils {
      * 使用相册中的图片
      */
     private static final int SELECT_PIC_BY_PICK_PHOTO = 2;
-    private static Handler handler=new Handler(Looper.getMainLooper());
+    private static Handler handler = new Handler(Looper.getMainLooper());
     /***
      * 从Intent获取图片路径的KEY
      */
     private static final String KEY_PHOTO_PATH = "photo_path";
 
 
-
     public static Uri openCramerer(Context context, int activityType) {
-        Uri photoUri=null;
+        Uri photoUri = null;
         //执行拍照前，应该先判断SD卡是否存在
         String SDState = Environment.getExternalStorageState();
         if (SDState.equals(Environment.MEDIA_MOUNTED)) {
@@ -96,7 +95,7 @@ public class CreamerAndAlbumUtils {
 //            photoUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
             url = BitmapUtils.getImageUrl(context, photoUri);
         } else {
-            Cursor actualimagecursor = getCursor(context, photoUri,proj, avtivityType);
+            Cursor actualimagecursor = getCursor(context, photoUri, proj, avtivityType);
 
             if (actualimagecursor.moveToFirst()) {
                 ;
@@ -126,7 +125,7 @@ public class CreamerAndAlbumUtils {
     }
 
     public static String getPhoto(final Context context, int requestCode, Intent data,
-                               Uri photoUri, int avtivityType) {
+                                  Uri photoUri, int avtivityType) {
         String url = null;
         if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
 
@@ -146,7 +145,7 @@ public class CreamerAndAlbumUtils {
 //            photoUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
             url = BitmapUtils.getImageUrl(context, photoUri);
         } else {
-            Cursor actualimagecursor = getCursor(context, photoUri,proj, avtivityType);
+            Cursor actualimagecursor = getCursor(context, photoUri, proj, avtivityType);
 
             if (actualimagecursor.moveToFirst()) {
                 ;
@@ -158,8 +157,6 @@ public class CreamerAndAlbumUtils {
 
         return url;
     }
-
-
 
 
     private static void startActiCreamer(Context context, Intent intent, int activityType) {
@@ -205,9 +202,9 @@ public class CreamerAndAlbumUtils {
         return object;
     }
 
-    public static HashMap<String,File> putMap(final Context context, int requestCode, Intent data,
-                               final String iconName,final ImageView iv, Uri photoUri, int avtivityType) {
-       final HashMap<String,File> hashMap=new HashMap<>();
+    public static HashMap<String, File> putMap(final Context context, int requestCode, Intent data,
+                                               final String iconName, final ImageView iv, Uri photoUri, int avtivityType) {
+        final HashMap<String, File> hashMap = new HashMap<>();
         String url = null;
         if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
 
@@ -227,7 +224,7 @@ public class CreamerAndAlbumUtils {
 //            photoUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
             url = BitmapUtils.getImageUrl(context, photoUri);
         } else {
-            Cursor actualimagecursor = getCursor(context, photoUri,proj, avtivityType);
+            Cursor actualimagecursor = getCursor(context, photoUri, proj, avtivityType);
 
             if (actualimagecursor.moveToFirst()) {
                 ;
@@ -237,23 +234,30 @@ public class CreamerAndAlbumUtils {
             actualimagecursor.close();
         }
         final String finalUrl = url;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
-                Bitmap comp = BitmapUtils.comp(bitmap);
-                final Bitmap image = BitmapUtils.compressImage(comp);
-                final byte[] bytes = BitmapUtils.getBitmapbyte(image);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        File file = BytesToFileUtils.getFile(bytes, context.getFilesDir().getAbsolutePath(), iconName);
-                        hashMap.put(iconName,file);
-                        iv.setImageBitmap(image);
-                    }
-                });
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
+//                Bitmap comp = BitmapUtils.comp(bitmap);
+//                final Bitmap image = BitmapUtils.compressImage(comp);
+//                final byte[] bytes = BitmapUtils.getBitmapbyte(image);
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        File file = BytesToFileUtils.getFile(bytes, context.getFilesDir().getAbsolutePath(), iconName);
+//                        iv.setImageBitmap(image);
+//                        hashMap.put(iconName,file);
+//                    }
+//                });
+//            }
+//        }).start();
+        Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
+        Bitmap comp = BitmapUtils.comp(bitmap);
+        final Bitmap image = BitmapUtils.compressImage(comp);
+        final byte[] bytes = BitmapUtils.getBitmapbyte(image);
+        File file = BytesToFileUtils.getFile(bytes, context.getFilesDir().getAbsolutePath(), iconName);
+        iv.setImageBitmap(image);
+        hashMap.put(iconName, file);
         return hashMap;
     }
 }

@@ -48,9 +48,16 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="￥6"
+                        android:text="￥"
                         android:textSize="14sp"
                         android:layout_marginLeft="10dp"
+                        android:textColor="#FE8FB3"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/bus_tv_one_price"
+                        android:layout_width="wrap_content"
+                        android:text="6"
+                        android:textSize="14sp"
                         android:textColor="#FE8FB3"
                         android:layout_height="wrap_content" />
                     <TextView
@@ -61,6 +68,7 @@
                         android:textSize="14sp"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/bus_tv_total_price"
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:text="6"
@@ -86,11 +94,14 @@
                         android:orientation="horizontal"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/bus_iv_minus"
+                            android:clickable="true"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:src="@drawable/shoppingcart_minus_button"
                             android:layout_height="wrap_content" />
                         <TextView
+                            android:id="@+id/bus_tv_num"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
                             android:layout_marginLeft="5dp"
@@ -100,6 +111,8 @@
                             android:layout_width="50dp"
                             android:layout_height="25dp" />
                         <ImageView
+                            android:id="@+id/bus_iv_plus"
+                            android:clickable="true"
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:layout_width="wrap_content"
@@ -107,6 +120,8 @@
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                     <ImageView
+                        android:id="@+id/bus_iv_delete"
+                        android:clickable="true"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"

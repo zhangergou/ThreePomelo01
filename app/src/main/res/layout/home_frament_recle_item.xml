@@ -19,16 +19,17 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="85dp">
                 <RelativeLayout
                     android:layout_width="85dp"
                     android:layout_height="85dp">
                     <ImageView
                         android:src="@mipmap/img"
-                        android:id="@+id/shop_home_iv"
+                        android:id="@+id/home_shop_iv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <ImageView
+                        android:id="@+id/home_percent_iv"
                         android:layout_marginRight="15dp"
                        android:layout_alignParentRight="true"
                         android:src="@drawable/home_icon_6series"
@@ -41,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <View
-                        android:background="@color/grayFour"
+                        android:background="@color/graySeven"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"/>
                     <LinearLayout
@@ -61,11 +62,11 @@
                             android:layout_gravity="center"
                             android:layout_height="wrap_content" />
                         <TextView
-                            android:id="@+id/shop_home_tv_km"
+                            android:id="@+id/home_shop_tv_km"
                             android:textColor="@color/grayThree"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:text="7.0km"
+                            android:text=""
                             android:textSize="14sp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -74,15 +75,18 @@
                     </LinearLayout>
 
                     <TextView
+                        android:singleLine="true"
+                        android:lineSpacingMultiplier="1.5"
+                        android:id="@+id/home_shop_tv_say"
                         android:textColor="@color/red"
                         android:layout_width="wrap_content"
-                        android:text="纯手工打造，小温馨气质"
+                        android:text=""
                         android:textSize="14sp"
                         android:layout_marginLeft="5dp"
                         android:layout_height="wrap_content"
                         />
                     <LinearLayout
-                        android:layout_marginTop="10dp"
+
                         android:layout_gravity="bottom"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -96,11 +100,11 @@
                             android:layout_height="wrap_content"
                             />
                         <TextView
-                            android:id="@+id/shop_home_tv_fill_price"
+                            android:id="@+id/home_shop_tv_address"
                             android:layout_width="wrap_content"
                             android:textSize="14sp"
                             android:textColor="@color/grayThree"
-                            android:text="玉山镇城北中路 1228"
+                            android:text=""
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>

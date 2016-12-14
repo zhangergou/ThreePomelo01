@@ -105,7 +105,7 @@ public class OkHttpUtils {
 
     //图片上传
     private void putImage(String url, String token, Class<?> clazz, HashMap<String,File> map, final CallBackUtils callBack, HashMap<String, String> prams) {
-        MediaType MEDIA_TYPE_PNG = MediaType.parse("image/jpeg");
+        MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         if (prams != null) {
             Set<Map.Entry<String, String>> entrySet = prams.entrySet();
@@ -122,7 +122,7 @@ public class OkHttpUtils {
                 Map.Entry<String, File> next = iterator.next();
                 RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"),  next.getValue());
                 String name = next.getKey();
-                builder.addFormDataPart("image",name, fileBody);
+                builder.addFormDataPart(name,name+".png", fileBody);
             }
         }
             if (TextUtils.isEmpty(token)) {
