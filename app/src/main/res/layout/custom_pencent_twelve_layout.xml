@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.weixingwang.threepomelo.view.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/custom_fragment_percent_twelve_swrf"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/refresh_head" />
+
+
+    <com.weixingwang.threepomelo.view.MyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="向日葵"
-                android:textColor="@color/grayTwo"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="已激励"
-                android:textColor="@color/grayTwo"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="日期"
-                android:textColor="@color/grayTwo"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <com.weixingwang.threepomelo.view.MyScrollView
-            android:id="@+id/custom_fragment_percent_twelve_scro"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/custom_fragment_percent_twelve_recyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="向日葵"
+                    android:textColor="@color/grayTwo"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="已激励"
+                    android:textColor="@color/grayTwo"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="日期"
+                    android:textColor="@color/grayTwo"
+                    android:textSize="16sp" />
             </LinearLayout>
-        </com.weixingwang.threepomelo.view.MyScrollView>
-    </LinearLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/custom_fragment_percent_twelve_recyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
+
+    <include layout="@layout/load_more" />
+</com.weixingwang.threepomelo.view.PullToRefreshLayout>

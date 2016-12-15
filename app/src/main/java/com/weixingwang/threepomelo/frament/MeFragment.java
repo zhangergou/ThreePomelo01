@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.activity.AccountManagerActivity;
-import com.weixingwang.threepomelo.activity.AllInActivity;
+import com.weixingwang.threepomelo.activity.MyAllInActivity;
 import com.weixingwang.threepomelo.activity.CofferManagerActivity;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
 import com.weixingwang.threepomelo.activity.LoginActivity;
@@ -17,7 +17,6 @@ import com.weixingwang.threepomelo.activity.MySunFlwoerActivity;
 import com.weixingwang.threepomelo.activity.MyTeamActivity;
 import com.weixingwang.threepomelo.activity.ShopOrderActivity;
 import com.weixingwang.threepomelo.bean.PersonCenterBean;
-import com.weixingwang.threepomelo.bean.RegestGetShengBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
@@ -115,7 +114,7 @@ public class MeFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(),MySunFlwoerActivity.class));
                 break;
             case R.id.vip_lin_my_allin:
-                startActivity(new Intent(getActivity(),AllInActivity.class));
+                startActivity(new Intent(getActivity(),MyAllInActivity.class));
                 break;
             case R.id.vip_lin_my_team:
                 startActivity(new Intent(getActivity(),MyTeamActivity.class));

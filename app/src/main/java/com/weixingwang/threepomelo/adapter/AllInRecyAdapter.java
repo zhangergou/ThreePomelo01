@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
-import com.weixingwang.threepomelo.activity.AllInActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

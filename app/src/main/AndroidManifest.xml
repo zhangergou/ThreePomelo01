@@ -65,7 +65,7 @@
         <activity android:name=".activity.MySunFlwoerActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--我的收益->-->
-        <activity android:name=".activity.AllInActivity"
+        <activity android:name=".activity.MyAllInActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--我的团队->-->
         <activity android:name=".activity.MyTeamActivity"

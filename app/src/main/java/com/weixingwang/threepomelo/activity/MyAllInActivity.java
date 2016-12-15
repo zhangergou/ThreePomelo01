@@ -5,18 +5,16 @@ import android.support.v7.widget.RecyclerView;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.AllInRecyAdapter;
-import com.weixingwang.threepomelo.adapter.MyShopFragmentRecyAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/12/9 0009.
  */
-public class AllInActivity extends BaseActivity{
+public class MyAllInActivity extends BaseActivity{
 
-    private SwipeRefreshLayout swrf;
-    private MyScrollView scrollView;
     private RecyclerView recycl;
     private ArrayList<String> list=new ArrayList<>();
     @Override
@@ -26,11 +24,9 @@ public class AllInActivity extends BaseActivity{
 
     @Override
     protected void initView() {
-        swrf = (SwipeRefreshLayout) findViewById(R.id.my_all_in_swrf);
-        scrollView = (MyScrollView) findViewById(R.id.my_all_in_scro);
+        PullToRefreshLayout swrf = (PullToRefreshLayout) findViewById(R.id.my_all_in_swrf);
         recycl = (RecyclerView) findViewById(R.id.my_all_in_recyle);
-        setSwColor(swrf);
-        isReflash(scrollView);
+        refrush(swrf);
         setTitle("我的收益");
         isShowBack(true);
     }
@@ -40,7 +36,7 @@ public class AllInActivity extends BaseActivity{
         for (int i = 0; i < 20; i++) {
             list.add("数据"+i);
         }
-        recycl.setAdapter(new AllInRecyAdapter(AllInActivity.this,recycl,list,
+        recycl.setAdapter(new AllInRecyAdapter(MyAllInActivity.this,recycl,list,
                 R.layout.all_in_recycle_item,1));
     }
 

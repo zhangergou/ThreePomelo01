@@ -32,7 +32,6 @@ import java.lang.reflect.Field;
  * Created by Administrator on 2016/11/29 0029.
  */
 public abstract class BaseFragment extends Fragment implements View.OnClickListener,
-        SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener,
         ViewPager.OnPageChangeListener, PullToRefreshLayout.OnRefreshListener {
 
     private View view;
@@ -96,59 +95,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     }
 
-    @Override
-    public void onRefresh() {
-        sw.setRefreshing(false);
-        Toast.makeText(getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
-    }
-
-    public void setSwColor(SwipeRefreshLayout sw) {
-        this.sw = sw;
-        sw.setOnRefreshListener(this);
-        sw.setColorSchemeColors(getResources().getColor(R.color.blue),
-                getResources().getColor(R.color.blueTab),
-                getResources().getColor(R.color.red),
-                getResources().getColor(R.color.black));
-    }
-
-    public void isReflash(MyScrollView scrollView) {
-
-        this.scrollView = scrollView;
-        scrollView.setOnTouchListener(this);
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                isEnlable();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                isEnlable();
-                break;
-        }
-        return false;
-    }
-
-    private void isEnlable() {
-        int scrollY = scrollView.getScrollY();
-        if (scrollY > 0) {
-            sw.setEnabled(false);
-        } else {
-            sw.setEnabled(true);
-        }
-
-        int height =sw.getChildAt(0).getMeasuredHeight();
-        int height1 = sw.getHeight();
-        Log.e("1", "scrollY=" + scrollY);
-        Log.e("1", "height=" + height);
-        Log.e("1", "height1111=" + height1);
-        if(scrollY==height){
-            ToastUtils.toast(getActivity(),"到底了");
-        }
-
-    }
-
     public void noData() {
         ToastUtils.toast(getActivity(), "暂无数据");
     }
@@ -199,7 +145,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     }
 
-    public void refrush(PullToRefreshLayout ref){
+    public void refrush(PullToRefreshLayout ref) {
         ref.setOnRefreshListener(this);
     }
 

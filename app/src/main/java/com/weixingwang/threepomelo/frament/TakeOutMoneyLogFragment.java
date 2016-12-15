@@ -7,6 +7,7 @@ import android.view.View;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.TakeOutMoneyRecyAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,6 @@ import java.util.ArrayList;
  */
 public class TakeOutMoneyLogFragment extends BaseFragment {
 
-    private SwipeRefreshLayout swrf;
-    private MyScrollView scrollView;
     private RecyclerView recycl;
     private ArrayList<String> list=new ArrayList<>();
     @Override
@@ -26,11 +25,9 @@ public class TakeOutMoneyLogFragment extends BaseFragment {
 
     @Override
     protected void initView(View v) {
-        swrf = (SwipeRefreshLayout) v.findViewById(R.id.fragment_take_out_swrf);
-        scrollView = (MyScrollView) v.findViewById(R.id.fragment_take_out_scro);
+        PullToRefreshLayout swrf = (PullToRefreshLayout) v.findViewById(R.id.fragment_take_out_swrf);
         recycl = (RecyclerView) v.findViewById(R.id.fragment_take_out_recyle);
-        setSwColor(swrf);
-        isReflash(scrollView);
+        refrush(swrf);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.ShopPercentSixFragmentRecyAdapter;
 import com.weixingwang.threepomelo.adapter.ShopPercentTwentyFourFragmentRecyAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,6 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/12/12 0012.
  */
 public class PercentTwentyFourFragment extends BaseFragment {
-    private SwipeRefreshLayout swrf;
-    private MyScrollView scrollView;
     private RecyclerView recycl;
     private ArrayList<String> list=new ArrayList<>();
     @Override
@@ -26,11 +25,9 @@ public class PercentTwentyFourFragment extends BaseFragment {
 
     @Override
     protected void initView(View v) {
-        swrf = (SwipeRefreshLayout) v.findViewById(R.id.fragment_percent_twenty_four_swrf);
-        scrollView = (MyScrollView) v.findViewById(R.id.fragment_percent_twenty_four_scro);
+        PullToRefreshLayout swrf = (PullToRefreshLayout) v.findViewById(R.id.fragment_percent_twenty_four_swrf);
         recycl = (RecyclerView) v.findViewById(R.id.fragment_percent_twenty_four_recyle);
-        setSwColor(swrf);
-        isReflash(scrollView);
+        refrush(swrf);
     }
 
     @Override
