@@ -17,13 +17,14 @@ import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.utils.DialogUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 /**
  * Created by Administrator on 2016/11/29 0029.
  */
  public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener,
         SwipeRefreshLayout.OnRefreshListener, View.OnTouchListener,
-        ViewPager.OnPageChangeListener{
+        ViewPager.OnPageChangeListener,PullToRefreshLayout.OnRefreshListener{
     private SwipeRefreshLayout sw;
     private MyScrollView scrollView;
     private ProgressDialog dialog;
@@ -142,5 +143,19 @@ import com.weixingwang.threepomelo.view.MyScrollView;
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    public void refrush(PullToRefreshLayout ref){
+        ref.setOnRefreshListener(this);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+    }
+
+    @Override
+    public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+        pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
     }
 }

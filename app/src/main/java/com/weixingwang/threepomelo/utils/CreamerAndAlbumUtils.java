@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.weixingwang.threepomelo.activity.AccountManagerActivity;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
 import com.weixingwang.threepomelo.activity.RegestActivity;
 
@@ -183,6 +184,10 @@ public class CreamerAndAlbumUtils {
                 CreateShopActivity cp = (CreateShopActivity) context;
                 cp.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
                 break;
+            case 3:
+                AccountManagerActivity am = (AccountManagerActivity) context;
+                am.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
         }
 
     }
@@ -197,6 +202,10 @@ public class CreamerAndAlbumUtils {
             case 2:
                 CreateShopActivity cp = (CreateShopActivity) context;
                 object = cp.managedQuery(photoUri, proj, null, null, null);
+                break;
+            case 3:
+                AccountManagerActivity am = (AccountManagerActivity) context;
+                object = am.managedQuery(photoUri, proj, null, null, null);
                 break;
         }
         return object;

@@ -70,6 +70,15 @@
         <!--我的团队->-->
         <activity android:name=".activity.MyTeamActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--商品详情->-->
+        <activity android:name=".activity.SureMyOrderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--收货地址添加->-->
+        <activity android:name=".activity.AddAdressActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--商城订单->-->
+        <activity android:name=".activity.ShopOrderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

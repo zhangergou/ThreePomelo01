@@ -44,7 +44,7 @@ public class HomeFragmentRecyleAdapter extends BaseRecyleAdapter {
     @Override
     protected void initData(RecyclerView.ViewHolder mholder, int position) {
         MyHolder holder = (MyHolder) mholder;
-        HomeShopListBean.ShopListEntity shop = (HomeShopListBean.ShopListEntity) reList.get(position);
+        final HomeShopListBean.ShopListEntity shop = (HomeShopListBean.ShopListEntity) reList.get(position);
         if(!TextUtils.isEmpty(shop.getShop_name())){
             holder.tvName.setText(shop.getShop_name());
         }
@@ -75,7 +75,9 @@ public class HomeFragmentRecyleAdapter extends BaseRecyleAdapter {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,SellerMessageActivity.class));
+                Intent intent = new Intent(context, SellerMessageActivity.class);
+                intent.putExtra("shop_id",shop.getId());
+                context.startActivity(intent);
             }
         });
     }

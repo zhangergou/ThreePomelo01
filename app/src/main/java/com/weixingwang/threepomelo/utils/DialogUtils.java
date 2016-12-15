@@ -33,7 +33,6 @@ public class DialogUtils {
         attributes.gravity = Gravity.CENTER;
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(touch);
-        dialog.show();
         return dialog;
     }
 

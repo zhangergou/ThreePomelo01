@@ -10,6 +10,7 @@ import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.activity.ShoppingBusActivity;
 import com.weixingwang.threepomelo.adapter.ShopFragmentRecyclAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 public class ShopFragment extends BaseFragment {
 
 
-    private MyScrollView sw;
     private RecyclerView recl;
     private ArrayList<String> list=new ArrayList<>();
     private View view;
@@ -32,12 +32,10 @@ public class ShopFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         this.view = view;
-        SwipeRefreshLayout swrf= (SwipeRefreshLayout) view.findViewById(R.id.shop_fragment_swf);
-        sw = (MyScrollView) view.findViewById(R.id.shop_fragment_msw);
+        PullToRefreshLayout swrf= (PullToRefreshLayout) view.findViewById(R.id.shop_fragment_swf);
         recl = (RecyclerView) view.findViewById(R.id.shop_fragment_recl);
         setTitle("在线商城");
-        setSwColor(swrf);
-        isReflash(sw);
+        refrush(swrf);
     }
 
     @Override

@@ -66,6 +66,7 @@
         android:layout_height="50dp" />
 
     <Button
+        android:id="@+id/shop_message_now_shopping"
         android:layout_weight="1"
         android:background="@drawable/productdetails_immediate_icon"
         android:textColor="@color/white"

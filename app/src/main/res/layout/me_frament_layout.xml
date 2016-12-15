@@ -150,6 +150,36 @@
                     android:layout_height="1dp"
                     android:background="@color/graySeven" />
                 <LinearLayout
+                    android:id="@+id/vip_lin_shop_order_mannger"
+                    android:clickable="true"
+                    android:background="@drawable/textview_dialog_btn_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:textColor="@color/grayThree"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="商城订单"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/myorders_icons_arrows" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/graySeven" />
+                <LinearLayout
                     android:id="@+id/vip_lin_my_sunflwoer"
                     android:clickable="true"
                     android:background="@drawable/textview_dialog_btn_selector"

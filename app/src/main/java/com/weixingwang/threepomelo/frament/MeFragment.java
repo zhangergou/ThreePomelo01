@@ -15,6 +15,7 @@ import com.weixingwang.threepomelo.activity.LoginActivity;
 import com.weixingwang.threepomelo.activity.MainActivity;
 import com.weixingwang.threepomelo.activity.MySunFlwoerActivity;
 import com.weixingwang.threepomelo.activity.MyTeamActivity;
+import com.weixingwang.threepomelo.activity.ShopOrderActivity;
 import com.weixingwang.threepomelo.bean.PersonCenterBean;
 import com.weixingwang.threepomelo.bean.RegestGetShengBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
@@ -89,6 +90,7 @@ public class MeFragment extends BaseFragment {
         view.findViewById(R.id.vip_lin_my_sunflwoer).setOnClickListener(this);
         view.findViewById(R.id.vip_lin_my_allin).setOnClickListener(this);
         view.findViewById(R.id.vip_lin_my_team).setOnClickListener(this);
+        view.findViewById(R.id.vip_lin_shop_order_mannger).setOnClickListener(this);
     }
 
     @Override
@@ -105,6 +107,9 @@ public class MeFragment extends BaseFragment {
                 break;
             case R.id.vip_lin_my_order_mannger:
                 MainActivity.main.setSelectCount(1);
+                break;
+            case R.id.vip_lin_shop_order_mannger:
+                startActivity(new Intent(getActivity(),ShopOrderActivity.class));
                 break;
             case R.id.vip_lin_my_sunflwoer:
                 startActivity(new Intent(getActivity(),MySunFlwoerActivity.class));

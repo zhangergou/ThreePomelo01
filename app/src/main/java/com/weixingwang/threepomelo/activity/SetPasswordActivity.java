@@ -22,6 +22,7 @@ public class SetPasswordActivity extends BaseActivity{
     private EditText etOne;
     private EditText etTwo;
     private String mobile;
+    private int activityType;
 
     @Override
     protected int getLayoutId() {
@@ -40,6 +41,7 @@ public class SetPasswordActivity extends BaseActivity{
     protected void initData() {
         Intent intent = getIntent();
         mobile = intent.getStringExtra("mobile");
+        activityType = intent.getIntExtra("type",0);
     }
 
     @Override
@@ -74,9 +76,15 @@ public class SetPasswordActivity extends BaseActivity{
                 if(obj!=null){
                     LoginBean bean= (LoginBean) obj;
                     if(bean.isSuccess()){
-                        ToastUtils.toast(SetPasswordActivity.this,"密码重置成功,请登录");
-                        startActivity(new Intent(SetPasswordActivity.this,LoginActivity.class));
-                        finish();
+                        if(activityType==1){
+                            ToastUtils.toast(SetPasswordActivity.this,"密码重置成功");
+                            finish();
+                        }else{
+                            ToastUtils.toast(SetPasswordActivity.this,"密码重置成功,请登录");
+                            startActivity(new Intent(SetPasswordActivity.this,LoginActivity.class));
+                            finish();
+                        }
+
                     }else {
                         ToastUtils.toast(SetPasswordActivity.this,bean.getError_msg());
                     }

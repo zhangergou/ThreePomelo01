@@ -45,10 +45,12 @@ public class UrlUtils {
     public static String HOME_SHOP_LIST_Url = MAIN_Url+"/Apiftontend/index_loaddata";
     //用户中心
     public static String PERSEN_CENTER_Url = MAIN_Url+"/Apiuser/index";
-//    //城市列表
-//    public static String ONLINE_SHOP_CITY_Url = "http://139.224.222.18:8080/Apipublic/ApiPmall/getcity";
-//    //商家分类
-//    public static String ONLINE_SHOP_CLASS_Url = "http://139.224.222.18:8080/Apipublic/ApiPmall/getshopscate";
+    //用户信息获取
+    public static String PERSEN_INFOR_Url =MAIN_Url+ "/Apiuser/information_revise";
+    //用户信息修改
+    public static String PERSEN_INFOR_REVERSE_Url =MAIN_Url+ "/Apiuser/save_information_revise";
+    //商铺详情
+    public static String SELLER_INFOR_Url = MAIN_Url+"/Apiftontend/shop_detail";
 //    //区域列表
 //    public static String ONLINE_SHOP_AREA_Url = "http://139.224.222.18:8080/Apipublic/ApiPmall/getarea";
 //    //商家详情页

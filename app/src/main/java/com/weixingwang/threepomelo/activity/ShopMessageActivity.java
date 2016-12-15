@@ -61,6 +61,7 @@ public class ShopMessageActivity extends BaseActivity  {
         findViewById(R.id.lin_shop_details_have_shopping).setOnClickListener(this);
         findViewById(R.id.lin_shop_details_dianpu).setOnClickListener(this);
         findViewById(R.id.btn_plus_shopbus).setOnClickListener(this);
+        findViewById(R.id.shop_message_now_shopping).setOnClickListener(this);
         viewPager.addOnPageChangeListener(this);
     }
 
@@ -76,6 +77,9 @@ public class ShopMessageActivity extends BaseActivity  {
                 break;
             case R.id.btn_plus_shopbus :
                 ToastUtils.toast(this,"待做...........");
+                break;
+            case R.id.shop_message_now_shopping :
+                startActivity(new Intent(ShopMessageActivity.this,SureMyOrderActivity.class));
                 break;
             default:
                 super.onClick(v);

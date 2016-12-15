@@ -11,62 +11,77 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.weixingwang.threepomelo.view.CircleImageView
+                android:id="@+id/iv_account_my_icon"
+                android:layout_marginTop="20dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/ic_launcher" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:id="@+id/iv_account_up_icon"
+                android:clickable="true"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
                 android:src="@drawable/personalcenter_accountmanagement_uploadavatar" />
 
             <LinearLayout
+                android:layout_marginLeft="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
+                    android:textSize="@dimen/text_size_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="你的姓名："
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/account_tv_name"
+                    android:textSize="@dimen/text_size_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="李敏"
+                    android:text=""
                     android:textColor="@color/black" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginLeft="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
+                    android:textSize="@dimen/text_size_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="您的号码:"
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/account_tv_phone"
+                    android:textSize="@dimen/text_size_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="189132873333"
+                    android:text=""
                     android:textColor="@color/black" />
             </LinearLayout>
 
-            <EditText
+            <TextView
+                android:id="@+id/account_new_provice"
+                android:clickable="true"
+                android:textSize="@dimen/text_size_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -75,7 +90,10 @@
                 android:hint="-省份-"
                 android:padding="10dp" />
 
-            <EditText
+            <TextView
+                android:id="@+id/account_new_city"
+                android:clickable="true"
+                android:textSize="@dimen/text_size_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -84,7 +102,10 @@
                 android:hint="-城市-"
                 android:padding="10dp" />
 
-            <EditText
+            <TextView
+                android:id="@+id/account_new_area"
+                android:clickable="true"
+                android:textSize="@dimen/text_size_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -94,6 +115,8 @@
                 android:padding="10dp" />
 
             <TextView
+                android:id="@+id/account_revise_password"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -104,16 +127,21 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/account_revise_ok"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/productreviews_confirm_button"
                 android:gravity="center"
                 android:text="确认"
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/account_revise_cancel"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
