@@ -1,5 +1,6 @@
 package com.weixingwang.threepomelo.frament;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -16,6 +17,7 @@ import com.weixingwang.threepomelo.bean.MyOrderBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
+import com.weixingwang.threepomelo.view.MyScrollView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +30,7 @@ public class MyOrderFragment extends BaseFragment {
     public static final int REQUEST_SECOND=1;
     private TextView tv_result;
     private TextView lei_ji_xiao_fei;
+    private MyScrollView sw;
     @Override
     protected int getLayoutId() {
         return R.layout.my_order_frament_layout;
@@ -35,15 +38,17 @@ public class MyOrderFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         //token值的获取
-    //String token = ShearPreferenceUtils.getToken(getActivity());
-
-        setTitle("我的订单");
+       // String token = ShearPreferenceUtils.getToken(getActivity());
+      //uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==
         rcv = (RecyclerView)view.findViewById(R.id.re);
         lei_ji_xiao_fei= (TextView) view.findViewById(R.id.lei_ji_xiao_fei);
-        //Recyclerview线性排列
-        rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));//从零开始往下
+        SwipeRefreshLayout swrf= (SwipeRefreshLayout) view.findViewById(R.id.home_fragment_swf);
+        sw = (MyScrollView) view.findViewById(R.id.home_fragment_msw);
+        setSwColor(swrf);
+        isShowArea(true);
+        isShowSearch(true);
+        isReflash(sw);
         setTitle("我的订单");
-
         OkHttpUtils.get(UrlUtils.MyOrder_Url,"uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==", MyOrderBean.class, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
@@ -78,7 +83,6 @@ public class MyOrderFragment extends BaseFragment {
                     Toast.makeText(getActivity(),"",Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void error(Exception e) {
                 Toast.makeText(getActivity(),"网络错误，请重新请求",Toast.LENGTH_LONG).show();
@@ -97,12 +101,10 @@ public class MyOrderFragment extends BaseFragment {
                 adapter.notifyDataSetChanged();
             }
         });
-        rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));//从零开始往下
+        //Recyclerview线性排列,从零开始往下
+        rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcv.setAdapter(adapter);
     }
-
-
-
     @Override
     protected void initData() {
 

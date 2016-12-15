@@ -47,10 +47,22 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/re"
-    android:overScrollMode="never"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-</android.support.v7.widget.RecyclerView>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/home_fragment_swf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.weixingwang.threepomelo.view.MyScrollView
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:id="@+id/home_fragment_msw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+           android:id="@+id/re"
+           android:overScrollMode="never"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+       </android.support.v7.widget.RecyclerView>
+        </com.weixingwang.threepomelo.view.MyScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
