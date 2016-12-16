@@ -26,7 +26,7 @@ public class ShopOrderActivityAdapter extends RecyclerView.Adapter<ShopOrderActi
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflate = View.inflate(context, R.layout.item_shop_order_layout, null);
+        View inflate = View.inflate(context,R.layout.item_shop_order_layout, null);
         parent.addView(inflate);
         return new MyHolder(inflate);
     }

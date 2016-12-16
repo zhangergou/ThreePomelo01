@@ -39,14 +39,20 @@ public class AddressUtils {
             //如果是Network
             locationProvider = LocationManager.NETWORK_PROVIDER;
         }
-
+        if (providers.contains(LocationManager.GPS_PROVIDER)) {
+            //如果是Network
+            locationProvider = LocationManager.GPS_PROVIDER;
+        }
+        if (providers.contains(LocationManager.PASSIVE_PROVIDER)) {
+            //如果是Network
+            locationProvider = LocationManager.PASSIVE_PROVIDER;
+        }
         Location location = locationManager.getLastKnownLocation(locationProvider);
         if (location != null) {
             lon = location.getLongitude() + "";
             lat = location.getLatitude() + "";
         }
         LocationListener locationListener = new LocationListener() {
-
 
             @Override
             public void onLocationChanged(Location location) {

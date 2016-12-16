@@ -43,7 +43,8 @@ public class ShplashActivity extends BaseActivity {
                                 startActivity(new Intent(ShplashActivity.this,MainActivity.class));
                                 finish();
                             }else {
-                                ToastUtils.toast(ShplashActivity.this,bean.getError_msg());
+                                startActivity(new Intent(ShplashActivity.this,LoginActivity.class));
+                                finish();
                             }
                         }else {
                             noData();
