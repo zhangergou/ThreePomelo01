@@ -96,7 +96,6 @@ public class HomeFragment extends BaseFragment {
         refrush(swrf);
         linArea = isShowArea(true);
         isShowSearch(true);
-
         initPopuw();
     }
 

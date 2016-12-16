@@ -31,6 +31,7 @@ public class MyOrderFragment extends BaseFragment {
     public static final int REQUEST_SECOND=1;
     private TextView tv_result;
     private TextView lei_ji_xiao_fei;
+    private MyScrollView sw;
     @Override
     protected int getLayoutId() {
         return R.layout.my_order_frament_layout;
@@ -105,9 +106,9 @@ public class MyOrderFragment extends BaseFragment {
     }
     @Override
     protected void initData() {
+
     }
     @Override
     protected void initLisener() {
     }
-
 }
