@@ -28,10 +28,8 @@ public class MyOrderFragment extends BaseFragment {
     private ArrayList<MyOrderBean.OrderListBean> list = new ArrayList<>();
     private HashMap<Integer,Boolean> map=new HashMap<Integer,Boolean>();
     private MyOrderAdapter adapter;
-    public static final int REQUEST_SECOND=1;
-    private TextView tv_result;
     private TextView lei_ji_xiao_fei;
-    private MyScrollView sw;
+   // private MyScrollView sw;
     @Override
     protected int getLayoutId() {
         return R.layout.my_order_frament_layout;
@@ -43,11 +41,14 @@ public class MyOrderFragment extends BaseFragment {
       //uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==
         rcv = (RecyclerView)view.findViewById(R.id.re);
         lei_ji_xiao_fei= (TextView) view.findViewById(R.id.lei_ji_xiao_fei);
+        //下拉刷新，上拉加载
         PullToRefreshLayout swrf= (PullToRefreshLayout) view.findViewById(R.id.home_fragment_swf);
         isShowArea(true);
         isShowSearch(true);
-        setTitle("我的订单");
         refrush(swrf);
+        //设置头部
+        setTitle("我的订单");
+        //网络请求
         OkHttpUtils.get(UrlUtils.MyOrder_Url,"uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==", MyOrderBean.class, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
@@ -89,10 +90,11 @@ public class MyOrderFragment extends BaseFragment {
         });
 
         //System.out.println(list.size()+"-----------");
+        //初始化适配器
         adapter = new MyOrderAdapter(getContext(), list, map);
         adapter.setClickListener(new MyOrderAdapter.One() {
-            private int postion;
 
+            private int postion;
             @Override
             public void setOne(int postion) {
                 this.postion = postion;
@@ -102,6 +104,7 @@ public class MyOrderFragment extends BaseFragment {
         });
         //Recyclerview线性排列,从零开始往下
         rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        //Recyclerview和适配器绑定
         rcv.setAdapter(adapter);
     }
     @Override

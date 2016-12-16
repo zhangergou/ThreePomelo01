@@ -8,6 +8,8 @@ import com.weixingwang.threepomelo.adapter.ShopOrderActivityAdapter;
 import com.weixingwang.threepomelo.bean.MyOrderBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
+
 import java.util.ArrayList;
 
 
@@ -22,7 +24,6 @@ public class ShopOrderActivity extends BaseActivity{
     protected int getLayoutId() {
         return R.layout.shop_order_layout;
     }
-
     @Override
     protected void initView() {
         recyclerview = (RecyclerView)findViewById(R.id.rcv);
