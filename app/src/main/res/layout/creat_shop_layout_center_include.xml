@@ -26,31 +26,36 @@
             android:gravity="center"
             android:orientation="horizontal"
             >
-            <EditText
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/creat_shop_et_lat"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="12456.3"
+               android:text=""
                 android:textSize="@dimen/text_size_three" />
             <View
                 android:background="@color/grayFour"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"/>
-            <EditText
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/creat_shop_et_lng"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="1254.36"
+                android:text=""
                 android:textSize="@dimen/text_size_three" />
         </LinearLayout>
         <ImageView
-
+            android:clickable="true"
+            android:id="@+id/iv_in_map"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -364,6 +364,8 @@
                            android:layout_height="wrap_content" />
                    </LinearLayout>
                    <ImageView
+                       android:id="@+id/iv_sure_shopping_now"
+                       android:clickable="true"
                        android:layout_toRightOf="@+id/ll"
                        android:src="@drawable/mall_icon_buyimmediately"
                        android:layout_width="wrap_content"

@@ -29,6 +29,7 @@ public class SureMyOrderActivity extends BaseActivity {
     @Override
     protected void initLisener() {
         findViewById(R.id.sure_ral_add_address).setOnClickListener(this);
+        findViewById(R.id.iv_sure_shopping_now).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +37,9 @@ public class SureMyOrderActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.sure_ral_add_address:
                 startActivity(new Intent(SureMyOrderActivity.this,AddAdressActivity.class));
+                break;
+            case R.id.iv_sure_shopping_now:
+                startActivity(new Intent(SureMyOrderActivity.this,PayActivity.class));
                 break;
             default:
                 super.onClick(v);

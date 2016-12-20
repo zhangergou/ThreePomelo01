@@ -28,9 +28,12 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
     private SwipeRefreshLayout sw;
     private MyScrollView scrollView;
     private ProgressDialog dialog;
+    @Nullable
+    private Bundle savedInstanceState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        this.savedInstanceState = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         initView();
@@ -41,7 +44,9 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
     protected abstract void initView();
     protected abstract void initData();
     protected abstract void initLisener();
-
+    public Bundle getB(){
+        return savedInstanceState;
+    }
     public void setTitle(String title){
         TextView titleName = (TextView) findViewById(R.id.tv_title_name);
         titleName.setText(title);

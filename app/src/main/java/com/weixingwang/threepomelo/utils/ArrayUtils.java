@@ -20,4 +20,5 @@ public class ArrayUtils {
     public static String[] sunFlowers={"商家向日葵","用户向日葵"};
     public static String[] prence={"6%激励","12%激励","24%激励"};
     public static String[] teams={"我的会员","直属商家"};
+    public static String[] shopingType={"6","12","24"};
 }

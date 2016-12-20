@@ -67,10 +67,38 @@ public class OkHttpUtils {
             Call call = okHttpClient.newCall(request);
             requestCall(callBack, call, clazz);
         }
+    }
+
+    //异步get有参
+    private void getP_A_S(String url, String token, Class<?> clazz, final CallBackUtils callBack,HashMap<String,String> prams) throws IOException {
+        FormBody.Builder builder = new FormBody.Builder();
+        if (prams != null) {
+            Set<Map.Entry<String, String>> entries = prams.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> entry = iterator.next();
+                String key = entry.getKey();
+                String value = entry.getValue();
+                builder.add(key, value);
+            }
+        }
+        if (!TextUtils.isEmpty(token)) {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .addHeader("Token", token)
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            requestCall(callBack, call, clazz);
+        } else {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            requestCall(callBack, call, clazz);
+        }
 
 
     }
-
     //异步post有参
     private void postP_A_D(String url, String token, Class<?> clazz, final CallBackUtils callback, HashMap<String, String> prams) throws IOException {
         FormBody.Builder builder = new FormBody.Builder();
@@ -263,6 +291,14 @@ public class OkHttpUtils {
         });
     }
 
+    //get有参请求
+    public static void get_Data(String url, String token, Class<?> clazz, CallBackUtils call,HashMap<String,String> prams) {
+        try {
+            getInstence().getP_A_S(url, token, clazz, call,prams);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     //无参请求
     public static void get(String url, String token, Class<?> clazz, CallBackUtils call) {
         try {

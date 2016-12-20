@@ -51,13 +51,29 @@ public class UrlUtils {
     public static String PERSEN_INFOR_REVERSE_Url =MAIN_Url+ "/Apiuser/save_information_revise";
     //商铺详情
     public static String SELLER_INFOR_Url = MAIN_Url+"/Apiftontend/shop_detail";
-//    //区域列表
-//    public static String ONLINE_SHOP_AREA_Url = "http://139.224.222.18:8080/Apipublic/ApiPmall/getarea";
-//    //商家详情页
-//    public static String SHOP_MESSAGE_Url = "http://139.224.222.18:8080/Apipublic/ApiPshop/shopdetail";
-//    //商品详情页
-//    public static String SHOP_GOODS_MESSAGE_Url = "http://139.224.222.18:8080/Apipublic/ApiPshop/goodsdetail";
-//    //我的订单
+   //获取商家的入驻信息
+    public static String SHOP_IN_INFOR_Url =MAIN_Url+ "/Apiuser/register_shop";
+    //获取商铺类型
+    public static String SHOP_TYPE_Url = MAIN_Url+"/Apiftontend/get_shop_type";
+    //商铺入驻
+    public static String SHOP_IN__UP_Url = MAIN_Url+"/Apiuser/save_register_shop";
+    //用户向日葵列表
+    public static String PERSON_SUN_Url =MAIN_Url+ "/Apiuser/user_heart_loaddata";
+    //商家向日葵列表
+    public static String SHOP_SUN_Url = MAIN_Url+"/Apiuser/shop_heart_loaddata";
+    //用户各系列向日葵总数
+    public static String TOTAL_SUN_Url = MAIN_Url+"/Apiuser/heart_count";
 //    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //用户向日葵列表
+//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
 }

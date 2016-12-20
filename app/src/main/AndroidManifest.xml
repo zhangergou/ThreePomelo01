@@ -23,6 +23,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter android:priority="0" >
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="geo" />
+            </intent-filter>
+            <!-- 您的发布产品中请不要使用这个 key !!! -->
+            <meta-data
+                android:name="TencentMapSDK"
+                android:value="EXLBZ-B7TH5-CTZIK-QNQFR-76OGO-GNFCS" />
         </activity>
         <!--登录-->
         <activity android:name=".activity.LoginActivity"
@@ -78,6 +87,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--商城订单->-->
         <activity android:name=".activity.ShopOrderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--收银台->-->
+        <activity android:name=".activity.PayActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--腾讯地图->-->
+        <activity android:name=".activity.TencentMapAvtivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 

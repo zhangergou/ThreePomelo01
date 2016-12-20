@@ -21,6 +21,8 @@
             android:src="@drawable/login_password" />
 
         <EditText
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_name"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +50,8 @@
             android:src="@drawable/businesssettled_icon_invitepeople" />
 
         <EditText
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_say_id"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +74,8 @@
         android:padding="10dp">
 
         <TextView
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -96,6 +102,8 @@
         android:padding="10dp">
 
         <TextView
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_tv_provice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -121,6 +129,8 @@
         android:padding="10dp">
 
         <TextView
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_tv_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -147,6 +157,8 @@
         android:padding="10dp">
 
         <TextView
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_tv_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -185,6 +197,8 @@
             android:src="@drawable/businesssettled_icon_address" />
 
         <EditText
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_address"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -194,7 +208,6 @@
             android:hint="请输入详细地址"
             android:textSize="@dimen/text_size_three" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -212,6 +225,36 @@
             android:src="@drawable/businessessettled_icon_phone" />
 
         <EditText
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_person_name"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入店铺负责人名称"
+            android:textSize="@dimen/text_size_three" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_inputbox"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/businessessettled_icon_phone" />
+
+        <EditText
+            android:textColor="@color/black"
+            android:id="@+id/creat_shop_et_phone"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -239,8 +282,9 @@
             android:src="@drawable/businessessettled_icon_time" />
 
         <EditText
+            android:textColor="@color/black"
             android:singleLine="true"
-            android:id="@+id/tv_login_name"
+            android:id="@+id/creat_shop_et_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

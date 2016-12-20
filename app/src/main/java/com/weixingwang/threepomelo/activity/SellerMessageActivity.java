@@ -9,11 +9,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.HomeFragmentPagerAdapter;
 import com.weixingwang.threepomelo.bean.LoginBean;
 import com.weixingwang.threepomelo.bean.SellerMessageBean;
+import com.weixingwang.threepomelo.utils.APPUtils;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
@@ -40,6 +42,9 @@ public class SellerMessageActivity extends BaseActivity {
     private TextView tvTime;
     private TextView tvSay;
     private RatingBar ratingBar;
+    private String log;
+    private String lat;
+    private String address;
 
     @Override
     protected int getLayoutId() {
@@ -88,6 +93,7 @@ public class SellerMessageActivity extends BaseActivity {
     protected void initLisener() {
         viewPager.addOnPageChangeListener(this);
         findViewById(R.id.iv_seller_message_call).setOnClickListener(this);
+        findViewById(R.id.iv_seller_message_go).setOnClickListener(this);
     }
 
     @Override
@@ -103,9 +109,28 @@ public class SellerMessageActivity extends BaseActivity {
             case R.id.iv_seller_message_call:
                 callPhone();
                 break;
+            case R.id.iv_seller_message_go:
+                callMap();
+                break;
             default:
                 super.onClick(v);
                 break;
+        }
+    }
+
+    private void callMap() {
+        if(APPUtils.isAvilible(this,"com.baidu.BaiduMap")||
+                APPUtils.isAvilible(this, "com.autonavi.minimap")||
+                APPUtils.isAvilible(this, "com.google.android.apps.maps")||
+                APPUtils.isAvilible( this,"com.tencent.map")){
+            Uri mUri = Uri.parse("geo:"+lat+","+log+"?"+"q="+address);
+            //android.intent.action.VIEW
+            String actionView = Intent.ACTION_VIEW;
+            Intent mIntent = new Intent(actionView,mUri);
+            startActivity(mIntent);
+        }else{
+            ToastUtils.toast(this, "手机还没有没有安装地图,请下载安装后导航...");
+            return;
         }
     }
 
@@ -152,7 +177,10 @@ public class SellerMessageActivity extends BaseActivity {
         if(!TextUtils.isEmpty(shop_detail.getShop_name())){
             tvSellerName.setText(shop_detail.getShop_name());
         }
-        if(!TextUtils.isEmpty(shop_detail.getAddress())||!TextUtils.isEmpty(shop_detail.getP_name())
+        if(!TextUtils.isEmpty(shop_detail.getAddress())){
+            address =shop_detail.getAddress();
+        }
+        if(!TextUtils.isEmpty(shop_detail.getP_name())
                 ||!TextUtils.isEmpty(shop_detail.getC_name())||!TextUtils.isEmpty(shop_detail.getAr_name())){
             tvAddress.setText(shop_detail.getP_name()+shop_detail.getC_name()+
                     shop_detail.getAr_name()+shop_detail.getAddress());
@@ -165,6 +193,12 @@ public class SellerMessageActivity extends BaseActivity {
         }
         if(!TextUtils.isEmpty(shop_detail.getDesc())){
             tvSay.setText(shop_detail.getDesc());
+        }
+        if(!TextUtils.isEmpty(shop_detail.getLat())){
+            lat=shop_detail.getLat();
+        }
+        if(!TextUtils.isEmpty(shop_detail.getLng())){
+            log=shop_detail.getLng();
         }
         ratingBar.setProgress(6);
 

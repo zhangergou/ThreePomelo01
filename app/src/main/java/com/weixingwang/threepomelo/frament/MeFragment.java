@@ -3,6 +3,7 @@ package com.weixingwang.threepomelo.frament;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +17,7 @@ import com.weixingwang.threepomelo.activity.MainActivity;
 import com.weixingwang.threepomelo.activity.MySunFlwoerActivity;
 import com.weixingwang.threepomelo.activity.MyTeamActivity;
 import com.weixingwang.threepomelo.activity.ShopOrderActivity;
+import com.weixingwang.threepomelo.bean.CreatShopInBean;
 import com.weixingwang.threepomelo.bean.PersonCenterBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
@@ -34,6 +36,9 @@ public class MeFragment extends BaseFragment {
     private TextView tvSunChildCount;
     private TextView tvSunCount;
     private TextView tvPu;
+    private ImageView ivIn;
+    private String status;
+
 
     @Override
     protected int getLayoutId() {
@@ -49,6 +54,7 @@ public class MeFragment extends BaseFragment {
         tvSunChildCount = (TextView) view.findViewById(R.id.me_frament_tv_sun_child_count);
         tvSunCount = (TextView) view.findViewById(R.id.me_frament_tv_sun_count);
         tvPu = (TextView) view.findViewById(R.id.me_frament_tv_putong);
+        ivIn = (ImageView) view.findViewById(R.id.iv_in_my_shop);
         setTitle("个人中心");
     }
 
@@ -96,7 +102,12 @@ public class MeFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.lin_creat_shop:
-                startActivity(new Intent(getActivity(),CreateShopActivity.class));
+                if(TextUtils.equals(status,"0")){
+                    startActivity(new Intent(getActivity(),CreateShopActivity.class));
+                }else{
+                    MainActivity.main.setSelectCount(2);
+                }
+
             break;
             case R.id.rla_my_account_mannger:
                 startActivity(new Intent(getActivity(), AccountManagerActivity.class));
@@ -128,38 +139,48 @@ public class MeFragment extends BaseFragment {
 
     public void setData(PersonCenterBean data) {
         PersonCenterBean.UserInfoEntity user_info = data.getUser_info();
-        if(!TextUtils.isEmpty(data.getSum_count()+"")){
-            tvSunCount.setText(data.getSum_count()+"");
+        if (!TextUtils.isEmpty(data.getSum_count() + "")) {
+            tvSunCount.setText(data.getSum_count() + "");
         }
-        if(!TextUtils.isEmpty(user_info.getRel_name())){
+        if (!TextUtils.isEmpty(user_info.getRel_name())) {
             tvName.setText(user_info.getRel_name());
         }
-        if(!TextUtils.isEmpty(user_info.getId())){
-            tvId.setText("(ID"+user_info.getId()+")");
+        if (!TextUtils.isEmpty(user_info.getId())) {
+            tvId.setText("(ID" + user_info.getId() + ")");
         }
-        if(!TextUtils.isEmpty(user_info.getIs_dl())){
-            if(TextUtils.equals(user_info.getIs_dl(),"1")){
+        if (!TextUtils.isEmpty(user_info.getIs_dl())) {
+            if (TextUtils.equals(user_info.getIs_dl(), "1")) {
                 tvPu.setText("普通用户");
             }
-            if(TextUtils.equals(user_info.getIs_dl(),"2")){
+            if (TextUtils.equals(user_info.getIs_dl(), "2")) {
                 tvPu.setText("服务商");
             }
-            if(TextUtils.equals(user_info.getIs_dl(),"3")){
+            if (TextUtils.equals(user_info.getIs_dl(), "3")) {
                 tvPu.setText("联合服务商");
             }
-            if(TextUtils.equals(user_info.getIs_dl(),"4")){
+            if (TextUtils.equals(user_info.getIs_dl(), "4")) {
                 tvPu.setText("市级代理");
             }
-            if(TextUtils.equals(user_info.getIs_dl(),"5")){
+            if (TextUtils.equals(user_info.getIs_dl(), "5")) {
                 tvPu.setText("省级代理");
             }
         }
-        if(!TextUtils.isEmpty(user_info.getIntegral())){
+        if (!TextUtils.isEmpty(user_info.getIntegral())) {
             tvSunChildCount.setText(user_info.getIntegral());
         }
-        if(!TextUtils.isEmpty(user_info.getFace())){
-            Glide.with(getActivity()).load(UrlUtils.MAIN_Url+"/face/"+user_info.getFace())
-                    .into(ivIcon);
+        if (!TextUtils.isEmpty(user_info.getShop_id())) {
+            status = user_info.getShop_id();
+            if (TextUtils.equals(status, "0")) {
+                ivIn.setImageResource(R.drawable.personalcenter_icons_merchant);
+
+            } else {
+                ivIn.setImageResource(R.drawable.personalcenter_icons_myshop);
+            }
+            if (!TextUtils.isEmpty(user_info.getFace())) {
+                Glide.with(getActivity()).load(UrlUtils.MAIN_Url + "/face/" + user_info.getFace())
+                        .into(ivIcon);
+            }
         }
+
     }
 }
