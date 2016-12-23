@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.weixingwang.threepomelo.activity.AccountManagerActivity;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
+import com.weixingwang.threepomelo.activity.MyShopDataActivity;
+import com.weixingwang.threepomelo.activity.MyShopOrderDataUpActivity;
 import com.weixingwang.threepomelo.activity.RegestActivity;
 
 import java.io.File;
@@ -170,6 +172,18 @@ public class CreamerAndAlbumUtils {
                 CreateShopActivity cp = (CreateShopActivity) context;
                 cp.startActivityForResult(intent, SELECT_PIC_BY_TACK_PHOTO);
                 break;
+            case 3:
+                AccountManagerActivity am = (AccountManagerActivity) context;
+                am.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
+            case 4:
+                MyShopDataActivity sd = (MyShopDataActivity) context;
+                sd.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
+            case 5:
+                MyShopOrderDataUpActivity mdu = (MyShopOrderDataUpActivity) context;
+                mdu.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
         }
 
     }
@@ -187,6 +201,14 @@ public class CreamerAndAlbumUtils {
             case 3:
                 AccountManagerActivity am = (AccountManagerActivity) context;
                 am.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
+            case 4:
+                MyShopDataActivity sd = (MyShopDataActivity) context;
+                sd.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
+            case 5:
+                MyShopOrderDataUpActivity mdu = (MyShopOrderDataUpActivity) context;
+                mdu.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
                 break;
         }
 
@@ -207,6 +229,14 @@ public class CreamerAndAlbumUtils {
                 AccountManagerActivity am = (AccountManagerActivity) context;
                 object = am.managedQuery(photoUri, proj, null, null, null);
                 break;
+            case 4:
+                MyShopDataActivity sd = (MyShopDataActivity) context;
+                object = sd.managedQuery(photoUri, proj, null, null, null);
+                break;
+            case 5:
+                MyShopOrderDataUpActivity mdu = (MyShopOrderDataUpActivity) context;
+                object = mdu.managedQuery(photoUri, proj, null, null, null);
+                break;
         }
         return object;
     }
@@ -217,15 +247,16 @@ public class CreamerAndAlbumUtils {
         String url = null;
         if (requestCode == SELECT_PIC_BY_PICK_PHOTO) { //从相册取图片，有些手机有异常情况，请注意
 
-            if (data == null) {
-                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
-                return null;
-            }
-            photoUri = data.getData();
+//            if (data == null) {
+//                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+//                return null;
+//            }
+//            photoUri = data.getData();
 
             if (photoUri == null) {
-                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
-                return null;
+//                Toast.makeText(context, "选择图片文件出错", Toast.LENGTH_LONG).show();
+//                return null;
+                photoUri=data.getData();
             }
         }
         String[] proj = {MediaStore.Images.Media.DATA};
@@ -243,23 +274,6 @@ public class CreamerAndAlbumUtils {
             actualimagecursor.close();
         }
         final String finalUrl = url;
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
-//                Bitmap comp = BitmapUtils.comp(bitmap);
-//                final Bitmap image = BitmapUtils.compressImage(comp);
-//                final byte[] bytes = BitmapUtils.getBitmapbyte(image);
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        File file = BytesToFileUtils.getFile(bytes, context.getFilesDir().getAbsolutePath(), iconName);
-//                        iv.setImageBitmap(image);
-//                        hashMap.put(iconName,file);
-//                    }
-//                });
-//            }
-//        }).start();
         Bitmap bitmap = BitmapUtils.getimageIcon(finalUrl);
         Bitmap comp = BitmapUtils.comp(bitmap);
         final Bitmap image = BitmapUtils.compressImage(comp);

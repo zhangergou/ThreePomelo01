@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@drawable/sunflower_foto_shop"
+        android:background="@drawable/sunflower_foto_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout

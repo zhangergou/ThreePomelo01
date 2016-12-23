@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.weixingwang.threepomelo.view.PullToRefreshLayout
+            android:id="@+id/pull_my_shop_order_up_mannger"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/refresh_head"/>
+            <com.weixingwang.threepomelo.view.MyScrollView
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyle_my_shop_order_up_mannger"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+
+            </com.weixingwang.threepomelo.view.MyScrollView>
+            <include layout="@layout/load_more"/>
+        </com.weixingwang.threepomelo.view.PullToRefreshLayout>
+        <ImageView
+            android:id="@+id/iv_my_shop_order_up_mannger_search"
+            android:clickable="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/mybusiness_ordersubmission_icons_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</LinearLayout>

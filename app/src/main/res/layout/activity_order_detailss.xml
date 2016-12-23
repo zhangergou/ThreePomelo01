@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <include layout="@layout/public_tatle_layout"/>
-    <ScrollView
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:overScrollMode="never"
         android:layout_height="wrap_content">
@@ -14,9 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-               android:padding="20dp"
+              android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="总金额："
@@ -25,6 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_total_money"
                     android:text="1280"
                     android:textSize="@dimen/text_size_three"
                     android:textColor="@color/black"
@@ -43,9 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"/>
             <LinearLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="应付款："
@@ -54,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_pay_money"
                     android:text="50.34"
                     android:textSize="@dimen/text_size_three"
                     android:textColor="@color/black"
@@ -68,13 +71,13 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <RelativeLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/tv"
@@ -84,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_order_count"
                     android:layout_toRightOf="@+id/tv"
                     android:text="2"
                     android:textSize="@dimen/text_size_three"
@@ -91,6 +95,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_order_infor"
+                    android:clickable="true"
+                    android:paddingLeft="30dp"
                     android:text="详情"
                     android:textColor="@color/blueTabText"
                     android:layout_alignParentRight="true"
@@ -99,56 +106,13 @@
                     android:layout_height="wrap_content" />
             </RelativeLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
+
             <LinearLayout
-                android:padding="20dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="大款支付宝账号："
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text=""
-                    android:textSize="@dimen/text_size_three"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <View
-                android:background="@color/grayThree"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <LinearLayout
-                android:padding="20dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="18923187483"
-                    android:textSize="@dimen/text_size_three"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:text="高工德"
-                    android:textSize="@dimen/text_size_three"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <View
-                android:background="@color/grayThree"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <LinearLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -165,21 +129,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <LinearLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_bank_name"
                     android:text="建行"
                     android:textSize="@dimen/text_size_three"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_bank_num"
                     android:layout_marginLeft="5dp"
                     android:text="62220217020440089845"
                     android:textSize="@dimen/text_size_three"
@@ -187,6 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_person_name"
                     android:layout_marginLeft="5dp"
                     android:text="李工海"
                     android:textSize="@dimen/text_size_three"
@@ -195,13 +162,13 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
            <LinearLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="状态:"
@@ -210,6 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_order_stutas"
                     android:text="待提交"
                     android:layout_marginLeft="10dp"
                     android:textSize="@dimen/text_size_three"
@@ -218,13 +186,13 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <LinearLayout
-                android:padding="20dp"
+               android:padding="10dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="上传时间："
@@ -233,6 +201,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_my_shop_order_infor_person_time"
                     android:layout_marginLeft="5dp"
                     android:text="2016-12-19 14:17:38"
                     android:textSize="@dimen/text_size_three"
@@ -241,16 +210,19 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <ImageView
+                android:id="@+id/iv_my_shop_order_infor_person_pic"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_launcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:clickable="true"
+                android:id="@+id/iv_my_shop_order_infor_up_pic"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:src="@drawable/mybusiness_submit_button"
@@ -258,7 +230,7 @@
                 android:layout_height="wrap_content" />
             <View
                 android:layout_marginTop="10dp"
-                android:background="@color/grayThree"
+                android:background="@color/graySeven"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <TextView
@@ -269,22 +241,41 @@
                 android:textSize="@dimen/text_size_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
+            <LinearLayout
                 android:layout_margin="10dp"
                 android:background="@drawable/edittext_shape"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
-            <ImageView
+                android:layout_height="100dp">
+                <EditText
+                    android:textSize="@dimen/text_size_three"
+                    android:textColor="@color/black"
+                    android:background="@null"
+                    android:id="@+id/tv_my_shop_order_infor_person_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/tv_my_shop_order_infor_ok"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center"
-                android:src="@drawable/mybusiness_button_submit"
-                android:layout_width="wrap_content"
+                android:background="@drawable/mybusiness_button_submit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <ImageView
+            <Button
+                android:visibility="gone"
+                android:id="@+id/tv_my_shop_order_infor_no"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:src="@drawable/mybusinesss_back_button"
-                android:layout_width="wrap_content"
+                android:background="@drawable/mybusinesss_back_button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </ScrollView>
+    </com.weixingwang.threepomelo.view.MyScrollView>
 </LinearLayout>

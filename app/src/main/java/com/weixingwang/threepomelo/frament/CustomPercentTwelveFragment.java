@@ -25,7 +25,10 @@ import java.util.List;
  */
 public class CustomPercentTwelveFragment extends BaseFragment {
     private RecyclerView recycl;
-    private int page=1;
+    private int page = 1;
+    private List<SunFlowerCountPersonBean.UserHeartListEntity> user_heart_list;
+    private List<SunFlowerCountPersonBean.UserHeartListEntity> list=new ArrayList<>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.custom_pencent_twelve_layout;
@@ -52,8 +55,8 @@ public class CustomPercentTwelveFragment extends BaseFragment {
 
     private void getData() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("tab_type", 2+"");
-        map.put("page", page+"");
+        map.put("tab_type", 2 + "");
+        map.put("page", page + "");
         OkHttpUtils.get(UrlUtils.PERSON_SUN_Url, ShearPreferenceUtils.getToken(getActivity()),
                 SunFlowerCountPersonBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
@@ -61,7 +64,8 @@ public class CustomPercentTwelveFragment extends BaseFragment {
                         if (obj != null) {
                             SunFlowerCountPersonBean bean = (SunFlowerCountPersonBean) obj;
                             if (bean.isSuccess()) {
-                                setShiAdapter(bean.getUser_heart_list());
+                                user_heart_list = bean.getUser_heart_list();
+                                setShiAdapter(user_heart_list);
                             } else {
                                 ToastUtils.toast(getActivity(), bean.getError_msg());
 
@@ -82,42 +86,29 @@ public class CustomPercentTwelveFragment extends BaseFragment {
     }
 
     private void setShiAdapter(List<SunFlowerCountPersonBean.UserHeartListEntity> bean) {
-        if(bean!=null&&bean.size()>0){
-            recycl.setAdapter(new CustomPercentTwelveFragmentRecyAdapter(getActivity(),recycl,bean,
-                    R.layout.fragment_costom_sunflower_percent_two_item,1));
+        list.addAll(bean);
+        if (list != null && list.size() > 0) {
+            recycl.setAdapter(new CustomPercentTwelveFragmentRecyAdapter(getActivity(), recycl, list,
+                    R.layout.fragment_costom_sunflower_percent_two_item, 1));
         }
     }
-
-    private void getTopData() {
-        OkHttpUtils.get(UrlUtils.TOTAL_SUN_Url, ShearPreferenceUtils.getToken(getActivity()),
-                TotalSunBean.class, new OkHttpUtils.CallBackUtils() {
-                    @Override
-                    public void sucess(Object obj) {
-                        if (obj != null) {
-                            TotalSunBean bean = (TotalSunBean) obj;
-                            if (bean.isSuccess()) {
-                                CustomSunFlwoerFragment.csf.setData("12系列",bean.getUser_count12()+"");
-                            } else {
-                                ToastUtils.toast(getActivity(), bean.getError_msg());
-
-                            }
-
-                        } else {
-                            noData();
-                        }
-
-                    }
-
-                    @Override
-                    public void error(Exception e) {
-                        netError();
-                    }
-                });
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        list.clear();
+        page=1;
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        getTopData();
+    public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+        if(user_heart_list.size()<20){
+            ToastUtils.toast(getActivity(),"已加载完毕!");
+        }else{
+            page++;
+            getData();
+        }
+        super.onLoadMore(pullToRefreshLayout);
     }
 }

@@ -8,6 +8,7 @@ import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.BasePagerAdapter;
 import com.weixingwang.threepomelo.adapter.MyFragmentPagerAdapter;
 import com.weixingwang.threepomelo.frament.ApplyTakeOutFragment;
+import com.weixingwang.threepomelo.frament.BankCardTakeFragment;
 import com.weixingwang.threepomelo.frament.MoneyLogFragment;
 import com.weixingwang.threepomelo.frament.TakeOutMoneyLogFragment;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
@@ -40,7 +41,7 @@ public class CofferManagerActivity extends BaseActivity{
     protected void initData() {
         list.add(new MoneyLogFragment());
         list.add(new TakeOutMoneyLogFragment());
-        list.add(new ApplyTakeOutFragment());
+        list.add(new BankCardTakeFragment());
         vp.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),vp,tab,
                 list, ArrayUtils.cofferManager));
     }

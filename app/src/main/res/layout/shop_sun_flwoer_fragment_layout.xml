@@ -13,15 +13,18 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView android:text="6系列"
+            <TextView
+                android:id="@+id/tv_shop_xi"
+                android:text="6系列"
                 android:textColor="@color/white"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_shop_sun_count"
                 android:layout_marginTop="10dp"
-                android:text="154"
+                android:text="0"
                 android:gravity="left"
                 android:layout_marginLeft="120dp"
                 android:textColor="@color/white"

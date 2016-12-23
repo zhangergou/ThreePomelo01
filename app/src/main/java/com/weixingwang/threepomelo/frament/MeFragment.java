@@ -14,6 +14,7 @@ import com.weixingwang.threepomelo.activity.CofferManagerActivity;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
 import com.weixingwang.threepomelo.activity.LoginActivity;
 import com.weixingwang.threepomelo.activity.MainActivity;
+import com.weixingwang.threepomelo.activity.MyShopActivity;
 import com.weixingwang.threepomelo.activity.MySunFlwoerActivity;
 import com.weixingwang.threepomelo.activity.MyTeamActivity;
 import com.weixingwang.threepomelo.activity.ShopOrderActivity;
@@ -105,8 +106,9 @@ public class MeFragment extends BaseFragment {
                 if(TextUtils.equals(status,"0")){
                     startActivity(new Intent(getActivity(),CreateShopActivity.class));
                 }else{
-                    MainActivity.main.setSelectCount(2);
+                    startActivity(new Intent(getActivity(),MyShopActivity.class));
                 }
+//                startActivity(new Intent(getActivity(),MyShopActivity.class));
 
             break;
             case R.id.rla_my_account_mannger:

@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.adapter.CoustomPercentSixFragmentRecyAdapter;
 import com.weixingwang.threepomelo.adapter.ShopPercentSixFragmentRecyAdapter;
+import com.weixingwang.threepomelo.bean.ShopSunFlowerBean;
 import com.weixingwang.threepomelo.bean.SunFlowerCountPersonBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
@@ -14,14 +16,17 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/12/12 0012.
  */
 public class PercentSixFragment extends BaseFragment {
     private RecyclerView recycl;
-    private ArrayList<String> list=new ArrayList<>();
     private int page=1;
+    private List<ShopSunFlowerBean.ShopHeartListEntity> shop_heart_list;
+    private List<ShopSunFlowerBean.ShopHeartListEntity> list=new ArrayList<>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.percent_six_layout;
@@ -37,13 +42,6 @@ public class PercentSixFragment extends BaseFragment {
     @Override
     protected void initData() {
         getData();
-
-
-        for (int i = 0; i < 20; i++) {
-            list.add("数据"+i);
-        }
-        recycl.setAdapter(new ShopPercentSixFragmentRecyAdapter(getActivity(),recycl,list,
-                R.layout.fragment_shop_sunflower_percent_one_item,1));
     }
 
     @Override
@@ -55,31 +53,59 @@ public class PercentSixFragment extends BaseFragment {
         HashMap<String, String> map = new HashMap<>();
         map.put("tab_type", 1+"");
         map.put("page", page+"");
-//        OkHttpUtils.get(UrlUtils.SHOP_SUN_Url, ShearPreferenceUtils.getToken(getActivity()),
-//                SunFlowerCountPersonBean.class, new OkHttpUtils.CallBackUtils() {
-//            @Override
-//            public void sucess(Object obj) {
-//                if (obj != null) {
-//                    SunFlowerCountPersonBean bean = (SunFlowerCountPersonBean) obj;
-//                    if (bean.isSuccess()) {
-//
-//                        setShiAdapter(bean.getUser_heart_list());
-//                    } else {
-//                        ToastUtils.toast(getActivity(), bean.getError_msg());
-//
-//                    }
-//
-//                } else {
-//                    noData();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void error(Exception e) {
-//                netError();
-//            }
-//        }, map);
+        OkHttpUtils.get(UrlUtils.SHOP_SUN_Url, ShearPreferenceUtils.getToken(getActivity()),
+                ShopSunFlowerBean.class, new OkHttpUtils.CallBackUtils() {
+            @Override
+            public void sucess(Object obj) {
+                if (obj != null) {
+                    ShopSunFlowerBean bean = (ShopSunFlowerBean) obj;
+                    if (bean.isSuccess()) {
+                        shop_heart_list = bean.getShop_heart_list();
+                        setShiAdapter(shop_heart_list);
+                    } else {
+                        ToastUtils.toast(getActivity(), bean.getError_msg());
 
+                    }
+
+                } else {
+                    noData();
+                }
+
+            }
+
+            @Override
+            public void error(Exception e) {
+                netError();
+            }
+        }, map);
+
+    }
+
+    public void setShiAdapter(List<ShopSunFlowerBean.ShopHeartListEntity> bean) {
+        list.addAll(bean);
+        if(list!=null&&list.size()>0){
+            recycl.setAdapter(new ShopPercentSixFragmentRecyAdapter(getActivity(),recycl,list,
+                    R.layout.fragment_shop_sunflower_percent_one_item,1));
+        }
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        list.clear();
+        page=1;
+        getData();
+        super.onRefresh(pullToRefreshLayout);
+    }
+
+    @Override
+    public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+        if(shop_heart_list.size()<20){
+            ToastUtils.toast(getActivity(),"已加载完毕!");
+        }else{
+            page++;
+            getData();
+        }
+        super.onLoadMore(pullToRefreshLayout);
     }
 }

@@ -8,7 +8,12 @@ import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.MyFragmentPagerAdapter;
+import com.weixingwang.threepomelo.bean.TotalSunBean;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
+import com.weixingwang.threepomelo.utils.OkHttpUtils;
+import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
+import com.weixingwang.threepomelo.utils.ToastUtils;
+import com.weixingwang.threepomelo.utils.UrlUtils;
 
 import java.util.ArrayList;
 
@@ -16,7 +21,6 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/12/12 0012.
  */
 public class CustomSunFlwoerFragment extends BaseFragment{
-    public static CustomSunFlwoerFragment csf;
     private ViewPager vp;
     private TabLayout tab;
     private ArrayList<Fragment> list=new ArrayList<>();
@@ -30,7 +34,7 @@ public class CustomSunFlwoerFragment extends BaseFragment{
 
     @Override
     protected void initView(View v) {
-        csf=this;
+
         vp = (ViewPager) v.findViewById(R.id.custom_sunflwoer_vp);
         tab = (TabLayout) v.findViewById(R.id.custom_sunflwoer_tab);
         tvXi = (TextView) v.findViewById(R.id.tv_coust_xishu);
@@ -39,11 +43,13 @@ public class CustomSunFlwoerFragment extends BaseFragment{
 
     @Override
     protected void initData() {
+
         list.add(new CustomPercentSixFragment());
         list.add(new CustomPercentTwelveFragment());
         list.add(new CustomPercentTwentyFourFragment());
         vp.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager(),vp,tab,
                 list, ArrayUtils.prence));
+        getTopData();
     }
 
     @Override
@@ -51,7 +57,66 @@ public class CustomSunFlwoerFragment extends BaseFragment{
 
     }
 
-    public void setData(String xi,String total){
+
+
+    private void getTopData() {
+        OkHttpUtils.get(UrlUtils.TOTAL_SUN_Url, ShearPreferenceUtils.getToken(getActivity()),
+                TotalSunBean.class, new OkHttpUtils.CallBackUtils() {
+                    @Override
+                    public void sucess(Object obj) {
+                        if (obj != null) {
+                            TotalSunBean bean = (TotalSunBean) obj;
+                            if (bean.isSuccess()) {
+                                putData(bean);
+                                setData("6 系列",bean.getUser_count6());
+                            } else {
+                                ToastUtils.toast(getActivity(), bean.getError_msg());
+
+                            }
+
+                        } else {
+                            noData();
+                        }
+
+                    }
+
+                    @Override
+                    public void error(Exception e) {
+                        netError();
+                    }
+                });
+    }
+
+    private void putData(final TotalSunBean bean) {
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if(position==0){
+                    setData("6 系列",bean.getUser_count6());
+                }
+                if(position==1){
+                    setData("12系列",bean.getUser_count12());
+                }
+                if(position==2){
+                    setData("24系列",bean.getUser_count24());
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+
+
+    private void setData(String xi,String total){
         tvXi.setText(xi);
         tvTotal.setText(total);
     }

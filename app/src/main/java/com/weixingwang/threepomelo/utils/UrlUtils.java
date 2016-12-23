@@ -63,17 +63,44 @@ public class UrlUtils {
     public static String SHOP_SUN_Url = MAIN_Url+"/Apiuser/shop_heart_loaddata";
     //用户各系列向日葵总数
     public static String TOTAL_SUN_Url = MAIN_Url+"/Apiuser/heart_count";
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
-    //用户向日葵列表
-//    public static String SHOP_MY_ORDER_Url = "http://139.224.222.18:8080/Apiuser/Orderinfo/orderlist";
+    //我的团队——我的会员 列表
+    public static String TEAM_VIP_Url = MAIN_Url+"/Apiuser/my_team_user";
+    //我的团队——直属商家 列表
+    public static String TEAM_SHOP_Url = MAIN_Url+"/Apiuser/my_team_shop";
+    //我的团队——二级商家 列表
+    public static String TEAM_ER_SHOP_Url = MAIN_Url+"/Apiuser/my_team_shop2";
+    //资金日志列表
+    public static String MONEY_LOG_Url = MAIN_Url+"/Apiuser/money_log_list_loaddata";
+    //提现日志列表
+    public static String TAKE_MONEY_LOG_Url =MAIN_Url+ "/Apiuser/list_withdraw_loaddata";
+    //获取上一次提现信息
+    public static String GET_TAKE_MONEY_INFOR_Url = MAIN_Url+"/Apiuser/withdraw";
+    //提现
+    public static String TAKE_MONEY_Url = MAIN_Url+"/Apiuser/save_withdraw";
+    //提现手机验证码
+    public static String TAKE_MONEY_CODE_Url = MAIN_Url+"/Apiuser/sendsms";
+    //收益列表
+    public static String ALL_IN_Url = MAIN_Url+"/Apiuser/my_income_loaddata";
+    //我的商铺
+    public static String MY_SHOP_Url = MAIN_Url+"/Apishop/shop_info";
+    //我的商铺--订单管理列表
+    public static String MY_SHOP_ORDER_Url = MAIN_Url+"/Apishop/list_orders_loaddata";
+    //我的商铺--创建订单
+    public static String MY_SHOP_ORDER_CREAT_Url = MAIN_Url+"/Apishop/save_order";
+    //我的商铺--订单详情列表
+    public static String MY_SHOP_ORDER_DATA_LIST_Url = MAIN_Url+"/Apishop/list_order_audit_loaddata";
+    //我的商铺--订单详情
+    public static String MY_SHOP_ORDER_DATA_Url = MAIN_Url+"/Apishop/order_detail";
+    //我的商铺--订单管理--删除订单
+    public static String MY_SHOP_ORDER_DELETE_Url = MAIN_Url+"/Apishop/del_order";
+    //我的商铺--修改商铺信息
+    public static String XIU_GAI_Url = MAIN_Url+"/Apishop/save_shop_info";
+    //我的商铺--提交主订单
+    public static String TI_JIAO_ORDER_Url = MAIN_Url+"/Apishop/tijiao_order";
+    //首页轮播图
+    public static String HOME_LUN_Url = MAIN_Url+"/Apiftontend/get_turns_imgs";
+//    //我的商铺--主订单详情
+//    public static String ORDER_INFOR_Url = MAIN_Url+"/Apishop/order_detail";
+//    //我的商铺--主订单详情
+//    public static String ORDER_INFOR_Url = MAIN_Url+"/Apishop/order_detail";
 }

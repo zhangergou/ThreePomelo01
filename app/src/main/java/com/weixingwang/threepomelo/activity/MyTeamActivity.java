@@ -10,6 +10,7 @@ import com.weixingwang.threepomelo.frament.ApplyTakeOutFragment;
 import com.weixingwang.threepomelo.frament.MoneyLogFragment;
 import com.weixingwang.threepomelo.frament.MyShopFragment;
 import com.weixingwang.threepomelo.frament.MyVIPFragment;
+import com.weixingwang.threepomelo.frament.SecondShopFragment;
 import com.weixingwang.threepomelo.frament.TakeOutMoneyLogFragment;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
 
@@ -39,6 +40,7 @@ public class MyTeamActivity extends BaseActivity{
     protected void initData() {
         list.add(new MyVIPFragment());
         list.add(new MyShopFragment());
+        list.add(new SecondShopFragment());
         vp.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),vp,tab,
                 list, ArrayUtils.teams));
     }

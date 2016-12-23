@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:id="@+id/create_shop_sw"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.weixingwang.threepomelo.view.CircleImageView
+                    android:id="@+id/xiu_gai_create_iv_log_icon_p"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/registered_avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/xiu_gai_creat_btn_up_log"
+                    android:textSize="@dimen/text_size_four"
+                    android:textColor="@color/white"
+                    android:text="上传Log"
+                    android:paddingLeft="25dp"
+                    android:background="@drawable/registration_upload"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp" />
+                <include layout="@layout/xiu_gaicreat_shop_area_btn_include"/>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/businesssettledin_icon_map" />
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/login_inputbox"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:textColor="@color/black"
+                            android:id="@+id/xiu_gai_creat_shop_et_lat"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:text=""
+                            android:textSize="@dimen/text_size_three" />
+                        <View
+                            android:background="@color/grayFour"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"/>
+                        <TextView
+                            android:textColor="@color/black"
+                            android:id="@+id/xiu_gai_creat_shop_et_lng"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:text=""
+                            android:textSize="@dimen/text_size_three" />
+                    </LinearLayout>
+                    <ImageView
+                        android:clickable="true"
+                        android:id="@+id/xiu_gai_iv_in_map"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/businesssettledin_button_map" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:textColor="@color/grayThree"
+                            android:id="@+id/xiu_gai_creat_shop_et_shopping_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/text_size_three" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/login_inputbox"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <EditText
+                            android:textColor="@color/black"
+                            android:id="@+id/xiu_gai_creat_shop_et_shop_say"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入商家简介"
+                            android:textSize="@dimen/text_size_three" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:id="@+id/xiu_gai_lin_cread_shop_up_image"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+                        <ImageView
+                            android:src="@drawable/businesssettled_button_picture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textColor="@color/blueTabText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:text="上传店铺图片"
+                            android:textSize="@dimen/text_size_three" />
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                    android:overScrollMode="never"
+                    android:layout_margin="10dp"
+                    android:id="@+id/xiu_gai_rv_cread_shop_up_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/xiu_gai_btn_create_shop_up"
+                        android:background="@drawable/registration_button"
+                        android:text="提交"
+                        android:textColor="@color/white"
+                        android:layout_margin="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/xiu_gai_btn_create_shop_cancel"
+                        android:background="@drawable/textview_dialog_btn_shape_press"
+                        android:text="取消"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
+</LinearLayout>

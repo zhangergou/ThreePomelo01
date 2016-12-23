@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -308,6 +309,12 @@ public class HomeFragment extends BaseFragment {
     private void getShopData() {
         String latitude = AddressUtils.getLatitude(getActivity());
         String lontitude = AddressUtils.getLontitude(getActivity());
+        if(TextUtils.isEmpty(latitude)){
+            latitude=121.487160+"";
+        }
+        if(TextUtils.isEmpty(lontitude)){
+            lontitude=31.226601+"";
+        }
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
@@ -346,6 +353,12 @@ public class HomeFragment extends BaseFragment {
         codeT=code;
         String latitude = AddressUtils.getLatitude(getActivity());
         String lontitude = AddressUtils.getLontitude(getActivity());
+        if(TextUtils.isEmpty(latitude)){
+            latitude=121.487160+"";
+        }
+        if(TextUtils.isEmpty(lontitude)){
+            lontitude=31.226601+"";
+        }
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
@@ -409,5 +422,11 @@ public class HomeFragment extends BaseFragment {
         pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         ToastUtils.toast(getActivity(),"店铺已加载完.");
 
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        AddressUtils.remo();
     }
 }

@@ -17,42 +17,43 @@
 
         <TextView
             android:id="@+id/tv_my_vip_name"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="吴芳芳"
             android:textColor="@color/grayTwo"
             android:textSize="16sp" />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/tv_my_vip_phone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="left"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="187326437262"
             android:textColor="@color/grayTwo"
             android:textSize="16sp" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="￥"
                 android:textColor="@color/blueTabText"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_my_vip_take_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="230"
                 android:textColor="@color/blueTabText"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 

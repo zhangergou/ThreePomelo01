@@ -13,4 +13,7 @@ public class ThreeAreaUtils {
     public static void getArea(Context context, ListView lv, List<String> list){
         lv.setAdapter(new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,list));
     }
+    public static void setStringArrayArea(Context context, ListView lv, String[] area){
+        lv.setAdapter(new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,area));
+    }
 }

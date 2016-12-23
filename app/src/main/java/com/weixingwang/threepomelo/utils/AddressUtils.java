@@ -1,13 +1,10 @@
 package com.weixingwang.threepomelo.utils;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 
 import java.util.List;
 
@@ -19,6 +16,8 @@ public class AddressUtils {
     private static String locationProvider;
     private static String lat = null;
     private static String lon = null;
+    private static LocationManager locationManager;
+    private static LocationListener locationListener;
 
     //经度
     public static String getLontitude(Context context) {
@@ -33,7 +32,7 @@ public class AddressUtils {
 
     private static String getLat(final int i, Context context) {
 
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
         if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
             //如果是Network
@@ -52,7 +51,7 @@ public class AddressUtils {
             lon = location.getLongitude() + "";
             lat = location.getLatitude() + "";
         }
-        LocationListener locationListener = new LocationListener() {
+        locationListener = new LocationListener() {
 
             @Override
             public void onLocationChanged(Location location) {
@@ -87,6 +86,8 @@ public class AddressUtils {
        }
     }
 
-
+    public static void remo(){
+        locationManager.removeUpdates(locationListener);
+    }
 
 }

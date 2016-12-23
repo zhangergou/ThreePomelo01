@@ -45,7 +45,8 @@ public class CoustomPercentSixFragmentRecyAdapter extends BaseRecyleAdapter {
             }
         }
         if(!TextUtils.isEmpty(bean.getReturn_integral())){
-            holder.tvCount.setText(bean.getReturn_integral());
+            double v = Double.parseDouble(bean.getReturn_integral());
+            holder.tvCount.setText(v/100+"");
         }
         if(!TextUtils.isEmpty(bean.getCdate())){
             holder.tvTime.setText(bean.getCdate());

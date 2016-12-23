@@ -21,6 +21,7 @@
             android:textSize="16sp"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_take_out_money_time"
             android:text="2016.12.4"
             android:gravity="center"
             android:textColor="@color/grayTwo"
@@ -33,17 +34,13 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_take_out_money_status"
                 android:text="查看详情"
                 android:gravity="center"
                 android:textColor="@color/blueTabText"
                 android:layout_width="wrap_content"
                 android:textSize="16sp"
                 android:layout_height="wrap_content" />
-            <View
-                android:layout_marginTop="18dp"
-                android:background="@color/blueTabText"
-                android:layout_width="65dp"
-                android:layout_height="1dp"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

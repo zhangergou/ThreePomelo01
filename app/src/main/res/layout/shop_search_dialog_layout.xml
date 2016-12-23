@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/textview_dialog_btn_selector"
+        android:orientation="horizontal"
+        android:layout_width="300dp"
+
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_search_start_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:hint="开始时间"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/graySeven"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/et_search_end_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three"
+            android:singleLine="true"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:hint="结束时间"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_dialog_btn_selector"
+        android:orientation="horizontal"
+        android:layout_width="300dp"
+
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_search_person_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_three"
+            android:singleLine="true"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:hint="客户(姓名,电话)"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:clickable="true"
+        android:id="@+id/btn_search"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/mybusiness_button_submit"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+
+    <Button
+        android:clickable="true"
+        android:id="@+id/btn_cancel"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/mybusiness_button_cancel"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+</LinearLayout>

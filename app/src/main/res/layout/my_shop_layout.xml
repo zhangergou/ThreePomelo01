@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/graySeven"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/public_tatle_layout"/>
+    <com.weixingwang.threepomelo.view.MyScrollView
+        android:overScrollMode="never"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="150dp"
+                       android:background="@color/blueOne"
+                       >
+                       <LinearLayout
+                           android:layout_centerInParent="true"
+                           android:gravity="center"
+                           android:orientation="vertical"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent">
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content">
+                               <com.weixingwang.threepomelo.view.CircleImageView
+                                   android:layout_centerInParent="true"
+                                   android:src="@drawable/personalcenter_icon_avatar"
+                                   android:layout_width="80dp"
+                                   android:layout_height="80dp" />
+                               <com.weixingwang.threepomelo.view.CircleImageView
+                                   android:id="@+id/my_shop_icon"
+                                   android:layout_centerInParent="true"
+                                   android:src="@mipmap/img"
+                                   android:layout_width="70dp"
+                                   android:layout_height="70dp" />
+                           </RelativeLayout>
+                           <LinearLayout
+                               android:layout_marginTop="5dp"
+                               android:orientation="horizontal"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content">
+                               <TextView
+                                   android:id="@+id/my_shop_tv_name"
+                                   android:textColor="@color/white"
+                                   android:textSize="18sp"
+                                   android:text="李宁 "
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content" />
+                               <TextView
+                                   android:id="@+id/my_shop_tv_id"
+                                   android:textColor="@color/white"
+                                   android:textSize="16sp"
+                                   android:text="(ID:4533)"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content" />
+                           </LinearLayout>
+                           <TextView
+                               android:id="@+id/my_shop_tv_putong"
+                               android:layout_marginTop="5dp"
+                               android:textColor="@color/white"
+                               android:textSize="16sp"
+                               android:text="普通用户"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+                       </LinearLayout>
+                   </RelativeLayout>
+                   <View
+                       android:background="@color/graySeven"
+                       android:layout_width="match_parent"
+                       android:layout_height="1dp"/>
+                   <LinearLayout
+                       android:gravity="center"
+                       android:orientation="horizontal"
+                       android:layout_width="match_parent"
+                       android:layout_height="60dp">
+                       <LinearLayout
+                           android:background="@color/white"
+                           android:gravity="center"
+                           android:layout_weight="1"
+                           android:orientation="vertical"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+                           <TextView
+                               android:id="@+id/my_shop_tv_get_money"
+                               android:textColor="@color/blueTabText"
+                               android:textSize="16sp"
+                               android:text="123"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+                           <TextView
+
+                               android:textColor="@color/blueTabText"
+                               android:textSize="16sp"
+                               android:text="营业额"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+                       </LinearLayout>
+                       <View
+                           android:background="@color/graySeven"
+                           android:layout_width="1dp"
+                           android:layout_height="match_parent"/>
+                       <LinearLayout
+                           android:background="@color/white"
+                           android:gravity="center"
+                           android:layout_weight="1"
+                           android:orientation="vertical"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+                           <TextView
+                               android:id="@+id/my_shop_tv_sun_count"
+                               android:textColor="@color/blueTabText"
+                               android:textSize="16sp"
+                               android:text="123"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+                           <TextView
+
+                               android:textColor="@color/blueTabText"
+                               android:textSize="16sp"
+                               android:text="向日葵"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content" />
+                       </LinearLayout>
+
+                   </LinearLayout>
+               </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/graySeven" />
+                <LinearLayout
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:background="@drawable/textview_dialog_btn_selector"
+                    android:id="@+id/rla_my_shop_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+                    <TextView
+                        android:textColor="@color/grayThree"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="商家中心"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/myorders_icons_arrows" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/graySeven" />
+                <LinearLayout
+                    android:clickable="true"
+                    android:background="@drawable/textview_dialog_btn_selector"
+                    android:id="@+id/rla_my_shop_order_mannger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:textColor="@color/grayThree"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单管理"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/myorders_icons_arrows" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/graySeven" />
+
+                <LinearLayout
+                    android:id="@+id/vip_lin_my_shop_order_up"
+                    android:clickable="true"
+                    android:background="@drawable/textview_dialog_btn_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:textColor="@color/grayThree"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="订单提交"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/myorders_icons_arrows" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/graySeven" />
+                <LinearLayout
+                    android:id="@+id/vip_lin_my_shop_infor"
+                    android:clickable="true"
+                    android:background="@drawable/textview_dialog_btn_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:textColor="@color/grayThree"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="店铺资料"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/myorders_icons_arrows" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/graySeven" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </com.weixingwang.threepomelo.view.MyScrollView>
+</LinearLayout>

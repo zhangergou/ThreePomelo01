@@ -26,8 +26,17 @@ public class ShopOrderActivity extends BaseActivity{
     }
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.shop_order_swf);
+        setTitle("商城订单");
+        refrush(pull);
+        isShowBack(true);
         recyclerview = (RecyclerView)findViewById(R.id.rcv);
-        //Recyclerview线性排列,从零开始往下
+
+    }
+
+    @Override
+    protected void initData() {
+//Recyclerview线性排列,从零开始往下
         recyclerview.setLayoutManager(new LinearLayoutManager(ShopOrderActivity.this, LinearLayoutManager.VERTICAL, false));
         adapter=new ShopOrderActivityAdapter(ShopOrderActivity.this,list);
         OkHttpUtils.get(UrlUtils.MyOrder_Url,"uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==", MyOrderBean.class, new OkHttpUtils.CallBackUtils() {
@@ -51,11 +60,6 @@ public class ShopOrderActivity extends BaseActivity{
         });
 
         recyclerview.setAdapter(adapter);
-    }
-
-    @Override
-    protected void initData() {
-
     }
 
     @Override

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.weixingwang.threepomelo"
+        applicationId "com.jiangsuwxw.threepomelo"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

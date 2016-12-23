@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.ShoppingBusRecylAdapter;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -14,9 +15,8 @@ import java.util.ArrayList;
  */
 public class ShoppingBusActivity extends BaseActivity {
 
-    private SwipeRefreshLayout swrf;
+    private PullToRefreshLayout swrf;
     private RecyclerView recycV;
-    private MyScrollView sw;
     private ArrayList<String> list=new ArrayList<>();
     @Override
     protected int getLayoutId() {
@@ -25,13 +25,11 @@ public class ShoppingBusActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        swrf = (SwipeRefreshLayout) findViewById(R.id.shop_bus_swrf);
+        swrf = (PullToRefreshLayout) findViewById(R.id.shop_bus_swrf);
         recycV = (RecyclerView) findViewById(R.id.shop_bus_recycle);
-        sw = (MyScrollView) findViewById(R.id.shopping_bus_scrow);
         setTitle("购物车");
         isShowBack(true);
-        setSwColor(swrf);
-        isReflash(sw);
+        refrush(swrf);
 
     }
 
