@@ -10,7 +10,7 @@
             android:layout_height="wrap_content">
             <View
                 android:layout_width="match_parent"
-                android:background="@color/graySex"
+                android:background="@color/graySeven"
                 android:layout_height="10dp"/>
             <RelativeLayout
                 android:padding="10dp"
@@ -34,7 +34,7 @@
                         android:text="时间:"
                         android:gravity="center"
                         android:textSize="10sp"
-                        android:textColor="@color/tabTextColor"
+                        android:textColor="@color/grayThree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
@@ -42,14 +42,14 @@
                         android:gravity="center"
                         android:text="2016-10-21 14:35"
                         android:textSize="10sp"
-                        android:textColor="@color/tabTextColor"
+                        android:textColor="@color/grayThree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySeven"
                 android:layout_height="1dp"/>
             <LinearLayout
                 android:padding="10dp"
@@ -96,6 +96,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <TextView
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/tv1"
                     android:text="备注："
                     android:textSize="14sp"
@@ -106,7 +107,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySeven"
                 android:layout_height="1dp"/>
             <RelativeLayout
                 android:padding="10dp"
@@ -159,7 +160,7 @@
                             android:layout_marginLeft="5dp"
                             android:text="2016-10-21 14:35"
                             android:textColor="@color/tabTextColor"
-                            android:textSize="10sp"
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -178,10 +179,13 @@
                     />
             </RelativeLayout>
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySeven"
                 android:layout_height="1dp"/>
+            <!-- 店铺评价隐藏起来-->
             <RelativeLayout
+                android:visibility="gone"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -207,8 +211,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/ll"
+                <!--隐藏起来，第二版加上-->
+                    <LinearLayout
+                        android:id="@+id/ll"
+                        android:visibility="gone"
                     android:clickable="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
@@ -230,10 +236,13 @@
                 </LinearLayout>
             </RelativeLayout>
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:background="@color/graySex"
+                android:background="@color/graySeven"
                 android:layout_height="10dp"/>
+            <!--隐藏起来，第二版加上-->
             <LinearLayout
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -301,10 +310,13 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySeven"
                 android:layout_height="1dp"/>
+            <!--隐藏起来，第二版加上-->
             <RelativeLayout
+                android:visibility="gone"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -372,10 +384,12 @@
                     android:layout_alignParentEnd="true" />
             </RelativeLayout>
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:background="@color/grayFour"
                 android:layout_height="1dp"/>
             <RelativeLayout
+                android:visibility="gone"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -401,7 +415,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+                <!--隐藏起来，第二版加上-->
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lll"
                     android:clickable="true"
                     android:layout_centerVertical="true"
@@ -424,6 +440,7 @@
                 </LinearLayout>
             </RelativeLayout>
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:background="@color/grayFour"
                 android:layout_height="1dp"/>
@@ -480,7 +497,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:background="@color/grayFour"
+                android:background="@color/graySeven"
                 android:layout_height="1dp"/>
         </LinearLayout>
 </LinearLayout>
