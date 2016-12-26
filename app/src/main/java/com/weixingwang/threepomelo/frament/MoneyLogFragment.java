@@ -103,12 +103,14 @@ public class MoneyLogFragment extends BaseFragment {
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-        if(money_log_list.size()<20){
-            ToastUtils.toast(getActivity(),"加载完毕");
-        }else {
-            page++;
-            getData();
-        }
+       if(money_log_list!=null){
+           if(money_log_list.size()<20){
+               ToastUtils.toast(getActivity(),"加载完毕");
+           }else {
+               page++;
+               getData();
+           }
+       }
         super.onLoadMore(pullToRefreshLayout);
     }
 }

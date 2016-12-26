@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <include layout="@layout/public_tatle_layout"/>
+    <com.weixingwang.threepomelo.view.PullToRefreshLayout
+        android:id="@+id/account_my_pull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/refresh_head"/>
+
+
     <com.weixingwang.threepomelo.view.MyScrollView
         android:scrollbars="none"
         android:overScrollMode="never"
@@ -21,7 +28,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/registered_avatar" />
 
             <ImageView
                 android:id="@+id/iv_account_up_icon"
@@ -79,6 +86,7 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/account_new_provice"
                 android:clickable="true"
                 android:textSize="@dimen/text_size_three"
@@ -91,6 +99,7 @@
                 android:padding="10dp" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/account_new_city"
                 android:clickable="true"
                 android:textSize="@dimen/text_size_three"
@@ -103,6 +112,7 @@
                 android:padding="10dp" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/account_new_area"
                 android:clickable="true"
                 android:textSize="@dimen/text_size_three"
@@ -152,5 +162,6 @@
                 android:textColor="@color/white" />
         </LinearLayout>
     </com.weixingwang.threepomelo.view.MyScrollView>
-
+        <include layout="@layout/load_more"/>
+    </com.weixingwang.threepomelo.view.PullToRefreshLayout>
 </LinearLayout>

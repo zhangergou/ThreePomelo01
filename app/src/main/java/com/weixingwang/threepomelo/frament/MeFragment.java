@@ -25,6 +25,8 @@ import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.CircleImageView;
+import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 /**
  * Created by Administrator on 2016/11/29 0029.
@@ -49,6 +51,7 @@ public class MeFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         this.view = view;
+        PullToRefreshLayout pull = (PullToRefreshLayout) view.findViewById(R.id.me_fragment_pull);
         ivIcon = (CircleImageView) view.findViewById(R.id.me_fragment_icon);
         tvName = (TextView) view.findViewById(R.id.me_frament_tv_name);
         tvId = (TextView) view.findViewById(R.id.me_frament_tv_id);
@@ -57,17 +60,22 @@ public class MeFragment extends BaseFragment {
         tvPu = (TextView) view.findViewById(R.id.me_frament_tv_putong);
         ivIn = (ImageView) view.findViewById(R.id.iv_in_my_shop);
         setTitle("个人中心");
+        refrush(pull);
+        closeLoadMore(true);
     }
 
     @Override
     protected void initData() {
+        showLoading();
         OkHttpUtils.get(UrlUtils.PERSEN_CENTER_Url, ShearPreferenceUtils.getToken(getActivity()),
                 PersonCenterBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if(obj!=null){
                         PersonCenterBean bean = (PersonCenterBean) obj;
                         if (bean.isSuccess()) {
+
                             setData(bean);
                         } else {
                             ToastUtils.toast(getActivity(), bean.getError_msg());
@@ -80,6 +88,7 @@ public class MeFragment extends BaseFragment {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 });
@@ -184,5 +193,13 @@ public class MeFragment extends BaseFragment {
             }
         }
 
+
     }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        initData();
+        super.onRefresh(pullToRefreshLayout);
+    }
+
 }

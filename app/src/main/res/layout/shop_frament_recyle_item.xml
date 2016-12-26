@@ -55,7 +55,7 @@
                             android:textColor="@color/grayThree"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:text="7.0km"
+                            android:text=""
                             android:textSize="14sp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -64,7 +64,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:textColor="@color/red"
+                        android:textColor="@color/redTwo"
                         android:layout_width="wrap_content"
                         android:text="纯手工打造，小温馨气质"
                         android:textSize="14sp"

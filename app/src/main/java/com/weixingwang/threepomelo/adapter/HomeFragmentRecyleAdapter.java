@@ -69,7 +69,8 @@ public class HomeFragmentRecyleAdapter extends BaseRecyleAdapter {
             holder.ivPercent.setImageResource(R.drawable.home_icon_24series);
         }
         if(!TextUtils.isEmpty(shop.getLogo())){
-            Glide.with(context).load(UrlUtils.getImgUrl+shop.getLogo());
+            Glide.with(context).load(UrlUtils.getImgUrl+shop.getLogo())
+            .into(holder.ivShopIcon);
         }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

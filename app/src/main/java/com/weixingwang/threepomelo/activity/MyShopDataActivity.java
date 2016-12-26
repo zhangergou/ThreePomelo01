@@ -31,6 +31,7 @@ import com.weixingwang.threepomelo.utils.ThreeAreaUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.CircleImageView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class MyShopDataActivity extends BaseActivity {
     private LinearLayout linCyte;
     private LinearLayout linQu;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.my_shop_data_layout;
@@ -96,7 +98,9 @@ public class MyShopDataActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ivLog = (CircleImageView) findViewById(R.id.xiu_gai_create_iv_log_icon_p);
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.create_shop_pull);
+        refrush(pull);
+        ivLog = (ImageView) findViewById(R.id.xiu_gai_create_iv_log_icon_p);
         tvShopName = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_name);
         tvAddress = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_address);
         tvName = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_person_name);
@@ -118,6 +122,7 @@ public class MyShopDataActivity extends BaseActivity {
 
         setTitle("商铺管理");
         isShowBack(true);
+        closeLoadMore(true);
     }
 
     @Override
@@ -296,10 +301,12 @@ public class MyShopDataActivity extends BaseActivity {
 //        }
 //    }
     private void getData() {
+        showLoading();
         OkHttpUtils.get(UrlUtils.SHOP_IN_INFOR_Url, ShearPreferenceUtils.getToken(this),
                 CreatShopInBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             CreatShopInBean bean = (CreatShopInBean) obj;
                             if (bean.isSuccess()) {
@@ -315,6 +322,7 @@ public class MyShopDataActivity extends BaseActivity {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 });
@@ -673,5 +681,11 @@ public class MyShopDataActivity extends BaseActivity {
                         netError();
                     }
                 },map);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 }

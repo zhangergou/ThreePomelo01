@@ -27,6 +27,7 @@ import com.weixingwang.threepomelo.utils.ThreeAreaUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.CircleImageView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -61,6 +62,8 @@ public class AccountManagerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.account_my_pull);
+        refrush(pull);
         ivCirIcon = (CircleImageView) findViewById(R.id.iv_account_my_icon);
         tvSheng = (TextView) findViewById(R.id.account_new_provice);
         tvShi = (TextView) findViewById(R.id.account_new_city);
@@ -69,6 +72,7 @@ public class AccountManagerActivity extends BaseActivity {
         tvPhone = (TextView) findViewById(R.id.account_tv_phone);
         setTitle("我的账户");
         isShowBack(true);
+        closeLoadMore(true);
     }
 
     @Override
@@ -78,10 +82,12 @@ public class AccountManagerActivity extends BaseActivity {
     }
 
     private void netWork() {
+        showLoading();
         OkHttpUtils.get(UrlUtils.PERSEN_INFOR_Url, ShearPreferenceUtils.getToken(AccountManagerActivity.this),
                 AccountMassageBean.class, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
+                closeLoading();
                 if (obj != null) {
                     AccountMassageBean bean = (AccountMassageBean) obj;
                     if (bean.isSuccess()) {
@@ -97,6 +103,7 @@ public class AccountManagerActivity extends BaseActivity {
 
             @Override
             public void error(Exception e) {
+                closeLoading();
                 netError();
             }
         });
@@ -109,6 +116,27 @@ public class AccountManagerActivity extends BaseActivity {
         }
         if(!TextUtils.isEmpty(user_info.getMobile())){
             tvPhone.setText(user_info.getMobile());
+        }
+        if(!TextUtils.isEmpty(user_info.getProvince_name())){
+
+            tvSheng.setText(user_info.getProvince_name());
+        }
+        if(!TextUtils.isEmpty(user_info.getProvince_code())){
+
+            sheng_code= user_info.getProvince_code();
+        }
+
+        if(!TextUtils.isEmpty(user_info.getCity_name())){
+            tvShi.setText(user_info.getCity_name());
+        }
+        if(!TextUtils.isEmpty(user_info.getCity_code())){
+            city_code= user_info.getCity_code();
+        }
+        if(!TextUtils.isEmpty(user_info.getArea_name())){
+            tvQu.setText(user_info.getArea_name());
+        }
+        if(!TextUtils.isEmpty(user_info.getArea_code())){
+           qu_code= user_info.getArea_code();
         }
         if(!TextUtils.isEmpty(user_info.getFace())){
             Glide.with(this).load(UrlUtils.MAIN_Url+user_info.getFace())
@@ -379,5 +407,11 @@ public class AccountManagerActivity extends BaseActivity {
                 netError();
             }
         }, map);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        netWork();
+        super.onRefresh(pullToRefreshLayout);
     }
 }

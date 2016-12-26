@@ -67,6 +67,7 @@ public class SetPasswordActivity extends BaseActivity{
             etTwo.setText("");
             return;
         }
+        showLoading();
         HashMap<String,String> hashMap=new HashMap<>();
         hashMap.put("mobile",mobile);
         hashMap.put("password",one);
@@ -76,6 +77,7 @@ public class SetPasswordActivity extends BaseActivity{
                 if(obj!=null){
                     LoginBean bean= (LoginBean) obj;
                     if(bean.isSuccess()){
+                        closeLoading();
                         if(activityType==1){
                             ToastUtils.toast(SetPasswordActivity.this,"密码重置成功");
                             finish();

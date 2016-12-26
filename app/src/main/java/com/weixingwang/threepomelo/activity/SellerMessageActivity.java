@@ -21,6 +21,7 @@ import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +54,8 @@ public class SellerMessageActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.seller_tv_use_pull);
+        refrush(pull);
         viewPager = (ViewPager) findViewById(R.id.seller_message_vp);
         linIndecitor = (LinearLayout) findViewById(R.id.seller_message_indcitor_lin);
         tvPhoneCode = (TextView) findViewById(R.id.seller_message_tv_phone_code);
@@ -63,6 +66,7 @@ public class SellerMessageActivity extends BaseActivity {
         ratingBar = (RatingBar) findViewById(R.id.seller_rb_start_count);
         setTitle("店铺详情");
         isShowBack(true);
+        closeLoadMore(true);
     }
 
     @Override
@@ -145,12 +149,14 @@ public class SellerMessageActivity extends BaseActivity {
     }
 
     private void getData() {
+        showLoading();
         HashMap<String, String> map = new HashMap<>();
         map.put("shop_id", shop_id);
         OkHttpUtils.get(UrlUtils.SELLER_INFOR_Url, ShearPreferenceUtils.getToken(SellerMessageActivity.this),
                 SellerMessageBean.class,new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             SellerMessageBean bean = (SellerMessageBean) obj;
                             if (bean.isSuccess()) {
@@ -166,6 +172,7 @@ public class SellerMessageActivity extends BaseActivity {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 }, map);
@@ -175,21 +182,19 @@ public class SellerMessageActivity extends BaseActivity {
         SellerMessageBean.ShopDetailEntity shop_detail = bean.getShop_detail();
 
         if(!TextUtils.isEmpty(shop_detail.getShop_name())){
+
             tvSellerName.setText(shop_detail.getShop_name());
         }
         if(!TextUtils.isEmpty(shop_detail.getAddress())){
             address =shop_detail.getAddress();
+            tvAddress.setText(shop_detail.getAddress());
         }
-        if(!TextUtils.isEmpty(shop_detail.getP_name())
-                ||!TextUtils.isEmpty(shop_detail.getC_name())||!TextUtils.isEmpty(shop_detail.getAr_name())){
-            tvAddress.setText(shop_detail.getP_name()+shop_detail.getC_name()+
-                    shop_detail.getAr_name()+shop_detail.getAddress());
-        }
+
         if(!TextUtils.isEmpty(shop_detail.getPhone())){
             tvPhoneCode.setText(shop_detail.getPhone());
         }
         if(!TextUtils.isEmpty(shop_detail.getBusiness_time())){
-            tvTime.setText("营业时间  "+shop_detail.getBusiness_time());
+            tvTime.setText(shop_detail.getBusiness_time());
         }
         if(!TextUtils.isEmpty(shop_detail.getDesc())){
             tvSay.setText(shop_detail.getDesc());
@@ -202,5 +207,11 @@ public class SellerMessageActivity extends BaseActivity {
         }
         ratingBar.setProgress(6);
 
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 }

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,11 +105,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     public void showLoading() {
-        dialog.show();
-    }
-
-    public void initDialog() {
         dialog = DialogUtils.showLoading(getActivity(), "加载中...");
+        dialog.show();
     }
 
     public void closeLoading() {
@@ -157,5 +155,19 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+    }
+
+
+    public void closeRefresh(boolean show){
+        if(show){
+            RelativeLayout re = (RelativeLayout) view.findViewById(R.id.head_view);
+            re.setVisibility(View.GONE);
+        }
+    }
+    public void closeLoadMore(boolean show){
+        if(show){
+            RelativeLayout load = (RelativeLayout) view.findViewById(R.id.loadmore_view);
+            load.setVisibility(View.GONE);
+        }
     }
 }

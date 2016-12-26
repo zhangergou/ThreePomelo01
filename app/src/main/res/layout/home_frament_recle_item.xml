@@ -24,6 +24,7 @@
                     android:layout_width="85dp"
                     android:layout_height="85dp">
                     <ImageView
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/img"
                         android:id="@+id/home_shop_iv"
                         android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
                             android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/home_shop_tv_km"
-                            android:textColor="@color/grayThree"
+                            android:textColor="@color/redTwo"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:text=""

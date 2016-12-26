@@ -104,12 +104,14 @@ public class PercentTwentyFourFragment extends BaseFragment {
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
-        if(shop_heart_list.size()<20){
-            ToastUtils.toast(getActivity(),"已加载完毕!");
-        }else{
-            page++;
-            getData();
-        }
+       if(shop_heart_list!=null){
+           if(shop_heart_list.size()<20){
+               ToastUtils.toast(getActivity(),"已加载完毕!");
+           }else{
+               page++;
+               getData();
+           }
+       }
         super.onLoadMore(pullToRefreshLayout);
     }
 }

@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,11 +82,8 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
     }
 
     public void showLoading() {
-        dialog.show();
-    }
-
-    public void initDialog(){
         dialog = DialogUtils.showLoading(this, "加载中...");
+        dialog.show();
     }
 
     public void closeLoading() {
@@ -117,5 +115,18 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+    }
+
+    public void closeRefresh(boolean show){
+        if(show){
+            RelativeLayout re = (RelativeLayout) findViewById(R.id.head_view);
+            re.setVisibility(View.GONE);
+        }
+    }
+    public void closeLoadMore(boolean show){
+        if(show){
+            RelativeLayout load = (RelativeLayout) findViewById(R.id.loadmore_view);
+            load.setVisibility(View.GONE);
+        }
     }
 }

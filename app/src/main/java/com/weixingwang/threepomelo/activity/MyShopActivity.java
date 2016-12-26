@@ -15,6 +15,7 @@ import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.CircleImageView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,8 @@ public class MyShopActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.my_shop_pull);
+        refrush(pull);
         ivLog = (CircleImageView) findViewById(R.id.my_shop_icon);
         tvShopName = (TextView) findViewById(R.id.my_shop_tv_name);
         tvShopId = (TextView) findViewById(R.id.my_shop_tv_id);
@@ -43,6 +46,7 @@ public class MyShopActivity extends BaseActivity {
          tvSunCount = (TextView) findViewById(R.id.my_shop_tv_sun_count);
         setTitle("我的店铺");
         isShowBack(true);
+        closeLoadMore(true);
     }
 
     @Override
@@ -78,6 +82,7 @@ public class MyShopActivity extends BaseActivity {
     }
 
     private void getData() {
+        showLoading();
 //        HashMap<String, String> map = new HashMap<>();
 //        map.put("page",page+"");
         OkHttpUtils.get(UrlUtils.MY_SHOP_Url, ShearPreferenceUtils.getToken(MyShopActivity.this),
@@ -85,6 +90,7 @@ public class MyShopActivity extends BaseActivity {
 
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             MyShopBean bean = (MyShopBean) obj;
                             if (bean.isSuccess()) {
@@ -101,6 +107,7 @@ public class MyShopActivity extends BaseActivity {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 });
@@ -170,5 +177,11 @@ public class MyShopActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 }

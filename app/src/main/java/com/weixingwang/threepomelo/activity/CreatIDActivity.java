@@ -124,7 +124,7 @@ public class CreatIDActivity extends BaseActivity {
             ToastUtils.toast(this, "输入正确的手机号");
             return;
         }
-
+        showLoading();
         HashMap<String,String> hashMap=new HashMap<>();
         hashMap.put("mobile",name);
         String url=UrlUtils.getCodeUrl;
@@ -135,8 +135,10 @@ public class CreatIDActivity extends BaseActivity {
                     @Override
                     public void sucess(Object obj) {
                         if(obj!=null){
+                            closeLoading();
                             GetCodeBean bean= (GetCodeBean) obj;
                             if(bean.isSuccess()){
+
                                 time.setVisibility(View.VISIBLE);
                                 handler.sendEmptyMessageDelayed(1,1000);
                                 ToastUtils.toast(CreatIDActivity.this,"获取成功");
@@ -148,10 +150,12 @@ public class CreatIDActivity extends BaseActivity {
                         }else {
                             ToastUtils.toast(CreatIDActivity.this,"请重新获取");
                         }
+
                     }
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         ToastUtils.toast(CreatIDActivity.this,"网络错误,请重新获取");
                     }
                 },hashMap);

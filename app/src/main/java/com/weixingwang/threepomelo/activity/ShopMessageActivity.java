@@ -73,7 +73,8 @@ public class ShopMessageActivity extends BaseActivity  {
                 startActivity(new Intent(ShopMessageActivity.this,ShoppingBusActivity.class));
             break;
             case R.id.lin_shop_details_dianpu :
-                startActivity(new Intent(ShopMessageActivity.this,SellerMessageActivity.class));
+                ToastUtils.toast(this,"待做...........");
+                //startActivity(new Intent(ShopMessageActivity.this,SellerMessageActivity.class));
                 break;
             case R.id.btn_plus_shopbus :
                 ToastUtils.toast(this,"待做...........");

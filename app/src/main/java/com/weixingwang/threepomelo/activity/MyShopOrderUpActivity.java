@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAdapter.OnClickItemView {
     private RecyclerView re;
-    private List<MyShopOrderUpBean.OrdersEntity> list=new ArrayList<>();
+    private List<MyShopOrderUpBean.OrdersEntity> list = new ArrayList<>();
     private MyShopOrderUpRecylAdapter recylAdapter;
     private int page = 1;
     private String s_date = "";
@@ -59,7 +59,7 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
 
     @Override
     protected void initData() {
-      getData();
+        getData();
     }
 
     @Override
@@ -69,10 +69,10 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_my_shop_order_up_mannger_search:
                 search();
-            break;
+                break;
             case R.id.btn_search:
                 searchData();
                 break;
@@ -95,12 +95,13 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
         dialog = DialogUtils.diaBottm(this, inflate, true);
         dialog.show();
     }
+
     @Override
     public void onItem(int postion) {
         MyShopOrderUpBean.OrdersEntity ordersEntity = list.get(postion);
         String id = ordersEntity.getId();
         Intent intent = new Intent(MyShopOrderUpActivity.this, MyShopOrderDataUpActivity.class);
-        intent.putExtra("order_id",id);
+        intent.putExtra("order_id", id);
         startActivity(intent);
     }
 
@@ -108,7 +109,7 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
         HashMap<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("keywords", keywords);
-        map.put("s_date",s_date);
+        map.put("s_date", s_date);
         map.put("e_date", e_date);
         OkHttpUtils.get(UrlUtils.MY_SHOP_ORDER_DATA_LIST_Url, ShearPreferenceUtils.getToken(MyShopOrderUpActivity.this),
                 MyShopOrderUpBean.class, new OkHttpUtils.CallBackUtils() {
@@ -134,14 +135,14 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
                     public void error(Exception e) {
                         netError();
                     }
-                },map);
+                }, map);
 
     }
 
     public void setData(List<MyShopOrderUpBean.OrdersEntity> data) {
 
-       list.addAll(data);
-        if(list!=null&&list.size()>0){
+        list.addAll(data);
+        if (list != null && list.size() > 0) {
             recylAdapter = new MyShopOrderUpRecylAdapter(MyShopOrderUpActivity.this, re,
                     list, R.layout.my_shop_order_up_re_item, 1);
             re.setAdapter(recylAdapter);
@@ -152,21 +153,21 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         list.clear();
-        page=1;
+        page = 1;
         getData();
         super.onRefresh(pullToRefreshLayout);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-       if(orders!=null){
-           if (orders.size() < 20) {
-               ToastUtils.toast(this, "已加载完毕");
-           } else {
-               page++;
-               getData();
-           }
-       }
+        if (orders != null) {
+            if (orders.size() < 20) {
+                ToastUtils.toast(this, "已加载完毕");
+            } else {
+                page++;
+                getData();
+            }
+        }
         super.onLoadMore(pullToRefreshLayout);
     }
 
@@ -174,35 +175,33 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
         String startTime = tvSearchStartTime.getText().toString().trim();
         String endTime = tvSearchEndTime.getText().toString().trim();
         String personN = tvSearchPerson.getText().toString().trim();
-        if(!TextUtils.isEmpty(personN)||!TextUtils.isEmpty(startTime)||!TextUtils.isEmpty(endTime)) {
-
-                if (!TextUtils.isEmpty(startTime)) {
-                    if (!TimeUtils.valiDateTimeWithLongFormat(startTime)) {
-                        ToastUtils.toast(this, "时间格式不正确,请重新输入!");
-                        tvSearchStartTime.setText("");
-                        return;
-                    } else {
-                        s_date = startTime;
-                    }
-                }
-                if (!TextUtils.isEmpty(personN)) {
-                    keywords = personN;
-                }
-                if (!TextUtils.isEmpty(endTime)) {
-                    if (!TimeUtils.valiDateTimeWithLongFormat(endTime)) {
-                        ToastUtils.toast(this, "时间格式不正确,请重新输入!");
-                        tvSearchStartTime.setText("");
-                        return;
-                    } else {
-                        s_date = endTime;
-                    }
-                    getData();
-                    dialog.dismiss();
-                } else {
-                    ToastUtils.toast(this, "搜索条件不能为空");
+        if (!TextUtils.isEmpty(personN) || !TextUtils.isEmpty(startTime) || !TextUtils.isEmpty(endTime)) {
+            if (!TextUtils.isEmpty(startTime)) {
+                if (!TimeUtils.valiDateTimeWithLongFormat(startTime)) {
+                    ToastUtils.toast(this, "时间格式不正确,请重新输入!");
+                    tvSearchStartTime.setText("");
                     return;
+                } else {
+                    s_date = startTime;
                 }
-
             }
+            if (!TextUtils.isEmpty(personN)) {
+                keywords = personN;
+            }
+            if (!TextUtils.isEmpty(endTime)) {
+                if (!TimeUtils.valiDateTimeWithLongFormat(endTime)) {
+                    ToastUtils.toast(this, "时间格式不正确,请重新输入!");
+                    tvSearchStartTime.setText("");
+                    return;
+                } else {
+                    s_date = endTime;
+                }
+            }
+            getData();
+            dialog.dismiss();
+        } else {
+            ToastUtils.toast(this, "搜索条件不能为空");
+            return;
         }
+    }
 }

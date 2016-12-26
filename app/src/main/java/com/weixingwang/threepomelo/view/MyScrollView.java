@@ -12,7 +12,7 @@ import com.weixingwang.threepomelo.interfac.Pullable;
 /**
  * Created by Administrator on 2016/10/6 0006.
  */
-public class MyScrollView extends ScrollView implements Pullable{
+public class MyScrollView extends ScrollView implements Pullable {
 
     private int downX;
     private int downY;
@@ -49,12 +49,16 @@ public class MyScrollView extends ScrollView implements Pullable{
         }
         return super.onInterceptTouchEvent(e);
     }
+
     @Override
     public boolean canPullDown() {
-        if (getScrollY() == 0)
-            return true;
-        else
-            return false;
+
+            if (getScrollY() == 0)
+                return true;
+            else
+                return false;
+
+
     }
 
     @Override
@@ -64,6 +68,7 @@ public class MyScrollView extends ScrollView implements Pullable{
             return true;
         else
             return false;
+
     }
 
 }

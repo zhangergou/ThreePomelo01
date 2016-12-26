@@ -102,12 +102,14 @@ public class TakeOutMoneyLogFragment extends BaseFragment {
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-        if(withdraw_list.size()<20){
-            ToastUtils.toast(getActivity(),"加载完毕");
-        }else {
-            page++;
-            getData();
-        }
+       if(withdraw_list!=null){
+           if(withdraw_list.size()<20){
+               ToastUtils.toast(getActivity(),"加载完毕");
+           }else {
+               page++;
+               getData();
+           }
+       }
         super.onLoadMore(pullToRefreshLayout);
     }
 }

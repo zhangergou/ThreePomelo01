@@ -20,13 +20,14 @@
             android:layout_height="wrap_content"
             android:src="@drawable/mybusiness_addorder_icon_phone"/>
         <EditText
+
             android:id="@+id/add_my_shop_order_et"
             android:background="@null"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/text_size_three"
-            android:textColor="@color/grayThree"
-            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入您的手机号/ID" />
     </LinearLayout>
@@ -50,8 +51,8 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/text_size_three"
-            android:textColor="@color/grayThree"
-            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="姓名" />
     </LinearLayout>
@@ -74,8 +75,8 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/text_size_three"
-            android:textColor="@color/grayThree"
-            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入金额" />
     </LinearLayout>

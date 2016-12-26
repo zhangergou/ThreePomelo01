@@ -102,12 +102,14 @@ public class MyAllInActivity extends BaseActivity{
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
-        if(my_income_list.size()<20){
-            ToastUtils.toast(MyAllInActivity.this,"已加载完毕!");
-        }else{
-            page++;
-            getData();
-        }
+       if(my_income_list!=null){
+           if(my_income_list.size()<20){
+               ToastUtils.toast(MyAllInActivity.this,"已加载完毕!");
+           }else{
+               page++;
+               getData();
+           }
+       }
         super.onLoadMore(pullToRefreshLayout);
     }
 }

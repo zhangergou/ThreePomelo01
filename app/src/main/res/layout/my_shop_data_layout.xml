@@ -3,6 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/public_tatle_layout"/>
+    <com.weixingwang.threepomelo.view.PullToRefreshLayout
+        android:id="@+id/create_shop_pull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/refresh_head"/>
+
     <com.weixingwang.threepomelo.view.MyScrollView
         android:id="@+id/create_shop_sw"
         android:scrollbars="none"
@@ -15,17 +21,19 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.weixingwang.threepomelo.view.CircleImageView
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/xiu_gai_create_iv_log_icon_p"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/registered_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
             <LinearLayout
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.weixingwang.threepomelo.view.CircleImageView
-                    android:id="@+id/xiu_gai_create_iv_log_icon_p"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/registered_avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
                 <Button
                     android:id="@+id/xiu_gai_creat_btn_up_log"
                     android:textSize="@dimen/text_size_four"
@@ -195,4 +203,6 @@
             </LinearLayout>
         </LinearLayout>
     </com.weixingwang.threepomelo.view.MyScrollView>
+        <include layout="@layout/load_more"/>
+    </com.weixingwang.threepomelo.view.PullToRefreshLayout>
 </LinearLayout>

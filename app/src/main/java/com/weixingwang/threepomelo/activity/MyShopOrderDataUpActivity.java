@@ -24,6 +24,7 @@ import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -69,6 +70,8 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.my_shop_order_infor_pull);
+        refrush(pull);
         tvTotalMoney = (TextView) findViewById(R.id.tv_my_shop_order_infor_total_money);
         tvPayMoney = (TextView) findViewById(R.id.tv_my_shop_order_infor_pay_money);
         tvOrderCount = (TextView) findViewById(R.id.tv_my_shop_order_infor_order_count);
@@ -82,6 +85,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
         ivPic = (ImageView) findViewById(R.id.iv_my_shop_order_infor_person_pic);
         setTitle("订单详情");
         isShowBack(true);
+        closeLoadMore(true);
     }
 
     @Override
@@ -108,6 +112,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
     }
 
     private void getData() {
+        showLoading();
         HashMap<String, String> map = new HashMap<>();
         map.put("order_id", order_id);
         OkHttpUtils.get(UrlUtils.MY_SHOP_ORDER_DATA_Url, ShearPreferenceUtils.getToken(MyShopOrderDataUpActivity.this),
@@ -115,6 +120,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
 
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             MyShopOrderBean bean = (MyShopOrderBean) obj;
                             if (bean.isSuccess()) {
@@ -132,6 +138,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 }, map);
@@ -343,5 +350,11 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
                         netError();
                     }
                 }, map);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 }

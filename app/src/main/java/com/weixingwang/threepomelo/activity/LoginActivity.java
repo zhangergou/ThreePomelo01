@@ -67,6 +67,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void comeIn(String name, String password) {
+        showLoading();
         HashMap<String,String> hashMap=new HashMap<>();
             hashMap.put("mobile",name);
             hashMap.put("password",password);
@@ -76,6 +77,7 @@ public class LoginActivity extends BaseActivity {
                 if(obj!=null){
                     LoginBean bean= (LoginBean) obj;
                     if(bean.isSuccess()){
+
                         ToastUtils.toast(LoginActivity.this,"登录成功");
                         ToastUtils.toast(LoginActivity.this,bean.getToken());
                         ShearPreferenceUtils.putToken(LoginActivity.this,bean.getToken());
@@ -87,10 +89,12 @@ public class LoginActivity extends BaseActivity {
                 }else {
                     ToastUtils.toast(LoginActivity.this,"没有数据");
                 }
+                closeLoading();
             }
 
             @Override
             public void error(Exception e) {
+                closeLoading();
                 ToastUtils.toast(LoginActivity.this,"网络错误,请重新请求...");
             }
         },hashMap);

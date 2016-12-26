@@ -101,12 +101,13 @@ public class MyVIPFragment extends BaseFragment {
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-
-        if(my_team_list.size()<20){
-            ToastUtils.toast(getActivity(),"已加载完毕!");
-        }else{
-            page++;
-            getData();
+        if(my_team_list!=null){
+            if(my_team_list.size()<20){
+                ToastUtils.toast(getActivity(),"已加载完毕!");
+            }else{
+                page++;
+                getData();
+            }
         }
         super.onLoadMore(pullToRefreshLayout);
     }

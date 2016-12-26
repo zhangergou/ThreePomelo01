@@ -14,12 +14,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.HomeFragmentPagerAdapter;
 import com.weixingwang.threepomelo.adapter.HomeFragmentRecyleAdapter;
+import com.weixingwang.threepomelo.bean.HomeLunBoBean;
 import com.weixingwang.threepomelo.bean.HomeShopListBean;
 import com.weixingwang.threepomelo.bean.HomeShopTypeBean;
 import com.weixingwang.threepomelo.bean.RegestGetQuBean;
@@ -64,10 +67,14 @@ public class HomeFragment extends BaseFragment {
             int currentItem = vp.getCurrentItem();
             if (currentItem == imageList.size() - 1) {
                 vp.setCurrentItem(0, false);
+                handler.sendEmptyMessageDelayed(1, 0);
+
             } else {
                 vp.setCurrentItem(currentItem + 1);
+                handler.sendEmptyMessageDelayed(1, 2000);
+
             }
-            handler.sendEmptyMessageDelayed(1, 2000);
+
         }
     };
     private View view;
@@ -112,32 +119,15 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        showLoading();
+        getLunData();
         getShopData();
-        for (int i = 0; i < 5; i++) {
-            ImageView imageView = new ImageView(getActivity());
-            imageView.setBackgroundColor(color[i]);
-            imageList.add(imageView);
-        }
-        vp.setAdapter(new HomeFragmentPagerAdapter(imageList));
-        for (int i = 0; i < imageList.size(); i++) {
-            ImageView imageView = new ImageView(getActivity());
-            imageView.setImageResource(R.drawable.indector_selector);
-            LinearLayout.LayoutParams prams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            prams.leftMargin = 10;
-            imageView.setLayoutParams(prams);
-            linIndc.addView(imageView);
-        }
-        linIndc.getChildAt(0).setSelected(true);
-
-        handler.sendEmptyMessageDelayed(1, 2000);
         initLisViewData();
 
     }
 
     @Override
     protected void initLisener() {
-        vp.addOnPageChangeListener(this);
         view.findViewById(R.id.lin_home_area).setOnClickListener(this);
     }
 
@@ -315,6 +305,7 @@ public class HomeFragment extends BaseFragment {
         if(TextUtils.isEmpty(lontitude)){
             lontitude=31.226601+"";
         }
+
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
@@ -326,6 +317,7 @@ public class HomeFragment extends BaseFragment {
                     HomeShopTypeBean bean = (HomeShopTypeBean) obj;
                     if (bean.isSuccess()) {
                        setViewPagerData(bean);
+                        closeLoading();
                     } else {
                         ToastUtils.toast(getActivity(), bean.getError_msg());
                     }
@@ -405,7 +397,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page=1;
+        handler.removeCallbacksAndMessages(null);
         shopList.clear();
+        getLunData();
         getShopData();
         super.onRefresh(pullToRefreshLayout);
     }
@@ -428,5 +422,60 @@ public class HomeFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         AddressUtils.remo();
+    }
+
+    private void getLunData() {
+        OkHttpUtils.get(UrlUtils.HOME_LUN_Url, ShearPreferenceUtils.getToken(getActivity()),
+                HomeLunBoBean.class, new OkHttpUtils.CallBackUtils() {
+                    @Override
+                    public void sucess(Object obj) {
+                        if (obj != null) {
+                            HomeLunBoBean bean = (HomeLunBoBean) obj;
+                            if (bean.isSuccess()) {
+
+                                setLun(bean.getImg_list());
+                            } else {
+                                ToastUtils.toast(getActivity(), bean.getError_msg());
+                            }
+                        } else {
+                            noData();
+                        }
+
+                    }
+
+                    @Override
+                    public void error(Exception e) {
+                        netError();
+                    }
+                });
+    }
+
+    private void setLun(List<HomeLunBoBean.ImgListEntity> img_list) {
+        imageList.clear();
+        if(img_list!=null&&img_list.size()>0){
+            img_list.add(0,img_list.get(0));
+            for (int i = 0; i < img_list.size(); i++) {
+                ImageView imageView = new ImageView(getActivity());
+                Glide.with(getActivity()).load(UrlUtils.MAIN_Url+"/"+img_list.get(i).getPath())
+                        .into(imageView);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageList.add(imageView);
+            }
+            vp.setAdapter(new HomeFragmentPagerAdapter(imageList));
+            linIndc.removeAllViews();
+            for (int i = 0; i < imageList.size(); i++) {
+                  ImageView imageView = new ImageView(getActivity());
+                  imageView.setImageResource(R.drawable.indector_selector);
+                  LinearLayout.LayoutParams prams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                          LinearLayout.LayoutParams.WRAP_CONTENT);
+                  prams.leftMargin = 10;
+                  imageView.setLayoutParams(prams);
+                  linIndc.addView(imageView);
+            }
+            linIndc.getChildAt(0).setVisibility(View.GONE);
+            linIndc.getChildAt(1).setSelected(true);
+            vp.addOnPageChangeListener(this);
+        }
+        handler.sendEmptyMessageDelayed(1, 2000);
     }
 }

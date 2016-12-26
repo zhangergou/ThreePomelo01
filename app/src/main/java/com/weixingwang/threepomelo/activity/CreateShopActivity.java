@@ -41,6 +41,7 @@ import com.weixingwang.threepomelo.utils.ThreeAreaUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
 import com.weixingwang.threepomelo.utils.UrlUtils;
 import com.weixingwang.threepomelo.view.MyScrollView;
+import com.weixingwang.threepomelo.view.PullToRefreshLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -111,6 +112,8 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
 
     @Override
     protected void initView() {
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.create_shop_pull);
+        refrush(pull);
         sw = (MyScrollView) findViewById(R.id.create_shop_sw);
         ivLog = (ImageView) findViewById(R.id.create_iv_log_icon);
         ivLicence = (ImageView) findViewById(R.id.create_iv_licence_icon);
@@ -141,9 +144,9 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
         etSgopSay = (EditText) findViewById(R.id.creat_shop_et_shop_say);
         etPersonName = (EditText) findViewById(R.id.creat_shop_et_person_name);
         tvShoppingType = (TextView) findViewById(R.id.creat_shop_et_shopping_type);
-//        exbv = (ExpandableListView) findViewById(R.id.cread_shop_expndble);
         setTitle("商家入驻");
         isShowBack(true);
+        closeLoadMore(true);
 
     }
 
@@ -348,13 +351,16 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
     }
 
     private void getData() {
+        showLoading();
         OkHttpUtils.get(UrlUtils.SHOP_IN_INFOR_Url, ShearPreferenceUtils.getToken(this),
                 CreatShopInBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             CreatShopInBean bean = (CreatShopInBean) obj;
                             if (bean.isSuccess()) {
+
                                 setData(bean);
                             } else {
                                 ToastUtils.toast(CreateShopActivity.this, bean.getError_msg());
@@ -368,6 +374,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
                     @Override
                     public void error(Exception e) {
                         netError();
+                        closeLoading();
                     }
                 });
     }
@@ -772,6 +779,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
 //            Map.Entry<String, File> next = iterator.next();
 //            ToastUtils.toast(this,next.getKey());
 //        }
+        showLoading();
         HashMap<String, String> map = new HashMap<>();
         map.put("shop_name", nameS);
         map.put("parent_flag", codeRecomm);
@@ -791,6 +799,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
                 LoginBean.class, putFile, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             LoginBean bean = (LoginBean) obj;
                             if (bean.isSuccess()) {
@@ -805,6 +814,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 }, map);
@@ -848,6 +858,12 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
                 netError();
             }
         }, map);
+    }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        getData();
+        super.onRefresh(pullToRefreshLayout);
     }
 }
 

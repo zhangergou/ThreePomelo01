@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/public_tatle_layout"/>
+<com.weixingwang.threepomelo.view.PullToRefreshLayout
+    android:id="@+id/seller_tv_use_pull"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/refresh_head"/>
 
     <com.weixingwang.threepomelo.view.MyScrollView
         android:scrollbars="none"
@@ -35,10 +40,12 @@
                        android:orientation="horizontal"
                        android:layout_height="20dp"/>
                </RelativeLayout>
-                <RelativeLayout
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:padding="10dp"
@@ -65,13 +72,13 @@
                     <ImageView
                         android:clickable="true"
                         android:id="@+id/iv_seller_message_go"
-                        android:layout_centerVertical="true"
+                        android:layout_gravity="bottom"
                         android:layout_marginRight="10dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="5dp"
                         android:src="@drawable/order_storedetails_idicon_tohere"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </RelativeLayout>
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:background="@color/graySeven"
@@ -84,25 +91,52 @@
                         android:orientation="vertical"
                         android:padding="10dp"
                         android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/seller_tv_address"
+                      <LinearLayout
+                          android:orientation="horizontal"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content">
+                          <TextView
+                              android:textColor="@color/black"
+                              android:layout_width="wrap_content"
+                              android:text="地址: "
+                              android:textSize="14sp"
+                              android:layout_height="wrap_content" />
+                          <TextView
+                              android:textColor="@color/black"
+                              android:id="@+id/seller_tv_address"
+                              android:layout_width="wrap_content"
+                              android:text=""
+                              android:textSize="14sp"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
-                            android:text=""
-                            android:textSize="14sp"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/seller_message_tv_phone_code"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:text="18168982720"
-                            android:textSize="14sp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/black"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:text="电话: "
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textColor="@color/black"
+                                android:id="@+id/seller_message_tv_phone_code"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:text=""
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
                     </LinearLayout>
                     <ImageView
                         android:clickable="true"
                         android:id="@+id/iv_seller_message_call"
-                        android:layout_marginRight="20dp"
+                        android:paddingRight="20dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/order_storedetails_idicon_phone"
@@ -115,7 +149,7 @@
                     android:layout_height="10dp"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="购买须知"
+                    android:text="营业时间"
                     android:textColor="@color/black"
                     android:padding="10dp"
                     android:textSize="14sp"
@@ -137,6 +171,7 @@
                     android:background="@color/graySeven"
                     android:layout_height="10dp"/>
                 <TextView
+
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:text="商家介绍"
@@ -144,10 +179,12 @@
                     android:textSize="14sp"
                     android:layout_height="wrap_content" />
                 <View
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:background="@color/graySeven"
                     android:layout_height="1dp"/>
                 <TextView
+                  android:layout_marginBottom="20dp"
                     android:id="@+id/seller_tv_seller_say"
                     android:layout_width="match_parent"
                     android:padding="10dp"
@@ -156,91 +193,99 @@
                     android:text=""
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/graySeven"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:padding="10dp"
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:text="用户评价"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/graySeven"
+                    android:layout_height="1dp"/>
+                <RelativeLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="用户评价"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="144"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="人评价"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="@color/graySeven"
+                    android:layout_height="1dp"/>
                 <LinearLayout
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:orientation="horizontal"
+                    android:padding="10dp"
                     android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="144"
+                        android:text="ID:"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="人评价"
+                        android:text="10073434"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-            </RelativeLayout>
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/graySeven"
-                android:layout_height="1dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content">
+                    <RatingBar
+                        style="@style/roomRatingBar"
+                        android:numStars="5"
+                        android:stepSize="0.5"
+                        android:progressDrawable="@drawable/room_rating_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2016-08-10"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
                 <TextView
+                    android:padding="10dp"
                     android:layout_width="wrap_content"
-                    android:text="ID:"
                     android:textColor="@color/black"
+                    android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
                     android:textSize="14sp"
                     android:layout_height="wrap_content" />
-                <TextView
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher"
                     android:layout_width="wrap_content"
-                    android:text="10073434"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_height="wrap_content">
-                <RatingBar
-                    style="@style/roomRatingBar"
-                    android:numStars="5"
-                    android:stepSize="0.5"
-                    android:progressDrawable="@drawable/room_rating_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="2016-08-10"
-                    android:textSize="14sp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <TextView
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:textColor="@color/black"
-                android:text="在这家店吃的生日餐很棒！吃的饱饱的，环境和菜品都很棒！"
-                android:textSize="14sp"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_launcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
     </com.weixingwang.threepomelo.view.MyScrollView>
+    <include layout="@layout/load_more"/>
+</com.weixingwang.threepomelo.view.PullToRefreshLayout>
 </LinearLayout>

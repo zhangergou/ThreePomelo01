@@ -101,12 +101,14 @@ public class CustomPercentSixFragment extends BaseFragment{
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
-        if(user_heart_list.size()<20){
-            ToastUtils.toast(getActivity(),"已加载完毕!");
-        }else{
-            page++;
-            getData();
-        }
+      if(user_heart_list!=null){
+          if(user_heart_list.size()<20){
+              ToastUtils.toast(getActivity(),"已加载完毕!");
+          }else{
+              page++;
+              getData();
+          }
+      }
         super.onLoadMore(pullToRefreshLayout);
     }
 

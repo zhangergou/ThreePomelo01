@@ -437,6 +437,7 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
             etIDCode.setText("");
             return;
         }
+        showLoading();
         HashMap<String,String> map=new HashMap<>();
         map.put("mobile",mobile);
         map.put("parent_id",codeRecomm);
@@ -450,9 +451,11 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
         OkHttpUtils.putImages(UrlUtils.REGEST_Url, null, LoginBean.class, hashMap, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
+                closeLoading();
                 if(obj!=null){
                     LoginBean bean= (LoginBean) obj;
                     if(bean.isSuccess()){
+
                         ShearPreferenceUtils.putToken(RegestActivity.this,bean.getToken());
                         startActivity(new Intent(RegestActivity.this,LoginActivity.class));
                         finish();
@@ -466,6 +469,7 @@ public class RegestActivity extends BaseActivity implements View.OnFocusChangeLi
 
             @Override
             public void error(Exception e) {
+                closeLoading();
                 netError();
             }
         },map);

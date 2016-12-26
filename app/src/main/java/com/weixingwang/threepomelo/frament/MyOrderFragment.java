@@ -43,8 +43,7 @@ public class MyOrderFragment extends BaseFragment {
         lei_ji_xiao_fei= (TextView) view.findViewById(R.id.lei_ji_xiao_fei);
         //下拉刷新，上拉加载
         PullToRefreshLayout swrf= (PullToRefreshLayout) view.findViewById(R.id.home_fragment_swf);
-        isShowArea(true);
-        isShowSearch(true);
+
         refrush(swrf);
         //设置头部
         setTitle("我的订单");

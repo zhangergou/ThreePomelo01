@@ -25,7 +25,7 @@ public class MyViewPager extends ViewPager{
 
     @Override
     public void setCurrentItem(int item, boolean smoothScroll) {
-        super.setCurrentItem(item, smoothScroll);
+           super.setCurrentItem(item, smoothScroll);
     }
     public void setNoScroll(boolean noScroll) {
         this.noScroll = noScroll;
