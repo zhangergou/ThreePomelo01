@@ -45,8 +45,7 @@ import java.util.Set;
  * Created by Administrator on 2016/12/21 0021.
  */
 public class MyShopDataActivity extends BaseActivity {
-    private int image = 0;
-    private ImageView ivLog;
+    private ImageView ivLogC,ivLogC01;
     private EditText tvShopName;
     private EditText tvAddress;
     private EditText tvName;
@@ -98,9 +97,9 @@ public class MyShopDataActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.create_shop_pull);
+        PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.create_shop_up_pull);
         refrush(pull);
-        ivLog = (ImageView) findViewById(R.id.xiu_gai_create_iv_log_icon_p);
+        ivLogC01 = (ImageView) findViewById(R.id.xiu_gai_log01);
         tvShopName = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_name);
         tvAddress = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_address);
         tvName = (EditText) findViewById(R.id.xiu_gai_creat_shop_et_person_name);
@@ -255,7 +254,7 @@ public class MyShopDataActivity extends BaseActivity {
                         Integer key = next.getKey();
                         if (pos == key) {
                             HashMap<String, File> hashMap = CreamerAndAlbumUtils.putMap(this,
-                                    requestCode, data, putString.get(key), ivLog, photoUri, 1);
+                                    requestCode, data, putString.get(key), ivLogC01, photoUri, 1);
                             putFile.putAll(hashMap);
                         }
                     }
@@ -334,8 +333,8 @@ public class MyShopDataActivity extends BaseActivity {
         CreatShopInBean.ShopInfoEntity shop_info = data.getShop_info();
         if (shop_info != null) {
             if (!TextUtils.isEmpty(shop_info.getLogo())) {
-                Glide.with(this).load(UrlUtils.MAIN_Url + "/logo/" + shop_info.getLogo())
-                        .into(ivLog);
+                Glide.with(this).load(UrlUtils.MAIN_Url + "/upload/logo/" + shop_info.getLogo())
+                        .into(ivLogC01);
             }
             if (!TextUtils.isEmpty(shop_info.getShop_name())) {
                 tvShopName.setText(shop_info.getShop_name());

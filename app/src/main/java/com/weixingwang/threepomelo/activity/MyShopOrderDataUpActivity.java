@@ -62,6 +62,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
     private HashMap<String, File> putFile = new HashMap<>();
     private int pos=-1;
     private String orderId;
+    private ImageView ivUpButton;
 
     @Override
     protected int getLayoutId() {
@@ -83,6 +84,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
         btnOk = (Button) findViewById(R.id.tv_my_shop_order_infor_ok);
         btnNo = (Button) findViewById(R.id.tv_my_shop_order_infor_no);
         ivPic = (ImageView) findViewById(R.id.iv_my_shop_order_infor_person_pic);
+        ivUpButton = (ImageView) findViewById(R.id.iv_my_shop_order_infor_up_pic);
         setTitle("订单详情");
         isShowBack(true);
         closeLoadMore(true);
@@ -106,7 +108,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
     @Override
     protected void initLisener() {
         findViewById(R.id.tv_my_shop_order_infor_order_infor).setOnClickListener(this);
-        findViewById(R.id.iv_my_shop_order_infor_up_pic).setOnClickListener(this);
+        ivUpButton.setOnClickListener(this);
         btnOk.setOnClickListener(this);
         btnNo.setOnClickListener(this);
     }
@@ -172,11 +174,15 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
                     tvOrderStus.setText("审核中");
                     tvOrderRmark.setEnabled(false);
                     tvOrderRmark.setFocusable(false);
+                    ivUpButton.setEnabled(false);
+                    ivUpButton.setFocusable(false);
                 }
                 if (TextUtils.equals(status, "3")) {
                     tvOrderStus.setText("已完成");
                     tvOrderRmark.setEnabled(false);
                     tvOrderRmark.setFocusable(false);
+                    ivUpButton.setEnabled(false);
+                    ivUpButton.setFocusable(false);
                 }
                 if (TextUtils.equals(status, "-1")) {
                     tvOrderStus.setText("审核拒绝");

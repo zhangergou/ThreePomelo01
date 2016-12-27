@@ -26,7 +26,7 @@
                 <com.weixingwang.threepomelo.view.CircleImageView
                     android:id="@+id/me_fragment_icon"
                     android:layout_centerInParent="true"
-                    android:src="@mipmap/img"
+                    android:src="@drawable/personalcenter_icon_man"
                     android:layout_width="70dp"
                     android:layout_height="70dp" />
             </RelativeLayout>

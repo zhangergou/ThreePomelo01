@@ -214,6 +214,7 @@ public class BankCardTakeFragment extends BaseFragment {
                             GetCodeBean bean = (GetCodeBean) obj;
                             if (bean.isSuccess()) {
                                 yzm = bean.getYzm()+"";
+                                ToastUtils.toast(getActivity(),yzm);
                             } else {
                                 ToastUtils.toast(getActivity(), bean.getError_msg());
                             }

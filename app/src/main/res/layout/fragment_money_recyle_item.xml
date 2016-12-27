@@ -29,6 +29,8 @@
             android:textSize="16sp"
             android:layout_height="wrap_content" />
         <RelativeLayout
+            android:clickable="true"
+            android:id="@+id/item_tv_money_log_time_look_ral"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content">

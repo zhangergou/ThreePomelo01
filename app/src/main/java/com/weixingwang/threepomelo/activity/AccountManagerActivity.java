@@ -139,7 +139,7 @@ public class AccountManagerActivity extends BaseActivity {
            qu_code= user_info.getArea_code();
         }
         if(!TextUtils.isEmpty(user_info.getFace())){
-            Glide.with(this).load(UrlUtils.MAIN_Url+user_info.getFace())
+            Glide.with(this).load(UrlUtils.MAIN_Url+"/upload/face/"+user_info.getFace())
                     .into(ivCirIcon);
         }
     }

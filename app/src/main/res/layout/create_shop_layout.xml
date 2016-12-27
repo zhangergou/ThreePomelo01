@@ -28,12 +28,22 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.weixingwang.threepomelo.view.CircleImageView
-                android:id="@+id/create_iv_log_icon"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/registered_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.weixingwang.threepomelo.view.CircleImageView
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/personalcenter_icon_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp" />
+                <com.weixingwang.threepomelo.view.CircleImageView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/create_iv_log_icon"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/personalcenter_icon_shop"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp" />
+            </RelativeLayout>
             <Button
                 android:id="@+id/creat_btn_up_log"
                 android:textSize="@dimen/text_size_four"

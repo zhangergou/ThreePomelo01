@@ -399,7 +399,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
         CreatShopInBean.ShopInfoEntity shop_info = data.getShop_info();
         if (shop_info != null) {
             if (!TextUtils.isEmpty(shop_info.getLogo())) {
-                Glide.with(this).load(UrlUtils.MAIN_Url + "/logo/" + shop_info.getLogo())
+                Glide.with(this).load(UrlUtils.MAIN_Url + "/upload/logo/" + shop_info.getLogo())
                         .into(ivLog);
             }
             if (!TextUtils.isEmpty(shop_info.getLicense())) {

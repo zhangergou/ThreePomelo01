@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:padding="10dp"
+        android:text="资金来源"
+        android:background="@color/blueTabText"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_two"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/money_log_dia_item_remark"
+        android:padding="5dp"
+        android:text="资金来源"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_three"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>

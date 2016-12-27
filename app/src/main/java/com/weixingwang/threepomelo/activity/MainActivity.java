@@ -36,6 +36,7 @@ public class MainActivity extends BaseActivity {
         mainViewPager = (MyViewPager) findViewById(R.id.main_vp);
         mainTab = (TabLayout) findViewById(R.id.main_tab);
         main=this;
+        mainViewPager.setNoScroll(true);
     }
 
     @Override

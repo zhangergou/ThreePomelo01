@@ -157,7 +157,7 @@ public class MeFragment extends BaseFragment {
             tvName.setText(user_info.getRel_name());
         }
         if (!TextUtils.isEmpty(user_info.getId())) {
-            tvId.setText("(ID" + user_info.getId() + ")");
+            tvId.setText("(ID:" + user_info.getId() + ")");
         }
         if (!TextUtils.isEmpty(user_info.getIs_dl())) {
             if (TextUtils.equals(user_info.getIs_dl(), "1")) {
@@ -188,7 +188,7 @@ public class MeFragment extends BaseFragment {
                 ivIn.setImageResource(R.drawable.personalcenter_icons_myshop);
             }
             if (!TextUtils.isEmpty(user_info.getFace())) {
-                Glide.with(getActivity()).load(UrlUtils.MAIN_Url + "/face/" + user_info.getFace())
+                Glide.with(getActivity()).load(UrlUtils.MAIN_Url + "/upload/face/" + user_info.getFace())
                         .into(ivIcon);
             }
         }

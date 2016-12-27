@@ -70,7 +70,8 @@ public class HomeFragmentRecyleAdapter extends BaseRecyleAdapter {
         }
         if(!TextUtils.isEmpty(shop.getLogo())){
             Glide.with(context).load(UrlUtils.getImgUrl+shop.getLogo())
-            .into(holder.ivShopIcon);
+                    .placeholder(R.drawable.orders_icon_loadpicture)
+                    .into(holder.ivShopIcon);
         }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

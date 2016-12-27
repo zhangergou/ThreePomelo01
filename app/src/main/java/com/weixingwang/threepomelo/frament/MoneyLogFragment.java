@@ -3,12 +3,15 @@ package com.weixingwang.threepomelo.frament;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.adapter.BaseRecyleAdapter;
 import com.weixingwang.threepomelo.adapter.MoneyLogFragmentRecyAdapter;
 import com.weixingwang.threepomelo.adapter.TakeOutMoneyRecyAdapter;
 import com.weixingwang.threepomelo.bean.MoneyLogBean;
 import com.weixingwang.threepomelo.bean.MyTeamVIPBean;
+import com.weixingwang.threepomelo.utils.DialogUtils;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
@@ -87,9 +90,24 @@ public class MoneyLogFragment extends BaseFragment {
     public void setShiAdapter(List<MoneyLogBean.MoneyLogListEntity> bean) {
         list.addAll(bean);
         if(list!=null&&list.size()>0){
-            recycl.setAdapter(new MoneyLogFragmentRecyAdapter(getActivity(),recycl,list,
-                    R.layout.fragment_money_recyle_item,1));
+            MoneyLogFragmentRecyAdapter recyAdapter = new MoneyLogFragmentRecyAdapter(getActivity(), recycl, list,
+                    R.layout.fragment_money_recyle_item, 1);
+            recycl.setAdapter(recyAdapter);
+            recyAdapter.setOnClickItemView(new BaseRecyleAdapter.OnClickItemView() {
+                @Override
+                public void onItem(int postion) {
+                    String remark = list.get(postion).getRemark();
+                    showDia(remark);
+                }
+            });
         }
+    }
+
+    private void showDia(String remark) {
+        View inflate = View.inflate(getActivity(), R.layout.money_log_dia_item, null);
+        TextView tv = (TextView) inflate.findViewById(R.id.money_log_dia_item_remark);
+        tv.setText(remark+"!");
+        DialogUtils.showCenter(getActivity(), inflate, true).show();
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
@@ -31,11 +32,16 @@ public class MoneyLogFragmentRecyAdapter extends BaseRecyleAdapter{
     }
 
     @Override
-    protected void initData(RecyclerView.ViewHolder mholder, int position) {
+    protected void initData(RecyclerView.ViewHolder mholder, final int position) {
         MyHolder holder= (MyHolder) mholder;
         MoneyLogBean.MoneyLogListEntity bean= (MoneyLogBean.MoneyLogListEntity) reList.get(position);
         setData(holder,bean);
-
+        holder.ralLook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onClickItemView.onItem(position);
+            }
+        });
 
     }
 
@@ -51,16 +57,20 @@ public class MoneyLogFragmentRecyAdapter extends BaseRecyleAdapter{
 
         }
 
+
+
     }
 
     class MyHolder extends RecyclerView.ViewHolder{
 
         private TextView tvName,tvTime;
+        private  RelativeLayout ralLook;
 
         public MyHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.item_tv_money_log_num);
             tvTime = (TextView) itemView.findViewById(R.id.item_tv_money_log_time);
+            ralLook = (RelativeLayout) itemView.findViewById(R.id.item_tv_money_log_time_look_ral);
 
         }
     }

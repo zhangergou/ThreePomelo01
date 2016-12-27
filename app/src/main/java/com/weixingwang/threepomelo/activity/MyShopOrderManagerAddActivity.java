@@ -86,7 +86,6 @@ public class MyShopOrderManagerAddActivity extends BaseActivity {
                             LoginBean bean = (LoginBean) obj;
                             if (bean.isSuccess()) {
                                 ToastUtils.toast(MyShopOrderManagerAddActivity.this,"添加成功");
-                                etId.setText("");
                                 etMoney.setText("");
                             } else {
                                 ToastUtils.toast(MyShopOrderManagerAddActivity.this, bean.getError_msg());

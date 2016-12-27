@@ -5,31 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@drawable/sunflower_foto_user"
+        android:background="@drawable/sunflower_foto_custom"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <View
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
         <LinearLayout
-            android:layout_marginLeft="52dp"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_coust_xishu"
-                android:text="6系列"
+                android:text=""
                 android:textColor="@color/white"
-                android:layout_marginLeft="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/tv_custom_total"
-                android:layout_marginTop="10dp"
-                android:text="154"
-                android:gravity="left"
-                android:layout_marginLeft="120dp"
+                android:textSize="@dimen/text_size_five"
+                android:text="SUNFLOWER TOTAL"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+          <LinearLayout
+              android:layout_marginBottom="5dp"
+              android:orientation="horizontal"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+              <TextView
+                  android:textStyle="bold"
+                  android:textSize="@dimen/text_size_two"
+                  android:text="向日葵总计: "
+                  android:textColor="@color/white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />
+              <TextView
+                  android:id="@+id/tv_custom_total"
+                  android:text=""
+                  android:textColor="@color/white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />
+
+          </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <android.support.design.widget.TabLayout
