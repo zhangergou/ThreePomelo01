@@ -115,7 +115,7 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
         PullToRefreshLayout pull = (PullToRefreshLayout) findViewById(R.id.create_shop_pull);
         refrush(pull);
         sw = (MyScrollView) findViewById(R.id.create_shop_sw);
-        ivLog = (ImageView) findViewById(R.id.create_iv_log_icon);
+        ivLog = (ImageView) findViewById(R.id.create_iv_log_icon01);
         ivLicence = (ImageView) findViewById(R.id.create_iv_licence_icon);
         ivAnswer = (ImageView) findViewById(R.id.create_iv_answer_icon);
         ivId = (ImageView) findViewById(R.id.create_iv_id_icon);

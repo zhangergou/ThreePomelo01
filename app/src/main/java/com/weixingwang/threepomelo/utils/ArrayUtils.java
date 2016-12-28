@@ -23,4 +23,7 @@ public class ArrayUtils {
     public static String[] shopingType={"6","12","24"};
     public static String[] bnaks={"中国工商银行","中国农业银行","中国银行","中国建设银行","交通银行",
     "中国邮政储蓄银行","中信银行","中国光大银行","华夏银行","中国民生银行","广发银行","平安银行","招商银行"};
+    public static int[] splashImage={R.drawable.sphlash01,R.drawable.sphlash02,R.drawable.sphlash03};
+
+
 }

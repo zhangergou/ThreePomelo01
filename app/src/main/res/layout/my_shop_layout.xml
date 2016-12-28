@@ -32,7 +32,7 @@
                    <RelativeLayout
                        android:layout_width="match_parent"
                        android:layout_height="150dp"
-                       android:background="@color/blueOne"
+                       android:background="@drawable/mybusiness_backgroundimage"
                        >
                        <LinearLayout
                            android:layout_centerInParent="true"
@@ -64,14 +64,14 @@
                                    android:id="@+id/my_shop_tv_name"
                                    android:textColor="@color/white"
                                    android:textSize="18sp"
-                                   android:text="李宁 "
+                                   android:text=" "
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content" />
                                <TextView
                                    android:id="@+id/my_shop_tv_id"
                                    android:textColor="@color/white"
                                    android:textSize="16sp"
-                                   android:text="(ID:4533)"
+                                   android:text=""
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content" />
                            </LinearLayout>
@@ -80,7 +80,7 @@
                                android:layout_marginTop="5dp"
                                android:textColor="@color/white"
                                android:textSize="16sp"
-                               android:text="普通用户"
+                               android:text=""
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content" />
                        </LinearLayout>
