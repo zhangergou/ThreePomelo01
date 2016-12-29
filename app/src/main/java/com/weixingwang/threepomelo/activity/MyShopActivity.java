@@ -76,7 +76,11 @@ public class MyShopActivity extends BaseActivity {
                 startActivity(new Intent(MyShopActivity.this,MyShopDataActivity.class));
                 break;
             default:
-                super.onClick(v);
+                Intent inten = new Intent(MyShopActivity.this, MainActivity.class);
+                inten.putExtra("frag",5);
+                startActivity(inten);
+                finish();
+//                super.onClick(v);
                 break;
         }
     }
@@ -183,5 +187,13 @@ public class MyShopActivity extends BaseActivity {
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         getData();
         super.onRefresh(pullToRefreshLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent inten = new Intent(MyShopActivity.this, MainActivity.class);
+        inten.putExtra("frag",5);
+        startActivity(inten);
+        finish();
     }
 }

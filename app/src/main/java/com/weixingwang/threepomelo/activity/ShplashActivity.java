@@ -30,6 +30,8 @@ public class ShplashActivity extends BaseActivity {
     private ImageView iv;
     private List<ImageView> list=new ArrayList<>();
     private int pos;
+    private ImageView ivAll;
+
     @Override
     protected int getLayoutId() {
         return R.layout.sphlash_activity_layout;
@@ -40,6 +42,7 @@ public class ShplashActivity extends BaseActivity {
         vp = (ViewPager) findViewById(R.id.sphlash_vp);
         lin = (LinearLayout) findViewById(R.id.sphlash_lin);
         iv = (ImageView) findViewById(R.id.sphlash_iv);
+        ivAll = (ImageView) findViewById(R.id.sphlash_iv_all);
     }
 
     @Override
@@ -68,7 +71,20 @@ public class ShplashActivity extends BaseActivity {
             vp.addOnPageChangeListener(this);
 
         }else {
-            netWork();
+            ivAll.setVisibility(View.VISIBLE);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    SystemClock.sleep(3000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            netWork();
+                        }
+                    });
+                }
+            }).start();
+
         }
     }
 

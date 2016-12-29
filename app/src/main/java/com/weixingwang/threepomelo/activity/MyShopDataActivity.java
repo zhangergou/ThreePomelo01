@@ -193,7 +193,7 @@ public class MyShopDataActivity extends BaseActivity {
                 break;
             case R.id.xiu_gai_iv_in_map:
                 Intent intent = new Intent(MyShopDataActivity.this, TencentMapAvtivity.class);
-                intent.putExtra("lat", lat);
+                intent.putExtra("lat",lat );
                 intent.putExtra("lng", lng);
                 startActivityForResult(intent, 5);
                 break;

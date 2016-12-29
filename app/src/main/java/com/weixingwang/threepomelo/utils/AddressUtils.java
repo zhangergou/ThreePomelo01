@@ -87,7 +87,10 @@ public class AddressUtils {
     }
 
     public static void remo(){
-        locationManager.removeUpdates(locationListener);
+        if(locationManager!=null){
+            locationManager.removeUpdates(locationListener);
+        }
+
     }
 
 }

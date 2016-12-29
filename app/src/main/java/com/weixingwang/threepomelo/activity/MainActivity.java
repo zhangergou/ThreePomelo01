@@ -57,6 +57,10 @@ public class MainActivity extends BaseActivity {
             mainTab.getTabAt(i).setCustomView(view);
         }
         mainTab.getTabAt(0).getCustomView().setSelected(true);
+        int frag = getIntent().getIntExtra("frag", 0);
+        if(frag==5){
+            setSelectCount(4);
+        }
     }
 
     @Override

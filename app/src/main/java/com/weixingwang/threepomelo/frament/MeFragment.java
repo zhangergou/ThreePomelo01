@@ -117,6 +117,7 @@ public class MeFragment extends BaseFragment {
                 }else{
                     startActivity(new Intent(getActivity(),MyShopActivity.class));
                 }
+                MainActivity.main.finish();
 //                startActivity(new Intent(getActivity(),MyShopActivity.class));
 
             break;

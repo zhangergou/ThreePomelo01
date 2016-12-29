@@ -1,8 +1,11 @@
 package com.weixingwang.threepomelo.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tencent.mapsdk.raster.model.BitmapDescriptorFactory;
@@ -10,6 +13,7 @@ import com.tencent.mapsdk.raster.model.CameraPosition;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
+import com.tencent.tencentmap.mapsdk.map.MapActivity;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import com.tencent.tencentmap.mapsdk.map.UiSettings;
@@ -20,29 +24,31 @@ import java.io.File;
 /**
  * Created by Administrator on 2016/12/19 0019.
  */
-public class TencentMapAvtivity extends BaseActivity {
+public class TencentMapAvtivity extends MapActivity implements View.OnClickListener {
 
     private MapView mapView;
     private TencentMap tencentMap;
     private Marker marker;
     private String lat;
     private String lng;
+    private ImageView ivBack;
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.map_layout;
-
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        setContentView(R.layout.map_layout);
+        initView();
+        initData();
+        initLisener();
     }
-
-    @Override
     protected void initView() {
         mapView = (MapView) findViewById(R.id.creat_mapview);
-        mapView.onCreate(getB());
-        setTitle("地图");
-        isShowBack(true);
+        TextView titleName = (TextView) findViewById(R.id.tv_title_name);
+        titleName.setText("地图");
+        ivBack = (ImageView) findViewById(R.id.iv_title_back);
+        ivBack.setVisibility(View.VISIBLE);
     }
 
-    @Override
     protected void initData() {
         Intent intent = getIntent();
         lat = intent.getStringExtra("lat");
@@ -84,8 +90,9 @@ public class TencentMapAvtivity extends BaseActivity {
 
     }
 
-    @Override
+
     protected void initLisener() {
+        ivBack.setOnClickListener(this);
         findViewById(R.id.map_ok).setOnClickListener(this);
         tencentMap.setOnMapCameraChangeListener(new TencentMap.OnMapCameraChangeListener() {
             @Override
@@ -118,33 +125,12 @@ public class TencentMapAvtivity extends BaseActivity {
                 setResult(5,intent);
                 finish();
                 break;
-            default:
-                super.onClick(v);
+            case R.id.iv_title_back:
+
+                finish();
                 break;
+
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        mapView.onDestroy();
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        mapView.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        mapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    protected void onStop() {
-        mapView.onStop();
-        super.onStop();
-    }
 }

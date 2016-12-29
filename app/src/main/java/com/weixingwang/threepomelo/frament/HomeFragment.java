@@ -119,7 +119,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        showLoading();
+
         getLunData();
         getShopData();
         initLisViewData();
@@ -291,6 +291,7 @@ public class HomeFragment extends BaseFragment {
                 }
                 tvArea.setText(s);
                 area_code = listQu.get(position).getCode();
+                shopList.clear();
                 initRecleData(area_code);
             }
         });
@@ -305,7 +306,7 @@ public class HomeFragment extends BaseFragment {
         if(TextUtils.isEmpty(lontitude)){
             lontitude=31.226601+"";
         }
-
+        showLoading();
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
@@ -419,9 +420,10 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDestroyView() {
+        super.onDestroyView();
         AddressUtils.remo();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private void getLunData() {

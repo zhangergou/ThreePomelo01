@@ -296,7 +296,11 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
                 startActivityForResult(intent, 5);
                 break;
             default:
-                super.onClick(v);
+                Intent inten = new Intent(CreateShopActivity.this, MainActivity.class);
+                inten.putExtra("frag",5);
+                startActivity(inten);
+                finish();
+//                super.onClick(v);
                 break;
         }
 
@@ -864,6 +868,14 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         getData();
         super.onRefresh(pullToRefreshLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent inten = new Intent(CreateShopActivity.this, MainActivity.class);
+        inten.putExtra("frag",5);
+        startActivity(inten);
+        finish();
     }
 }
 
