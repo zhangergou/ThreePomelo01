@@ -336,7 +336,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setViewPagerData(HomeShopTypeBean bean) {
-        tvArea.setText(bean.getArea_name());
+        if(bean.getArea_name().length()>3){
+            tvArea.setText(bean.getArea_name().substring(0,2)+"..");
+        }else {
+            tvArea.setText(bean.getArea_name());
+        }
+
         List<HomeShopTypeBean.ShopTypeListEntity> shop_type_list = bean.getShop_type_list();
         initRecleData(bean.getArea_code());
     }

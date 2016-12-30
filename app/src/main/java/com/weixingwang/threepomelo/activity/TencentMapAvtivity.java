@@ -1,23 +1,33 @@
 package com.weixingwang.threepomelo.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tencent.mapsdk.raster.model.BitmapDescriptor;
 import com.tencent.mapsdk.raster.model.BitmapDescriptorFactory;
 import com.tencent.mapsdk.raster.model.CameraPosition;
+import com.tencent.mapsdk.raster.model.Circle;
+import com.tencent.mapsdk.raster.model.CircleOptions;
+import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.tencentmap.mapsdk.map.MapActivity;
 import com.tencent.tencentmap.mapsdk.map.MapView;
+import com.tencent.tencentmap.mapsdk.map.OverlayItem;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import com.tencent.tencentmap.mapsdk.map.UiSettings;
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.utils.BitmapUtils;
+import com.weixingwang.threepomelo.utils.ToastUtils;
 
 import java.io.File;
 
@@ -69,8 +79,22 @@ public class TencentMapAvtivity extends MapActivity implements View.OnClickListe
         tencentMap.setCenter(new LatLng(Double.parseDouble(lng.trim()),
                 Double.parseDouble(lat.trim())));
         //设置缩放级别
-        tencentMap.setZoom(11);
+        tencentMap.setZoom(16);
 
+
+        LatLng latLng = new LatLng(39.984059,116.307771);
+        Circle circle = tencentMap.addCircle(new CircleOptions().
+                center(latLng).
+                radius(1000d).
+                fillColor(0x990000ff).
+                strokeColor(0xff33ee00).
+                strokeWidth(5));
+//        tencentMap.addCircle(new CircleOptions().
+//                center(new LatLng(Double.parseDouble(lng.trim()), Double.parseDouble(lat.trim()))).
+//                radius(50d).
+//                fillColor(0x990000ff).
+//                strokeColor(0x990000ff).
+//                strokeWidth(5));
         //获取UiSettings实例
         UiSettings uiSettings = mapView.getUiSettings();
         //设置logo到屏幕底部中心
@@ -80,12 +104,29 @@ public class TencentMapAvtivity extends MapActivity implements View.OnClickListe
         //启用缩放手势(更多的手势控制请参考开发手册)
         uiSettings.setZoomGesturesEnabled(true);
 
+
+
         marker = tencentMap.addMarker(new MarkerOptions()
                 .position(new LatLng(39, 116))
                 .anchor(0.5f, 0.5f)
                 .icon(BitmapDescriptorFactory
                         .defaultMarker())
                 .draggable(true));
+        marker.setIcon(new BitmapDescriptor(BitmapUtils.getBitmapFromResources(TencentMapAvtivity.this,
+                R.drawable.map_icon_target)));
+
+
+        mapView.addMarker(new MarkerOptions()
+                .position(new LatLng(39, 116))
+                .anchor(0.5f, 0.5f)
+                .icon(BitmapDescriptorFactory
+                        .defaultMarker())
+                .draggable(false))
+                .setIcon(new BitmapDescriptor(BitmapUtils.getBitmapFromResources(TencentMapAvtivity.this,
+                R.drawable.ic_launcher)));
+
+
+
 
 
     }
@@ -104,13 +145,14 @@ public class TencentMapAvtivity extends MapActivity implements View.OnClickListe
 
             @Override
             public void onCameraChangeFinish(CameraPosition cameraPosition) {
+                Log.e("1", "pos="+tencentMap.getZoomLevel());
                 LatLng target = cameraPosition.getTarget();
                 marker.setPosition(new LatLng(target.getLatitude(), target.getLongitude()));
                 lat=target.getLongitude()+"";
                 lng=target.getLatitude()+"";
-                Toast.makeText(TencentMapAvtivity.this, "latitude=" + target.getLatitude() +
-                                "longitude=" + target.getLongitude(),
-                        Toast.LENGTH_SHORT).show();
+                ToastUtils.toast(TencentMapAvtivity.this, "latitude=" + target.getLatitude() +
+                        "longitude=" + target.getLongitude());
+
             }
         });
     }

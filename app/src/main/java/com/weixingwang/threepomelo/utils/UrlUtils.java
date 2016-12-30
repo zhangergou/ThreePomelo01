@@ -99,8 +99,18 @@ public class UrlUtils {
     public static String TI_JIAO_ORDER_Url = MAIN_Url+"/Apishop/tijiao_order";
     //首页轮播图
     public static String HOME_LUN_Url = MAIN_Url+"/Apiftontend/get_turns_imgs";
-//    //我的商铺--主订单详情
-//    public static String ORDER_INFOR_Url = MAIN_Url+"/Apishop/order_detail";
-//    //我的商铺--主订单详情
-//    public static String ORDER_INFOR_Url = MAIN_Url+"/Apishop/order_detail";
+    //商城--商品列表
+    public static String SHOP_GOODS_Url = MAIN_Url+"/Apiftontend/get_goods_list";
+    //商城--商品详情
+    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/good_detail";
+//    //商城--商品详情
+//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
+//    //商城--商品详情
+//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
+//    //商城--商品详情
+//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
+//    //商城--商品详情
+//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
+//    //商城--商品详情
+//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
 }

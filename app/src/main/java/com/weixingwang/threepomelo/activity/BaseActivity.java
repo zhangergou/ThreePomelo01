@@ -25,7 +25,7 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
  */
  public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener,
         ViewPager.OnPageChangeListener,PullToRefreshLayout.OnRefreshListener{
-    private ProgressDialog dialog;
+    private ProgressDialog dia;
     @Nullable
 
     @Override
@@ -78,12 +78,12 @@ import com.weixingwang.threepomelo.view.PullToRefreshLayout;
     }
 
     public void showLoading() {
-        dialog = DialogUtils.showLoading(this, "加载中...");
-        dialog.show();
+        dia = DialogUtils.showLoading(this, "加载中...");
+
     }
 
     public void closeLoading() {
-        dialog.dismiss();
+        dia.dismiss();
     }
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
