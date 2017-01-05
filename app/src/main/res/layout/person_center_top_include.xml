@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <TextView
                 android:id="@+id/me_frament_tv_sun_child_count"
                 android:textColor="@color/blueTabText"
@@ -101,7 +101,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <TextView
                 android:id="@+id/me_frament_tv_sun_count"
                 android:textColor="@color/blueTabText"
@@ -129,7 +129,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_in_my_shop"

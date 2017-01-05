@@ -80,6 +80,23 @@
             android:layout_height="wrap_content"
             android:hint="请输入金额" />
     </LinearLayout>
+    <ImageView
+        android:id="@+id/add_my_shop_order_iv_zheng"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/businessessettled_icon_picture"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+    <ImageView
+        android:clickable="true"
+        android:id="@+id/add_my_shop_order_iv_up"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/mybusiness_shop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

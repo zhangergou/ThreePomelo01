@@ -3,6 +3,7 @@ package com.weixingwang.threepomelo.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.bean.AddAddressBean;
+import com.weixingwang.threepomelo.bean.AddressListBean;
 
 import java.util.List;
 
@@ -34,16 +36,8 @@ public class AddAdressReclAdapter extends BaseRecyleAdapter{
     @Override
     protected void initData(RecyclerView.ViewHolder mholder, final int position) {
         MyViewHolder myViewHolder= (MyViewHolder) mholder;
-        AddAddressBean bean= (AddAddressBean) reList.get(position);
-        myViewHolder.ivChoese.setSelected(bean.isSelect());
-        if(bean.isSelect()){
-            myViewHolder.tvChoese.setTextColor(context.getResources().getColor(R.color.blueTabText));
-        }else {
-            myViewHolder.tvChoese.setTextColor(context.getResources().getColor(R.color.grayThree));
-        }
-        myViewHolder.tvHomeGoodsName.setText(bean.getName());
-        myViewHolder.tvPhone.setText(bean.getPhone());
-        myViewHolder.tvAddress.setText(bean.getAddress());
+        AddressListBean.ListAddressEntity bean= (AddressListBean.ListAddressEntity) reList.get(position);
+       setData(myViewHolder,bean);
         myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +56,29 @@ public class AddAdressReclAdapter extends BaseRecyleAdapter{
                 onClickDeleteView.onDelete(position);
             }
         });
+
+    }
+
+    private void setData(MyViewHolder myViewHolder, AddressListBean.ListAddressEntity bean) {
+        if(!TextUtils.isEmpty(bean.getPerson())){
+            myViewHolder.tvHomeGoodsName.setText(bean.getPerson());
+        }
+        if(!TextUtils.isEmpty(bean.getPhone())){
+            myViewHolder.tvPhone.setText(bean.getPhone());
+        }
+        if(!TextUtils.isEmpty(bean.getAddress())){
+            myViewHolder.tvAddress.setText(bean.getAddress());
+        }
+        if(!TextUtils.isEmpty(bean.getDefaultX())){
+            if(TextUtils.equals(bean.getDefaultX(),"1")){
+                myViewHolder.ivChoese.setSelected(true);
+                myViewHolder.tvChoese.setTextColor(context.getResources().getColor(R.color.blueTabText));
+            }
+            if(TextUtils.equals(bean.getDefaultX(),"-1")){
+                myViewHolder.ivChoese.setSelected(false);
+                myViewHolder.tvChoese.setTextColor(context.getResources().getColor(R.color.grayThree));
+            }
+        }
 
     }
 

@@ -4,12 +4,15 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.activity.MyShopOrderUpActivity;
 import com.weixingwang.threepomelo.bean.MyShopOrderUpBean;
+import com.weixingwang.threepomelo.utils.UrlUtils;
 
 import java.util.List;
 
@@ -19,10 +22,12 @@ import java.util.List;
 public class MyShopOrderUpRecylAdapter extends BaseRecyleAdapter {
 
 
+    private Context context;
     private List<?> reList;
 
     public MyShopOrderUpRecylAdapter(Context context, RecyclerView recl, List<?> reList, int layoutId, int clum) {
         super(context, recl, reList, layoutId, clum);
+        this.context = context;
         this.reList = reList;
     }
 
@@ -57,6 +62,11 @@ public class MyShopOrderUpRecylAdapter extends BaseRecyleAdapter {
             holder.tvMoney.setText(v/100+"");
 
         }
+//        if(!TextUtils.isEmpty(bean.getPic())){
+//            holder.linShow.setVisibility(View.VISIBLE);
+//            Glide.with(context).load(UrlUtils.MAIN_Url+"/upload/order_pic/"+bean.getPic())
+//                    .into(holder.ivZheng);
+//        }
         String status = bean.getStatus();
         if(!TextUtils.isEmpty(status)){
             if(TextUtils.equals(status,"1")){
@@ -78,6 +88,8 @@ public class MyShopOrderUpRecylAdapter extends BaseRecyleAdapter {
 
 
         private TextView tvName,tvDelete,tvTime,tvStus,tvMoney,tvTimeT;
+        private final LinearLayout linShow;
+        private final ImageView ivZheng;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -87,7 +99,8 @@ public class MyShopOrderUpRecylAdapter extends BaseRecyleAdapter {
             tvTime= (TextView) itemView.findViewById(R.id.tv_my_shop_order_up_re_item_time);
             tvMoney= (TextView) itemView.findViewById(R.id.tv_my_shop_order_up_re_item_money);
             tvTimeT= (TextView) itemView.findViewById(R.id.tv_my_shop_order_up_re_item_time_t);
-
+            linShow = (LinearLayout) itemView.findViewById(R.id.lin_my_shop_order_up_recl_item_zheng_show);
+            ivZheng = (ImageView) itemView.findViewById(R.id.iv_my_shop_order_up_recl_item_zheng);
         }
     }
 }

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,8 +37,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         ViewPager.OnPageChangeListener, PullToRefreshLayout.OnRefreshListener {
 
     private View view;
-    private SwipeRefreshLayout sw;
-    private MyScrollView scrollView;
     private ProgressDialog dialog;
 
     @Nullable
@@ -158,16 +157,19 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
 
-    public void closeRefresh(boolean show){
-        if(show){
+    public void closeRefresh(boolean show) {
+        if (show) {
             RelativeLayout re = (RelativeLayout) view.findViewById(R.id.head_view);
             re.setVisibility(View.GONE);
         }
     }
-    public void closeLoadMore(boolean show){
-        if(show){
+
+    public void closeLoadMore(boolean show) {
+        if (show) {
             RelativeLayout load = (RelativeLayout) view.findViewById(R.id.loadmore_view);
             load.setVisibility(View.GONE);
         }
     }
+
+
 }

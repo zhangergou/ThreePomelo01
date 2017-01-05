@@ -14,6 +14,7 @@ public class LoginBean {
     private String error_msg;
     private boolean success;
     private String token;
+    private int user_order_id;
 
     public void setError_msg(String error_msg) {
         this.error_msg = error_msg;
@@ -38,6 +39,12 @@ public class LoginBean {
     public String getToken() {
         return token;
     }
-     
-    
+
+    public int getUser_order_id() {
+        return user_order_id;
+    }
+
+    public void setUser_order_id(int user_order_id) {
+        this.user_order_id = user_order_id;
+    }
 }

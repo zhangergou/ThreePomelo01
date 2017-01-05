@@ -3,6 +3,7 @@ package com.weixingwang.threepomelo.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,77 +19,70 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder>  {
-    private final Context context;
-    private ArrayList<MyOrderBean.OrderListBean> list;
+public class MyOrderAdapter extends BaseRecyleAdapter {
     private HashMap<Integer, Boolean> map;
-    private  One one;
-    private LayoutInflater inflater;
-    private MyOrderAdapter adapter;
-    public MyOrderAdapter(Context context, ArrayList<MyOrderBean.OrderListBean> list, HashMap<Integer, Boolean> map) {
+    private Context context;
+    private List<?> reList;
+
+    public MyOrderAdapter(Context context, RecyclerView recl, List<?> reList, int layoutId, int clum) {
+        super(context, recl, reList, layoutId, clum);
         this.context = context;
-        this.list = list;
-        this.map = map;
-        this.inflater=LayoutInflater.from(context);
+        this.reList = reList;
     }
 
+
     @Override
-    public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflate = View.inflate(context, R.layout.item_my_order, null);
-        parent.addView(inflate);
+    protected RecyclerView.ViewHolder getHolder(View inflate) {
         return new MyHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, final int position) {
-        final MyHolder myHolder= (MyHolder) holder;
-        holder.price_one.setText(list.get(position).getPrice());
-        holder.price_two.setText(list.get(position).getPrice());
-        holder.adress.setText(list.get(position).getAddress());
-        holder.shop_name.setText(list.get(position).getShop_name());
-        holder.cdate_one.setText(list.get(position).getCdate());
-        holder.cdate_two.setText(list.get(position).getCdate());
-        // holder.status.setText(list.get(position).getStatus());
-        int status=Integer.valueOf(list.get(position).getStatus());
-
-        if(status==1) {
-            holder.status.setText("待提交");
-        }
-        else if(status==2){
-            holder.status.setText("待审核");
-        }
-        else if(status==3){
-            holder.status.setText("已完成");
-        }
-        else if(status==-1){
-            holder.status.setText("已拒绝");
-        }
-
-        if(map.get(position)){
-            myHolder.load_more.setVisibility(View.VISIBLE);
-        }else{
-
-            myHolder.load_more.setVisibility(View.GONE);
-        }
-        myHolder.ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(context,MyOrderEvaluateActivity.class);
-               context.startActivity(intent);
-            }
-        });
-        myHolder.lll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                one.setOne(position);
-            }
-        });
+    protected void initData(RecyclerView.ViewHolder mholder, int position) {
+        MyHolder holder= (MyHolder) mholder;
+        MyOrderBean.OrderListEntity bean = (MyOrderBean.OrderListEntity) reList.get(position);
+        setData(holder,bean);
     }
-    @Override
-    public int getItemCount() {
 
-        return list.size();
+    private void setData(MyHolder holder, MyOrderBean.OrderListEntity bean) {
+       if(!TextUtils.isEmpty(bean.getPrice())){
+           double v = Double.parseDouble(bean.getPrice());
+           holder.price_one.setText(v/100+"");
+           holder.price_two.setText(v/100+"");
+       }
+       if(!TextUtils.isEmpty(bean.getAddress())){
+           holder.adress.setText(bean.getAddress());
+       }
+       if(!TextUtils.isEmpty(bean.getShop_name())){
+           holder.shop_name.setText(bean.getShop_name());
+       }
+       if(!TextUtils.isEmpty(bean.getCdate())){
+           holder.cdate_one.setText(bean.getCdate());
+           holder.cdate_two.setText(bean.getCdate());
+       }
+
+       if(!TextUtils.isEmpty(bean.getStatus())){
+           // holder.status.setText(list.get(position).getStatus());
+           int status=Integer.valueOf(bean.getStatus());
+
+           if(status==1) {
+               holder.status.setText("待提交");
+           }
+           else if(status==2){
+               holder.status.setText("待审核");
+           }
+           else if(status==3){
+               holder.status.setText("已完成");
+           }
+           else if(status==-1){
+               holder.status.setText("已拒绝");
+           }
+       }
+
+
+
+
     }
+
     class MyHolder extends RecyclerView.ViewHolder {
         public LinearLayout load_more;
         public LinearLayout lll;
@@ -114,10 +108,5 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyHolder
             cdate_two= (TextView) itemView.findViewById(R.id.cdate_two);
         }
     }
-    public void setClickListener(One one){
-        this.one=one;
-    }
-    public interface  One{
-        void setOne(int postion);
-    }
+
 }

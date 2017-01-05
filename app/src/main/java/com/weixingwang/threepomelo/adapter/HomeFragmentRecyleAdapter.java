@@ -71,6 +71,7 @@ public class HomeFragmentRecyleAdapter extends BaseRecyleAdapter {
         if(!TextUtils.isEmpty(shop.getLogo())){
             Glide.with(context).load(UrlUtils.getImgUrl+shop.getLogo())
                     .placeholder(R.drawable.orders_icon_loadpicture)
+                    .centerCrop()
                     .into(holder.ivShopIcon);
         }
 

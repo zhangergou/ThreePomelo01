@@ -25,6 +25,8 @@ public abstract class BaseRecyleAdapter extends RecyclerView.Adapter {
     public OnClickChoeseView onClickChoeseView;
     public OnClickEditView onClickEditView;
     public OnClickDeleteView onClickDeleteView;
+    public OnClickPlusView onClickPlusView;
+    public OnClickMusView onClickMusView;
 
 
     public BaseRecyleAdapter(Context context, RecyclerView recl, List<?> reList, int layoutId, int clum) {
@@ -85,5 +87,22 @@ public abstract class BaseRecyleAdapter extends RecyclerView.Adapter {
     }
     public interface OnClickDeleteView{
         void onDelete(int postion);
+    }
+
+    public void setOnClickPlusView(OnClickPlusView onClickPlusView){
+
+        this.onClickPlusView = onClickPlusView;
+    }
+    public interface OnClickPlusView{
+        void onPlus(int postion);
+    }
+
+    public void setOnClickMusView(OnClickMusView onClickMusView){
+
+
+        this.onClickMusView = onClickMusView;
+    }
+    public interface OnClickMusView{
+        void onMus(int postion);
     }
 }

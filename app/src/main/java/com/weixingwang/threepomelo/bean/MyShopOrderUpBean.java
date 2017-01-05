@@ -55,6 +55,15 @@ public class MyShopOrderUpBean {
         private String num;
         private String id;
         private String status;
+        private String pic;
+
+        public String getPic() {
+            return pic;
+        }
+
+        public void setPic(String pic) {
+            this.pic = pic;
+        }
 
         public void setShop_id(String shop_id) {
             this.shop_id = shop_id;

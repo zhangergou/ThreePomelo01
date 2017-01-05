@@ -19,7 +19,8 @@
                 <TextView
                     android:id="@+id/shop_name"
                     android:gravity="center"
-                    android:text="爆米花咖啡店（虹桥）"
+                    android:text=""
+                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"

@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-
+            android:id="@+id/et_add_adress_person_dia"
             android:textSize="@dimen/text_size_three"
             android:background="@null"
             android:textColor="@color/black"
@@ -92,7 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-
+            android:id="@+id/et_add_adress_phone_dia"
             android:textSize="@dimen/text_size_three"
             android:background="@null"
             android:textColor="@color/black"
@@ -125,10 +125,69 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/et_add_adress_address_dia"
             android:textSize="@dimen/text_size_three"
             android:background="@null"
             android:textColor="@color/black"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="@dimen/text_size_three"
+            android:textColor="@color/redTwo"
+            android:text="   "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="@dimen/text_size_three"
+            android:layout_weight="1"
+            android:textColor="@color/grayThree"
+            android:text="邮编:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="@drawable/center_dialog_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_add_adress_yb_dia"
+            android:textSize="@dimen/text_size_three"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_add_adress_def_dia"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:focusable="false"
+            android:clickable="false"
+            android:id="@+id/cb_add_adress_def_dia"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_three"
+            android:textColor="@color/grayThree"
+            android:text="设置为默认地址"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <ImageView

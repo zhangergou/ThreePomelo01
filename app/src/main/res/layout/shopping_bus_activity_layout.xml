@@ -49,7 +49,8 @@
         </com.weixingwang.threepomelo.view.PullToRefreshLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:padding="5dp">
@@ -80,6 +81,7 @@
                 android:textSize="14sp" />
 
             <Button
+                android:id="@+id/shop_bus_btn_statements"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_blue_radius_shape"

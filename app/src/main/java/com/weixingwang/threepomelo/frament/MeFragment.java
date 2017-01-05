@@ -2,6 +2,7 @@ package com.weixingwang.threepomelo.frament;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
         showLoading();
         OkHttpUtils.get(UrlUtils.PERSEN_CENTER_Url, ShearPreferenceUtils.getToken(getActivity()),
                 PersonCenterBean.class, new OkHttpUtils.CallBackUtils() {
@@ -189,7 +191,8 @@ public class MeFragment extends BaseFragment {
                 ivIn.setImageResource(R.drawable.personalcenter_icons_myshop);
             }
             if (!TextUtils.isEmpty(user_info.getFace())) {
-                Glide.with(getActivity()).load(UrlUtils.MAIN_Url + "/upload/face/" + user_info.getFace())
+                Glide.with(getActivity()).
+                        load(UrlUtils.MAIN_Url + "/upload/face/" + user_info.getFace())
                         .into(ivIcon);
             }
         }

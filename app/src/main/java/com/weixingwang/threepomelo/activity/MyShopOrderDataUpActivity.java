@@ -198,6 +198,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
                 Glide.with(this).load(UrlUtils.MAIN_Url + "/upload/order_pic/" + order.getPic())
                         .into(ivPic);
             }
+
         }
         list.clear();
         if (order_list != null && order_list.size() > 0) {
@@ -278,7 +279,7 @@ public class MyShopOrderDataUpActivity extends BaseActivity {
                 openCramererFile();
                 break;
             case R.id.dialog_cancle_log:
-                dialog.dismiss();
+                dialogBtom.dismiss();
 
                 break;
             default:

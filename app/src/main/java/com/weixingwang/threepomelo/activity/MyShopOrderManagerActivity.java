@@ -203,6 +203,14 @@ public class MyShopOrderManagerActivity extends BaseActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        list.clear();
+        page = 1;
+        getData();
+    }
+
+    @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         list.clear();
         page = 1;

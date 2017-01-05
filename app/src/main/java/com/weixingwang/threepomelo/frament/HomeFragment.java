@@ -7,10 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -47,7 +50,6 @@ import java.util.List;
  * Created by Administrator on 2016/11/29 0029.
  */
 public class HomeFragment extends BaseFragment {
-
     private ViewPager vp;
     private RecyclerView recl;
     private ArrayList<ImageView> imageList = new ArrayList<>();
@@ -87,7 +89,10 @@ public class HomeFragment extends BaseFragment {
     private TextView tvArea;
     private MyScrollView swCity;
     private MyScrollView swArea;
+    private String shop_name="";
     private List<HomeShopListBean.ShopListEntity> shopList=new ArrayList<>();
+    private EditText etSearchData;
+
     @Override
     protected int getLayoutId() {
         return R.layout.home_frament_layout;
@@ -101,6 +106,7 @@ public class HomeFragment extends BaseFragment {
         recl = (RecyclerView) view.findViewById(R.id.home_fragment_recl);
         linIndc = (LinearLayout) view.findViewById(R.id.lin_home_fragment_indector);
         tvArea = (TextView) view.findViewById(R.id.tv_home_fragment_area);
+        etSearchData = (EditText) view.findViewById(R.id.et_home_search_data);
         refrush(swrf);
         linArea = isShowArea(true);
         isShowSearch(true);
@@ -129,13 +135,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initLisener() {
         view.findViewById(R.id.lin_home_area).setOnClickListener(this);
+        view.findViewById(R.id.iv_home_search).setOnClickListener(this);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
-    }
+
 
     @Override
     public void onPageSelected(int position) {
@@ -149,6 +152,15 @@ public class HomeFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.lin_home_area:
                 popupWindow.showAsDropDown(linArea);
+                break;
+            case R.id.iv_home_search:
+                String data = etSearchData.getText().toString().trim();
+                if(data!=null){
+                    shop_name=data;
+                }
+                page=1;
+                shopList.clear();
+                initRecleData(codeT);
                 break;
         }
     }
@@ -306,7 +318,7 @@ public class HomeFragment extends BaseFragment {
         if(TextUtils.isEmpty(lontitude)){
             lontitude=31.226601+"";
         }
-        showLoading();
+
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
@@ -318,7 +330,7 @@ public class HomeFragment extends BaseFragment {
                     HomeShopTypeBean bean = (HomeShopTypeBean) obj;
                     if (bean.isSuccess()) {
                        setViewPagerData(bean);
-                        closeLoading();
+
                     } else {
                         ToastUtils.toast(getActivity(), bean.getError_msg());
                     }
@@ -357,16 +369,19 @@ public class HomeFragment extends BaseFragment {
         if(TextUtils.isEmpty(lontitude)){
             lontitude=31.226601+"";
         }
+        showLoading();
         HashMap<String, String> map = new HashMap<>();
         map.put("lat", latitude);
         map.put("lng", lontitude);
         map.put("area_code", code);
         map.put("page", page+"");
+        map.put("shop_name", shop_name);
 
         OkHttpUtils.get(UrlUtils.HOME_SHOP_LIST_Url, ShearPreferenceUtils.getToken(getActivity()),
                 HomeShopListBean.class, new OkHttpUtils.CallBackUtils() {
                     @Override
                     public void sucess(Object obj) {
+                        closeLoading();
                         if (obj != null) {
                             HomeShopListBean bean = (HomeShopListBean) obj;
                             if (bean.isSuccess()) {
@@ -382,6 +397,7 @@ public class HomeFragment extends BaseFragment {
 
                     @Override
                     public void error(Exception e) {
+                        closeLoading();
                         netError();
                     }
                 }, map);
@@ -426,9 +442,12 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         AddressUtils.remo();
         handler.removeCallbacksAndMessages(null);
+        OkHttpUtils.closeHttp();
+        unbindDrawables(view);
+        super.onDestroyView();
+
     }
 
     private void getLunData() {
@@ -484,5 +503,17 @@ public class HomeFragment extends BaseFragment {
             vp.addOnPageChangeListener(this);
         }
         handler.sendEmptyMessageDelayed(1, 2000);
+    }
+
+    private void unbindDrawables(View view) {
+        if (view.getBackground() != null) {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup && !(view instanceof AdapterView)) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
     }
 }

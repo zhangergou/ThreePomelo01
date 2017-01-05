@@ -284,10 +284,12 @@ public class CreateShopActivity extends BaseActivity implements View.OnFocusChan
             case R.id.btn_create_shop_up:
                 //提交
                 upAllData();
-
                 break;
             case R.id.btn_create_shop_cancel:
-                ToastUtils.toast(this, "取消,取消,取消");
+                Intent intentt = new Intent(CreateShopActivity.this, MainActivity.class);
+                intentt.putExtra("frag",5);
+                startActivity(intentt);
+                finish();
                 break;
             case R.id.iv_in_map:
                 Intent intent = new Intent(CreateShopActivity.this, TencentMapAvtivity.class);

@@ -20,6 +20,7 @@ import com.weixingwang.threepomelo.activity.AccountManagerActivity;
 import com.weixingwang.threepomelo.activity.CreateShopActivity;
 import com.weixingwang.threepomelo.activity.MyShopDataActivity;
 import com.weixingwang.threepomelo.activity.MyShopOrderDataUpActivity;
+import com.weixingwang.threepomelo.activity.MyShopOrderManagerAddActivity;
 import com.weixingwang.threepomelo.activity.RegestActivity;
 
 import java.io.File;
@@ -184,6 +185,10 @@ public class CreamerAndAlbumUtils {
                 MyShopOrderDataUpActivity mdu = (MyShopOrderDataUpActivity) context;
                 mdu.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
                 break;
+            case 6:
+                MyShopOrderManagerAddActivity mom = (MyShopOrderManagerAddActivity) context;
+                mom.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
         }
 
     }
@@ -209,6 +214,10 @@ public class CreamerAndAlbumUtils {
             case 5:
                 MyShopOrderDataUpActivity mdu = (MyShopOrderDataUpActivity) context;
                 mdu.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
+                break;
+            case 6:
+                MyShopOrderManagerAddActivity mom = (MyShopOrderManagerAddActivity) context;
+                mom.startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
                 break;
         }
 

@@ -150,11 +150,35 @@
             android:textSize="14sp" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/lin_my_shop_order_up_recl_item_zheng_show"
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/graySeven"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:text="购物凭证: "
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_my_shop_order_up_recl_item_zheng"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/graySeven" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

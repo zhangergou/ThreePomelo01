@@ -103,14 +103,28 @@ public class UrlUtils {
     public static String SHOP_GOODS_Url = MAIN_Url+"/Apiftontend/get_goods_list";
     //商城--商品详情
     public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/good_detail";
-//    //商城--商品详情
-//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
-//    //商城--商品详情
-//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
-//    //商城--商品详情
-//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
-//    //商城--商品详情
-//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
-//    //商城--商品详情
-//    public static String SHOP_GOODS_INFOR_Url = MAIN_Url+"/Apiftontend/goods_detail";
+    //商城--加入购物车
+    public static String SHOP_ADD_BUS_Url = MAIN_Url+"/Apiuser/add_cart";
+    //商城--获取购物车列表
+    public static String SHOP_BUS_Url = MAIN_Url+"/Apiuser/list_cart";
+    //商城--改变购物车数量
+    public static String SHOP_BUS_CONUT_Url = MAIN_Url+"/Apiuser/change_cart";
+    //商城--删除购物车
+    public static String SHOP_BUS_DELETE_GOODS_Url = MAIN_Url+"/Apiuser/delete_cart";
+    //商城--收货地址列表
+    public static String SHOP_ADDRESS_LIST_Url = MAIN_Url+"/Apiuser/list_address";
+    //商城--设置默认收货地址
+    public static String SHOP_SET_DEF_ADDRESS_Url = MAIN_Url+"/Apiuser/default_address";
+   //商城--删除收货地址
+    public static String SHOP_DELE_ADDRESS_Url = MAIN_Url+"/Apiuser/delete_address";
+    //商城--修改收货地址
+    public static String SHOP_EDIT_ADDRESS_Url = MAIN_Url+"/Apiuser/edit_address";
+    //商城-- 新增收货地址
+    public static String SHOP_ADD_ADDRESS_Url = MAIN_Url+"/Apiuser/add_address";
+    //商城--保存商城订单 通过购物车
+    public static String SHOP_SAVE_ORDER_Url = MAIN_Url+"/Apiuser/save_orderByCart";
+    //商城--确认订单
+    public static String SHOP_SURE_ORDER_Url = MAIN_Url+"/Apiuser/get_orderinfo";
+    //商城--获取默认收货地址
+    public static String SHOP_DEF_ADDRESS_Url = MAIN_Url+"/Apiuser/get_default_address";
 }

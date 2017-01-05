@@ -9,16 +9,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.tencent.tencentmap.mapsdk.map.MapView
-
             android:id="@+id/creat_mapview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
-        <Button
-            android:id="@+id/map_ok"
-            android:text="确定"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/map_lock"
+                android:background="@drawable/map_icon_today"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/map_lat"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_four"
+                android:background="@drawable/map_shop_text"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/map_lng"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_four"
+               android:background="@drawable/map_shop_text"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/map_ok"
+                android:background="@drawable/map_icon_ok"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

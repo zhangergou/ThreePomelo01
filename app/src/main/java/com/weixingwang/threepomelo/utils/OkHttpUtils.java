@@ -18,6 +18,7 @@ import java.util.Set;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -173,6 +174,50 @@ public class OkHttpUtils {
 
     }
 
+    //上传数组
+    private void putArray(String url, String token, Class<?> clazz, HashMap<String,String> map,
+                          final CallBackUtils callBack, HashMap<String, String> prams) {
+
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        if (prams != null) {
+            Set<Map.Entry<String, String>> entrySet = prams.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entrySet.iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> entry = iterator.next();
+                builder.addFormDataPart(entry.getKey(), entry.getValue());
+            }
+        }
+
+        if(map !=null){
+            Set<Map.Entry<String, String>> entries = map.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, String> next = iterator.next();
+                String name = next.getKey();
+                builder.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + name.replaceAll("\\[\\d+\\]", "") + "\""),
+                        RequestBody.create(null, next.getValue()));
+            }
+        }
+        if (TextUtils.isEmpty(token)) {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(builder.build())
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            requestCall(callBack, call, clazz);
+        } else {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .addHeader("Token", token)
+                    .post(builder.build())
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            requestCall(callBack, call, clazz);
+        }
+
+
+    }
+
 
     //文件上传
 //    private void putFile(String url,List<File> list,CallBackFile callBack){
@@ -324,15 +369,6 @@ public class OkHttpUtils {
 
     //图片有参上传
     public static void putImages(String url, String token, Class<?> clazz, HashMap<String,File> map, CallBackUtils call, HashMap<String, String> prams) {
-//        if(map==null){
-//            try {
-//                getInstence().postP_A_D(url, token, clazz, call, prams);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }else{
-//            getInstence().putImage(url, token, clazz, map, call, prams);
-//        }
         getInstence().putImage(url, token, clazz, map, call, prams);
     }
 
@@ -344,6 +380,10 @@ public class OkHttpUtils {
     //文件有参上传
     public static void putFiles(String url, String token, Class<?> clazz, List<File> list, CallBackUtils call, HashMap<String, String> prams) {
         getInstence().putFile(url, token, clazz, list, call, prams);
+    }
+    //上传数组
+    public static void putStringArray(String url, String token, Class<?> clazz, HashMap<String,String> map, CallBackUtils call, HashMap<String, String> prams) {
+        getInstence().putArray(url,token,clazz,map,call,prams);
     }
 
 
@@ -358,4 +398,8 @@ public class OkHttpUtils {
 //
 //        void error(Exception e);
 //    }
+
+    public static void closeHttp(){
+        getInstence().okHttpClient.dispatcher().cancelAll();
+    }
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ShopOrderActivity extends BaseActivity{
     private RecyclerView recyclerview;
-    private ArrayList<MyOrderBean.OrderListBean> list = new ArrayList<>();
+    private ArrayList<MyOrderBean.OrderListEntity> list = new ArrayList<>();
     private ShopOrderActivityAdapter adapter;
     @Override
     protected int getLayoutId() {
@@ -39,7 +39,8 @@ public class ShopOrderActivity extends BaseActivity{
 //Recyclerview线性排列,从零开始往下
         recyclerview.setLayoutManager(new LinearLayoutManager(ShopOrderActivity.this, LinearLayoutManager.VERTICAL, false));
         adapter=new ShopOrderActivityAdapter(ShopOrderActivity.this,list);
-        OkHttpUtils.get(UrlUtils.MyOrder_Url,"uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==", MyOrderBean.class, new OkHttpUtils.CallBackUtils() {
+        OkHttpUtils.get(UrlUtils.MyOrder_Url,"uIyBe4mjcWmzhY/MsLaHmoSKvd2wp56YhZdwog==",
+                MyOrderBean.class, new OkHttpUtils.CallBackUtils() {
             @Override
             public void sucess(Object obj) {
                 if (obj!=null){
@@ -47,7 +48,7 @@ public class ShopOrderActivity extends BaseActivity{
                     if(bean.isSuccess()){
                         list.addAll(bean.getOrder_list());
                         System.out.println(list.size() + "---------------------------");
-                        adapter.notifyDataSetChanged();
+                       adapter.notifyDataSetChanged();
                     }
                 }else {
                     Toast.makeText(ShopOrderActivity.this,"",Toast.LENGTH_LONG).show();

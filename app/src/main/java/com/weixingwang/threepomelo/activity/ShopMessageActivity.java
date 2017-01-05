@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.HomeFragmentPagerAdapter;
+import com.weixingwang.threepomelo.bean.ShopBusBean;
 import com.weixingwang.threepomelo.bean.ShopFragmentBean;
 import com.weixingwang.threepomelo.bean.ShopMessageBean;
 import com.weixingwang.threepomelo.utils.ArrayUtils;
@@ -52,6 +54,8 @@ public class ShopMessageActivity extends BaseActivity  {
     private LinearLayout linGoodType;
     private ArrayList<TextView> listTV=new ArrayList<>();
     private List<ShopMessageBean.GgListEntity> gg_list;
+    private int types=0;
+    private String ggId;
 
     @Override
     protected int getLayoutId() {
@@ -121,34 +125,40 @@ public class ShopMessageActivity extends BaseActivity  {
                 startActivity(new Intent(ShopMessageActivity.this,ShoppingBusActivity.class));
             break;
             case R.id.lin_shop_details_dianpu :
-                ToastUtils.toast(this,"待做...........");
+//                ToastUtils.toast(this,"待做...........");
 //                Intent intent = new Intent(ShopMessageActivity.this, SellerMessageActivity.class);
 //                intent.putExtra("shop_id",)
 //                startActivity(intent);
 
                 break;
             case R.id.btn_plus_shopbus :
-                ToastUtils.toast(this,"待做...........");
+                addBus(0);
                 break;
             case R.id.shop_message_now_shopping :
-                startActivity(new Intent(ShopMessageActivity.this,SureMyOrderActivity.class));
+                addBus(1);//立即购买
                 break;
             case R.id.shop_goods_type_one :
+                types=1;
                 selectorTV(0);
                 break;
             case R.id.shop_goods_type_two :
+                types=1;
                 selectorTV(1);
                 break;
             case R.id.shop_goods_type_three :
+                types=1;
                 selectorTV(2);
                 break;
             case R.id.shop_goods_type_four :
+                types=1;
                 selectorTV(3);
                 break;
             case R.id.shop_goods_type_five :
+                types=1;
                 selectorTV(4);
                 break;
             case R.id.shop_goods_type_six :
+                types=1;
                 selectorTV(5);
                 break;
             default:
@@ -157,6 +167,8 @@ public class ShopMessageActivity extends BaseActivity  {
         }
     }
 
+
+
     private void selectorTV(int i) {
         double v01 =0;
         double v02 =0;
@@ -164,9 +176,15 @@ public class ShopMessageActivity extends BaseActivity  {
              v01 = Double.parseDouble(gg_list.get(i).getGg_price());
             tvPrice.setText(v01/100+"");
         }
+        if(!TextUtils.isEmpty(gg_list.get(i).getId())){
+            ggId = gg_list.get(i).getId();
+        }
         if(!TextUtils.isEmpty(gg_list.get(i).getGg_old_price())){
              v02 = Double.parseDouble(gg_list.get(i).getGg_old_price());
             tvOldPrice.setText(v02/100+"");
+        }
+        if(!TextUtils.isEmpty(gg_list.get(i).getGg_kc())){
+            tvHaveCount.setText(gg_list.get(i).getGg_kc());
         }
         if(v02!=0){
             String s = (v01 / v02) * 10 + "";
@@ -240,9 +258,6 @@ public class ShopMessageActivity extends BaseActivity  {
                 int i = Integer.parseInt(good_detail.getScroe());
                 starts.setProgress(i);
             }
-            if(!TextUtils.isEmpty(good_detail.getKc())){
-                tvHaveCount.setText(good_detail.getKc());
-            }
             if(!TextUtils.isEmpty(good_detail.getBuy_num())){
                 tvSellCount.setText(good_detail.getBuy_num());
             }
@@ -274,6 +289,10 @@ public class ShopMessageActivity extends BaseActivity  {
             if(!TextUtils.isEmpty(gg_list.get(0).getGg_old_price())){
                 v02 = Double.parseDouble(gg_list.get(0).getGg_old_price());
                 tvOldPrice.setText(v02/100+"");
+            }
+
+            if(!TextUtils.isEmpty(gg_list.get(0).getGg_kc())){
+                tvHaveCount.setText(gg_list.get(0).getGg_kc());
             }
             if(v02!=0){
                 String s = (v01 / v02) * 10 + "";
@@ -323,13 +342,45 @@ public class ShopMessageActivity extends BaseActivity  {
             }
             pos=0;
             linIndictor.getChildAt(0).setSelected(true);
-//            for (int i = 0; i < linIndictor.getChildCount(); i++) {
-//                if(i==0){
-//
-//                }else {
-//                    linIndictor.getChildAt(i).setSelected(false);
-//                }
-//            }
         }
+    }
+
+    private void addBus(final int sho) {
+        if(types==0){
+            ToastUtils.toast(ShopMessageActivity.this,"请选择商品类型!");
+            return;
+        }
+        showLoading();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("good_id",id);
+        map.put("gg_id", ggId);
+        OkHttpUtils.get(UrlUtils.SHOP_ADD_BUS_Url, ShearPreferenceUtils.getToken(ShopMessageActivity.this),
+                ShopBusBean.class, new OkHttpUtils.CallBackUtils() {
+
+                    @Override
+                    public void sucess(Object obj) {
+                        closeLoading();
+                        if (obj != null) {
+                            ShopBusBean bean = (ShopBusBean) obj;
+                            if (bean.isSuccess()) {
+                                if(sho==1){
+                                    startActivity(new Intent(ShopMessageActivity.this,ShoppingBusActivity.class));
+                                }else
+                                ToastUtils.toast(ShopMessageActivity.this, "添加成功!");
+                            } else {
+                                ToastUtils.toast(ShopMessageActivity.this, bean.getError_msg());
+                            }
+                        } else {
+                            Toast.makeText(ShopMessageActivity.this, "", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void error(Exception e) {
+                        closeLoading();
+                        Toast.makeText(ShopMessageActivity.this, "网络错误，请重新请求", Toast.LENGTH_LONG).show();
+                    }
+                }, map);
+
     }
 }

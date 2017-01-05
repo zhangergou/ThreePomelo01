@@ -61,6 +61,15 @@ public class MyShopOrderManagerBean {
         private String id;
         private String oid;
         private String status;
+        private String GW;
+
+        public String getGW() {
+            return GW;
+        }
+
+        public void setGW(String GW) {
+            this.GW = GW;
+        }
 
         public void setShop_id(String shop_id) {
             this.shop_id = shop_id;

@@ -32,6 +32,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/lin_shop_details_dianpu"
         android:clickable="true"
         android:gravity="center"

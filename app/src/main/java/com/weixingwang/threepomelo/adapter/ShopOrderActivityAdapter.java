@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 public class ShopOrderActivityAdapter extends RecyclerView.Adapter<ShopOrderActivityAdapter.MyHolder>  {
     private final Context context;
-    private ArrayList<MyOrderBean.OrderListBean> list;
+    private ArrayList<MyOrderBean.OrderListEntity> list;
     private LayoutInflater inflater;
     private ShopOrderActivityAdapter adapter;
-    public ShopOrderActivityAdapter(Context context, ArrayList<MyOrderBean.OrderListBean> list) {
+    public ShopOrderActivityAdapter(Context context, ArrayList<MyOrderBean.OrderListEntity> list) {
         this.context = context;
         this.list = list;
         this.inflater=LayoutInflater.from(context);
