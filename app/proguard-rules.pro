@@ -104,7 +104,8 @@
 -dontwarn okio.**
 
 #腾讯地图
--libraryjars libs/TencentMapSDK_Raster_v1.1.2.16281.jar
+#-libraryjars libs/TencentMapSDK_Raster_v1.1.2.16281.jar
 -keep class com.tencent.mapsdk.**{*;}
 -keep class com.tencent.tencentmap.**{*;}
+-keep class com.weixingwang.threepomelo.bean.**{*;}
 
