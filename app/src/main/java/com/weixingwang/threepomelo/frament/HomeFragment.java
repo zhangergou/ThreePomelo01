@@ -445,7 +445,6 @@ public class HomeFragment extends BaseFragment {
         AddressUtils.remo();
         handler.removeCallbacksAndMessages(null);
         OkHttpUtils.closeHttp();
-        unbindDrawables(view);
         super.onDestroyView();
 
     }
@@ -505,15 +504,15 @@ public class HomeFragment extends BaseFragment {
         handler.sendEmptyMessageDelayed(1, 2000);
     }
 
-    private void unbindDrawables(View view) {
-        if (view.getBackground() != null) {
-            view.getBackground().setCallback(null);
-        }
-        if (view instanceof ViewGroup && !(view instanceof AdapterView)) {
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                unbindDrawables(((ViewGroup) view).getChildAt(i));
-            }
-            ((ViewGroup) view).removeAllViews();
-        }
-    }
+//    private void unbindDrawables(View view) {
+//        if (view.getBackground() != null) {
+//            view.getBackground().setCallback(null);
+//        }
+//        if (view instanceof ViewGroup && !(view instanceof AdapterView)) {
+//            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+//                unbindDrawables(((ViewGroup) view).getChildAt(i));
+//            }
+//            ((ViewGroup) view).removeAllViews();
+//        }
+//    }
 }
