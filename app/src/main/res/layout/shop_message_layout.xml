@@ -336,6 +336,8 @@
                         android:padding="10dp">
 
                         <RatingBar
+                            android:clickable="false"
+                            android:focusable="false"
                             android:id="@+id/shop_infor_starts"
                             style="@style/roomRatingBar"
                             android:layout_width="wrap_content"

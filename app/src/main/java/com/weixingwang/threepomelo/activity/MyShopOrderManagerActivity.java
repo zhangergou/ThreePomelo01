@@ -66,7 +66,7 @@ public class MyShopOrderManagerActivity extends BaseActivity {
     protected void initData() {
         Intent intent = getIntent();
         String total = intent.getStringExtra("total");
-        if(!TextUtils.isEmpty(total)){
+        if (!TextUtils.isEmpty(total)) {
             tvTotal.setText(total);
         }
 
@@ -82,7 +82,6 @@ public class MyShopOrderManagerActivity extends BaseActivity {
     }
 
 
-
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_my_shop_order_add_order:
@@ -95,7 +94,7 @@ public class MyShopOrderManagerActivity extends BaseActivity {
                 searchData();
                 break;
             case R.id.btn_cancel:
-               dialog.dismiss();
+                dialog.dismiss();
                 break;
 
             default:
@@ -103,7 +102,6 @@ public class MyShopOrderManagerActivity extends BaseActivity {
                 break;
         }
     }
-
 
 
     private void search() {
@@ -122,7 +120,7 @@ public class MyShopOrderManagerActivity extends BaseActivity {
         HashMap<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("keywords", keywords);
-        map.put("s_date",s_date);
+        map.put("s_date", s_date);
         map.put("e_date", e_date);
         OkHttpUtils.get(UrlUtils.MY_SHOP_ORDER_Url, ShearPreferenceUtils.getToken(MyShopOrderManagerActivity.this),
                 MyShopOrderManagerBean.class, new OkHttpUtils.CallBackUtils() {
@@ -148,26 +146,24 @@ public class MyShopOrderManagerActivity extends BaseActivity {
                     public void error(Exception e) {
                         netError();
                     }
-                },map);
+                }, map);
 
     }
 
     private void setData(List<MyShopOrderManagerBean.ListOrdersEntity> data) {
 
         list.addAll(data);
-
-        if (list != null && list.size() > 0) {
-            recylAdapter = new MyShopOrderManagerRecylAdapter(MyShopOrderManagerActivity.this, re,
-                    list, R.layout.my_shop_order_re_item, 1);
-            re.setAdapter(recylAdapter);
-            recylAdapter.setOnClickDeleteView(new BaseRecyleAdapter.OnClickDeleteView() {
-                @Override
-                public void onDelete(int postion) {
-                    deleteData(postion);
-                }
-            });
-        }
+        recylAdapter = new MyShopOrderManagerRecylAdapter(MyShopOrderManagerActivity.this, re,
+                list, R.layout.my_shop_order_re_item, 1);
+        re.setAdapter(recylAdapter);
+        recylAdapter.setOnClickDeleteView(new BaseRecyleAdapter.OnClickDeleteView() {
+            @Override
+            public void onDelete(int postion) {
+                deleteData(postion);
+            }
+        });
     }
+
     private void deleteData(int postion) {
         MyShopOrderManagerBean.ListOrdersEntity listOrdersEntity = list_orders.get(postion);
         String oid = listOrdersEntity.getId();
@@ -183,7 +179,7 @@ public class MyShopOrderManagerActivity extends BaseActivity {
                             if (bean.isSuccess()) {
                                 ToastUtils.toast(MyShopOrderManagerActivity.this, "删除成功");
                                 list.clear();
-                                page=1;
+                                page = 1;
                                 getData();
                             } else {
                                 ToastUtils.toast(MyShopOrderManagerActivity.this, bean.getError_msg());
@@ -199,7 +195,7 @@ public class MyShopOrderManagerActivity extends BaseActivity {
                     public void error(Exception e) {
                         netError();
                     }
-                },map);
+                }, map);
     }
 
     @Override
@@ -220,14 +216,14 @@ public class MyShopOrderManagerActivity extends BaseActivity {
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-      if(list_orders!=null){
-          if (list_orders.size() < 20) {
-              ToastUtils.toast(this, "已加载完毕");
-          } else {
-              page++;
-              getData();
-          }
-      }
+        if (list_orders != null) {
+            if (list_orders.size() < 20) {
+                ToastUtils.toast(this, "已加载完毕");
+            } else {
+                page++;
+                getData();
+            }
+        }
         super.onLoadMore(pullToRefreshLayout);
     }
 
@@ -236,25 +232,25 @@ public class MyShopOrderManagerActivity extends BaseActivity {
         String endTime = tvSearchEndTime.getText().toString().trim();
         String personN = tvSearchPerson.getText().toString().trim();
         if (!TextUtils.isEmpty(personN) || !TextUtils.isEmpty(startTime) || !TextUtils.isEmpty(endTime)) {
-            if(!TextUtils.isEmpty(startTime)){
-                if(!TimeUtils.valiDateTimeWithLongFormat(startTime)){
-                    ToastUtils.toast(this,"时间格式不正确,请重新输入!");
+            if (!TextUtils.isEmpty(startTime)) {
+                if (!TimeUtils.valiDateTimeWithLongFormat(startTime)) {
+                    ToastUtils.toast(this, "时间格式不正确,请重新输入!");
                     tvSearchStartTime.setText("");
                     return;
-                }else {
-                    s_date=startTime;
+                } else {
+                    s_date = startTime;
                 }
             }
-            if(!TextUtils.isEmpty(personN)){
-                keywords=personN;
+            if (!TextUtils.isEmpty(personN)) {
+                keywords = personN;
             }
-            if(!TextUtils.isEmpty(endTime)){
-                if(!TimeUtils.valiDateTimeWithLongFormat(endTime)){
-                    ToastUtils.toast(this,"时间格式不正确,请重新输入!");
+            if (!TextUtils.isEmpty(endTime)) {
+                if (!TimeUtils.valiDateTimeWithLongFormat(endTime)) {
+                    ToastUtils.toast(this, "时间格式不正确,请重新输入!");
                     tvSearchStartTime.setText("");
                     return;
-                }else {
-                    s_date=endTime;
+                } else {
+                    s_date = endTime;
                 }
             }
             getData();

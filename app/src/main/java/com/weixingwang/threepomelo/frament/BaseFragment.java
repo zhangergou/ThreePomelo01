@@ -63,7 +63,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         TextView titleName = (TextView) view.findViewById(R.id.tv_title_name);
         titleName.setText(title);
     }
-
+    public void setTitle(String title,int colorId,int bagroundId) {
+        RelativeLayout ra = (RelativeLayout) view.findViewById(R.id.title_rla);
+        TextView titleName = (TextView) view.findViewById(R.id.tv_title_name);
+        titleName.setText(title);
+        titleName.setTextColor(getResources().getColor(colorId));
+        ra.setBackgroundColor(getResources().getColor(bagroundId));
+    }
     ////显示返回
 //    public void isShowBack(boolean show){
 //        ImageView ivBack = (ImageView) view.findViewById(R.id.iv_title_back);

@@ -115,6 +115,7 @@ public class ShoppingBusActivity extends BaseActivity implements BaseRecyleAdapt
             Intent intent = new Intent(ShoppingBusActivity.this, ShopMessageActivity.class);
             intent.putExtra("id", id);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -124,9 +125,13 @@ public class ShoppingBusActivity extends BaseActivity implements BaseRecyleAdapt
             can=1;
             if (!TextUtils.isEmpty(list.get(postion).getNum()) && !TextUtils.isEmpty(list.get(postion).getCart_id())) {
                 int i = Integer.parseInt(list.get(postion).getNum());
-                if (i > 0) {
+                if (i > 1) {
                     i--;
+                    showLoading();
                     keepCount(i, list.get(postion).getCart_id());
+                }else {
+                    ToastUtils.toast(this,"商品数量不能小于1个");
+                    can=0;
                 }
             }
         }
@@ -245,9 +250,7 @@ public class ShoppingBusActivity extends BaseActivity implements BaseRecyleAdapt
         }
 //        sb.append("]");
         HashMap<String, String> map = new HashMap<>();
-        map.put("address_id", 22+"");
         map.put("cart_ids", sb.toString());
-
         OkHttpUtils.get(UrlUtils.SHOP_SAVE_ORDER_Url, ShearPreferenceUtils.getToken(ShoppingBusActivity.this),
                 LoginBean.class,new OkHttpUtils.CallBackUtils() {
 

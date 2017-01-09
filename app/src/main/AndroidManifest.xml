@@ -47,6 +47,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--主界面-->
         <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <!--商家入驻->-->
@@ -108,6 +109,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--我的店铺订单-提交订单信息->-->
         <activity android:name=".activity.MyShopOrderDataUpActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--我的店铺订单-提交订单详情->-->
+        <activity android:name=".activity.PublicOrderInforActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--腾讯地图->-->
         <activity android:name=".activity.TencentMapAvtivity"

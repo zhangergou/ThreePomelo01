@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="15dp"/>
     <LinearLayout
+        android:id="@+id/pay_weixin"
         android:background="@drawable/textview_dialog_btn_selector"
         android:clickable="true"
         android:padding="10dp"
@@ -68,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <LinearLayout
+        android:id="@+id/pay_aili"
         android:background="@drawable/textview_dialog_btn_selector"
         android:clickable="true"
         android:padding="10dp"

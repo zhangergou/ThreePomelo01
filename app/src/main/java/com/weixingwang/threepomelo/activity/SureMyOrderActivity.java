@@ -16,6 +16,7 @@ import com.weixingwang.threepomelo.bean.AddressListBean;
 import com.weixingwang.threepomelo.bean.DefultAddressBean;
 import com.weixingwang.threepomelo.bean.LoginBean;
 import com.weixingwang.threepomelo.bean.SureOrderBean;
+import com.weixingwang.threepomelo.bean.UpOrderPaySunBean;
 import com.weixingwang.threepomelo.utils.OkHttpUtils;
 import com.weixingwang.threepomelo.utils.ShearPreferenceUtils;
 import com.weixingwang.threepomelo.utils.ToastUtils;
@@ -35,7 +36,7 @@ public class SureMyOrderActivity extends BaseActivity {
     private TextView tvPhone;
     private TextView tvAddress;
     private TextView tvSunCount;
-    private TextView tvSunMoney;
+    private EditText tvSunMoney;
     private TextView tvPayMoney;
     private EditText etSay;
     private RecyclerView re;
@@ -43,6 +44,7 @@ public class SureMyOrderActivity extends BaseActivity {
     private ImageView ivChose;
     private SureOrderBean.OrderInfoEntity order_info;
     private double integral;
+    private String address_id;
 
     @Override
     protected int getLayoutId() {
@@ -56,7 +58,7 @@ public class SureMyOrderActivity extends BaseActivity {
         tvPhone = (TextView) findViewById(R.id.tv_sure_order_arder_phone);
         tvAddress = (TextView) findViewById(R.id.tv_sure_order_arder_address);
         tvSunCount = (TextView) findViewById(R.id.tv_sure_order_sun_count);
-        tvSunMoney = (TextView) findViewById(R.id.tv_sure_order_pay_money);
+        tvSunMoney = (EditText) findViewById(R.id.tv_sure_order_pay_money);
         tvPayMoney = (TextView) findViewById(R.id.tv_sure_order_end_money);
         etSay = (EditText) findViewById(R.id.et_sure_order_say);
         re = (RecyclerView) findViewById(R.id.sure_order_recyl);
@@ -88,29 +90,41 @@ public class SureMyOrderActivity extends BaseActivity {
                 startActivity(new Intent(SureMyOrderActivity.this, AddAdressActivity.class));
                 break;
             case R.id.iv_sure_shopping_now:
-                startActivity(new Intent(SureMyOrderActivity.this, PayActivity.class));
+                pay();
                 break;
             case R.id.iv_sure_order_chose:
-                if (chose == 0) {
-                    chose = 1;
-                    ivChose.setSelected(true);
-                    double tal = Double.parseDouble(order_info.getTotal_price());
-                    if (tal > integral) {
-                        tvPayMoney.setText((tal - integral) / 100 + "");
-                    } else {
-                        tvPayMoney.setText(0 + "");
-                    }
-
-                } else {
-                    chose = 0;
-                    ivChose.setSelected(false);
-                    int i = Integer.parseInt(order_info.getTotal_price());
-                    tvPayMoney.setText(i / 100 + "");
-                }
+               setIntgCount();
                 break;
             default:
                 super.onClick(v);
                 break;
+        }
+    }
+
+    private void setIntgCount() {
+        if (chose == 0) {
+            chose = 1;
+            ivChose.setSelected(true);
+            double tal = Double.parseDouble(order_info.getTotal_price());
+
+            if(!TextUtils.isEmpty(tvSunMoney.getText().toString().trim())){
+                double integralCount = Double.parseDouble(tvSunMoney.getText().toString().trim());
+                if(integralCount<=integral){
+                    if (tal > integralCount) {
+                        tvPayMoney.setText((tal - integralCount) / 100 + "");
+                    } else {
+                        tvSunMoney.setText(tal+"");
+                        tvPayMoney.setText(0 + "");
+                    }
+                }
+            }
+
+
+        } else {
+            chose = 0;
+            ivChose.setSelected(false);
+            int i = Integer.parseInt(order_info.getTotal_price());
+            tvPayMoney.setText(i / 100 + "");
         }
     }
 
@@ -146,6 +160,9 @@ public class SureMyOrderActivity extends BaseActivity {
     private void putData(DefultAddressBean bean) {
         DefultAddressBean.DefaultAddressEntity address_info = bean.getDefault_address();
         if (address_info != null) {
+            if (!TextUtils.isEmpty(address_info.getId())) {
+                address_id = address_info.getId();
+            }
             if (!TextUtils.isEmpty(address_info.getPerson())) {
                 tvPerson.setText(address_info.getPerson());
             }
@@ -204,10 +221,10 @@ public class SureMyOrderActivity extends BaseActivity {
             if (!TextUtils.isEmpty(order_info.getTotal_price())) {
                 double i = Double.parseDouble(order_info.getTotal_price());
                 tvPayMoney.setText(i / 100 + "");
-                if (integral >=i) {
-                    tvSunMoney.setText(i / 100 + "");
-                }else
-                    tvSunMoney.setText(integral / 100 + "");
+//                if (integral >=i) {
+//                    tvSunMoney.setText(i / 100 + "");
+//                }else
+//                    tvSunMoney.setText(integral / 100 + "");
             }
         }
         List<SureOrderBean.GoodsListEntity> goods_list = data.getGoods_list();
@@ -216,6 +233,69 @@ public class SureMyOrderActivity extends BaseActivity {
                     R.layout.sure_order_recy_item, 1));
         }
 
+    }
+
+    private void pay() {
+
+        String use_integral = "0";
+        if(chose==1){
+             use_integral = tvSunMoney.getText().toString().trim();
+            if(TextUtils.isEmpty(use_integral)){
+                use_integral="0";
+            }
+        }
+        showLoading();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("order_id", order_id);
+        map.put("use_integral", use_integral);
+        map.put("address_id", address_id);
+        OkHttpUtils.get(UrlUtils.SHOP_NOW_PAY_Url, ShearPreferenceUtils.getToken(SureMyOrderActivity.this),
+                UpOrderPaySunBean.class, new OkHttpUtils.CallBackUtils() {
+
+                    @Override
+                    public void sucess(Object obj) {
+                        closeLoading();
+                        if (obj != null) {
+                            UpOrderPaySunBean bean = (UpOrderPaySunBean) obj;
+                            if (bean.isSuccess()) {
+                                goData(bean);
+                            } else {
+                                ToastUtils.toast(SureMyOrderActivity.this, bean.getError_msg());
+                            }
+                        } else {
+                            closeLoading();
+                            noData();
+                        }
+                    }
+
+                    @Override
+                    public void error(Exception e) {
+                        closeLoading();
+                        Toast.makeText(SureMyOrderActivity.this, "网络错误，请重新请求", Toast.LENGTH_LONG).show();
+                    }
+                }, map);
+    }
+
+    private void goData(UpOrderPaySunBean bean) {
+        if(!TextUtils.isEmpty(bean.getStatus())){
+            //2代表还需要第三方支付平台的支付，
+            //3代表支付完成进入待发货状态
+            if(TextUtils.equals(bean.getStatus(),"2")){
+                Intent intent = new Intent(SureMyOrderActivity.this, PayActivity.class);
+                intent.putExtra("order_id",order_id);
+                startActivity(intent);
+            }
+            if(TextUtils.equals(bean.getStatus(),"3")&&!TextUtils.isEmpty(bean.getUser_order_id())){
+                ToastUtils.toast(this,"支付完成");
+                Intent intent = new Intent(SureMyOrderActivity.this, PublicOrderInforActivity.class);
+                intent.putExtra("order_id",order_id);
+                intent.putExtra("state","3");
+                intent.putExtra("corde",bean.getUser_order_id());
+                intent.putExtra("pos","5");
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     @Override

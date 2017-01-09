@@ -9,6 +9,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.weixingwang.threepomelo.R;
+import com.weixingwang.threepomelo.utils.UrlUtils;
 
 
 /**
@@ -31,13 +32,15 @@ public class EveryDayDataFragment extends BaseFragment {
         this.view = view;
         web = (WebView) view.findViewById(R.id.every_day_fragment_web);
         progress = (ProgressBar) view.findViewById(R.id.every_day_fragment_progressBar);
-        setTitle("每日数据");
+        setTitle("每日数据",R.color.blueTabText,R.color.white);
+
     }
 
     @Override
     protected void initData() {
-        progress.setMax(100);
-        web.loadUrl("http://www.baidu.com");
+        showLoading();
+        //progress.setMax(100);
+        web.loadUrl(UrlUtils.EVERYDAY_DATA_Url);
         WebSettings settings = web.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
@@ -47,11 +50,12 @@ public class EveryDayDataFragment extends BaseFragment {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                progress.setProgress(newProgress);
+                //progress.setProgress(newProgress);
                 if(newProgress==100){
-                    progress.setVisibility(View.GONE);
+                    closeLoading();
+                    //progress.setVisibility(View.GONE);
                 }else {
-                    progress.setVisibility(View.VISIBLE);
+                   // progress.setVisibility(View.VISIBLE);
                 }
 
             }

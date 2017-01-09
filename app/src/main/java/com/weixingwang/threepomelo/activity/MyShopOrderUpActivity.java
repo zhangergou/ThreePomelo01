@@ -142,12 +142,11 @@ public class MyShopOrderUpActivity extends BaseActivity implements BaseRecyleAda
     public void setData(List<MyShopOrderUpBean.OrdersEntity> data) {
 
         list.addAll(data);
-        if (list != null && list.size() > 0) {
+
             recylAdapter = new MyShopOrderUpRecylAdapter(MyShopOrderUpActivity.this, re,
                     list, R.layout.my_shop_order_up_re_item, 1);
             re.setAdapter(recylAdapter);
             recylAdapter.setOnClickItemView(this);
-        }
     }
 
     @Override

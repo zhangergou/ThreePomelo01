@@ -177,29 +177,27 @@
                            android:layout_height="wrap_content" />
                        <TextView
                            android:id="@+id/tv_sure_order_sun_count"
-                           android:text="44"
+                           android:text=""
                            android:textColor="@color/colorAccent"
                            android:textSize="14sp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content" />
                        <TextView
                            android:layout_marginLeft="10dp"
-                           android:text="抵现"
+                           android:text="使用 :"
                            android:textColor="@color/colorAccent"
                            android:textSize="14sp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content" />
-                       <TextView
-                           android:text="￥"
-                           android:textColor="@color/colorAccent"
-                           android:textSize="14sp"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content" />
-                       <TextView
+                       <EditText
+                           android:hint="输入葵花籽数"
+                           android:gravity="center"
+                           android:singleLine="true"
                            android:id="@+id/tv_sure_order_pay_money"
-                           android:text="44"
+                           android:text=""
+                           android:background="@drawable/sun_count_shape"
                            android:textColor="@color/colorAccent"
-                           android:textSize="14sp"
+                           android:textSize="12sp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content" />
                    </LinearLayout>

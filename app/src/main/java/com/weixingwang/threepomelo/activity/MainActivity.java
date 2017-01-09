@@ -1,5 +1,8 @@
 package com.weixingwang.threepomelo.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.widget.TextView;
 
 import com.weixingwang.threepomelo.R;
 import com.weixingwang.threepomelo.adapter.MyFragmentPagerAdapter;
+import com.weixingwang.threepomelo.frament.HopeFragment;
 import com.weixingwang.threepomelo.frament.ShopFragment;
 import com.weixingwang.threepomelo.frament.HomeFragment;
 import com.weixingwang.threepomelo.frament.MeFragment;
@@ -44,6 +48,7 @@ public class MainActivity extends BaseActivity {
         list.add(new HomeFragment());
         list.add(new MyOrderFragment());
         list.add(new ShopFragment());
+//        list.add(new HopeFragment());
         list.add(new EveryDayDataFragment());
         list.add(new MeFragment());
         mainViewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),mainViewPager,
@@ -70,5 +75,28 @@ public class MainActivity extends BaseActivity {
     public void setSelectCount(int count){
         mainViewPager.setCurrentItem(count,false);
         mainTab.getTabAt(count).getCustomView().setSelected(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("确定退出吗?")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        System.exit(1);
+                    }
+                })
+                .show();
+
+
     }
 }

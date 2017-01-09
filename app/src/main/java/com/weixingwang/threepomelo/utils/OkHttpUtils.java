@@ -321,7 +321,7 @@ public class OkHttpUtils {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String string = response.body().string();
-                Log.e("1", "stringJson=" + string);
+                Log.e("stringJson", "stringJson=" + string);
                 Gson gson = new Gson();
                 final Object fromJson = gson.fromJson(string, clazz);
                 handler.post(new Runnable() {

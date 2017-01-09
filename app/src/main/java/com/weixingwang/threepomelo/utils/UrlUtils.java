@@ -127,4 +127,12 @@ public class UrlUtils {
     public static String SHOP_SURE_ORDER_Url = MAIN_Url+"/Apiuser/get_orderinfo";
     //商城--获取默认收货地址
     public static String SHOP_DEF_ADDRESS_Url = MAIN_Url+"/Apiuser/get_default_address";
+    //商城--立即购买 接口
+    public static String SHOP_NOW_PAY_Url = MAIN_Url+"/Apiuser/order_pay";
+    //商城--获取微信预支付码
+    public static String SHOP_GET_PAY_CODE_Url = MAIN_Url+"/Apiwxpay/wxpay";
+    //每日数据
+    public static String EVERYDAY_DATA_Url ="http://sky.asmzs.com/information";
+    //商城订单
+    public static String SHOP_ORDERS_Url = MAIN_Url+"/Apiuser/get_user_order";
 }

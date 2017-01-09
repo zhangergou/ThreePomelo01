@@ -6,6 +6,7 @@
     <include layout="@layout/public_tatle_layout"/>
 
     <ProgressBar
+        android:visibility="gone"
         android:padding="0dp"
         android:layout_margin="0dp"
         style="?android:attr/progressBarStyleHorizontal"
@@ -18,6 +19,7 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
     <LinearLayout
+        android:visibility="gone"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

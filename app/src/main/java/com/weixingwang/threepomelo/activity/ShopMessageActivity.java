@@ -1,6 +1,8 @@
 package com.weixingwang.threepomelo.activity;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
@@ -57,6 +59,23 @@ public class ShopMessageActivity extends BaseActivity  {
     private int types=0;
     private String ggId;
 
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            int currentItem = viewPager.getCurrentItem();
+            if(currentItem==list.size()-1){
+                viewPager.setCurrentItem(0);
+
+            }else {
+                currentItem++;
+                viewPager.setCurrentItem(currentItem);
+            }
+            handler.sendEmptyMessageDelayed(1,3000);
+
+        }
+    };
     @Override
     protected int getLayoutId() {
         return R.layout.shop_message_layout;
@@ -83,6 +102,8 @@ public class ShopMessageActivity extends BaseActivity  {
         tvTypeFive = (TextView) findViewById(R.id.shop_goods_type_five);
         tvTypeSix = (TextView) findViewById(R.id.shop_goods_type_six);
         starts = (RatingBar) findViewById(R.id.shop_infor_starts);
+        starts.setFocusable(false);
+        starts.setEnabled(false);
         refrush(pull);
         setTitle("商品详情");
         isShowBack(true);
@@ -311,6 +332,9 @@ public class ShopMessageActivity extends BaseActivity  {
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        handler.removeCallbacksAndMessages(null);
+        list.clear();
+        linIndictor.removeAllViews();
         getData();
         super.onRefresh(pullToRefreshLayout);
     }
@@ -342,6 +366,7 @@ public class ShopMessageActivity extends BaseActivity  {
             }
             pos=0;
             linIndictor.getChildAt(0).setSelected(true);
+            handler.sendEmptyMessageDelayed(1,3000);
         }
     }
 
@@ -382,5 +407,17 @@ public class ShopMessageActivity extends BaseActivity  {
                     }
                 }, map);
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        handler.sendEmptyMessageDelayed(1,3000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacksAndMessages(null);
     }
 }
